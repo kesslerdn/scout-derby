@@ -15,7 +15,7 @@
 		<div id="create-car" class="content scaffold-create" role="main">
 			<h1>Heat ${heatIndex + 1}</h1>
 			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
+			<div class="errors" role="alert">${flash.message}</div>
 			</g:if>
 			<g:form action="nextHeat" >
 				<g:hiddenField name="id" value="${id}" />
@@ -32,8 +32,8 @@
 					<tbody>
 					<g:each in="${lanes}" status="i" var="lane">
 						<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-							<td><g:textField id="finishTimes_${i}" name="finishTimes" value="" required="true"/> 
-							<a href="javascript:func()" onclick="document.getElementById('finishTimes_${i}').value = '60.0'">Not Finished</a></td>
+							<td><g:textField id="finishTimes_${i}" name="finishTimes" required="true"/> 
+							<a href="javascript:func()" onclick="document.getElementById('finishTimes_${i}').value = '60.0'" tabindex="-1">Not Finished</a></td>
 							<td>${lane.number}</td>	
 							<td>${lane.cars[heatIndex].id}</td>								
 							<td>${lane.cars[heatIndex].name}</td>								

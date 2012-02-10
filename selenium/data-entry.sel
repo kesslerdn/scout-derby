@@ -22,8 +22,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>link=Create Derby</td>
+	<td>open</td>
+	<td>/scout-derby/derby/create</td>
 	<td></td>
 </tr>
 <tr>
@@ -77,8 +77,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>link=Add Race</td>
+	<td>open</td>
+	<td>/scout-derby/race/create</td>
 	<td></td>
 </tr>
 <tr>
@@ -597,8 +597,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>link=Next Heat</td>
+	<td>open</td>
+	<td>/scout-derby/race/nextHeat</td>
 	<td></td>
 </tr>
 <tr>
@@ -946,7 +946,6 @@
 	<td>id=create</td>
 	<td></td>
 </tr>
-
 </tbody></table>
 </body>
 </html>

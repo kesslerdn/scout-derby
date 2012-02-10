@@ -41,38 +41,44 @@ class RaceController {
 													carIds.add(car.id)
 									}
 									carIds.each{ id ->
-									def count = carIds.count{it == id}
-									if(count != 1){
-										throw new IllegalStateException("Heat ${i + 1} contains car id $id $count times.")
-									}
+										def count = carIds.count{it == id}
+										if(count != 1){
+											throw new IllegalStateException("Heat ${i + 1} contains car id $id $count times.")
+										}
 									}
 								}
 						
 						if(!raceInstance.save(flush: true)){
 							flash.message = "Failed to save ${raceInstance}."
-									render(view: "selectRace", model: [actionName: "nextHeat"])
-									return
+							render(view: "selectRace", model: [actionName: "nextHeat"])
+							return
 						}
 					}
-					def finishTimes = params.finishTimes
 							
+					def finishTimes = params.finishTimes
 					int heatIndex = (raceInstance.currentHeat - 1)
+					
+					if(invalidDoubles(finishTimes)){
+						flash.message = "Please enter valid times."
+						render(view: "nextHeat", model: [id:params.id, heatIndex: heatIndex, lanes: raceInstance.lanes])
+						return
+					}
 					
 					if(finishTimes){
 						raceInstance.lanes.each{lane ->
-						double finishTime = (Double.parseDouble(finishTimes[lane.number - 1]))
-						def finishTimeInstance = new FinishTime(laneNumber:(lane.number), seconds: finishTime)
-						def car = lane.cars[heatIndex]
-								car.addToFinishTimes(finishTimeInstance)
+							double finishTime = (Double.parseDouble(finishTimes[lane.number - 1]))
+							def finishTimeInstance = new FinishTime(laneNumber:(lane.number), seconds: finishTime)
+							def car = lane.cars[heatIndex]
+							car.addToFinishTimes(finishTimeInstance)
 						}
 						
 						heatIndex += 1
-								raceInstance.currentHeat += 1
-								if(!raceInstance.save(flush: true)){
-									flash.message = "Failed to save ${raceInstance}."
-											render(view: "selectRace", model: [actionName: "nextHeat"])
-											return
-								}
+						raceInstance.currentHeat += 1
+						if(!raceInstance.save(flush: true)){
+							flash.message = "Failed to save ${raceInstance}."
+							render(view: "selectRace", model: [actionName: "nextHeat"])
+							return
+						}
 					}
 					if(heatIndex >= cars.size){
 						redirect(action: "report", id: params.id)
@@ -81,8 +87,20 @@ class RaceController {
 					[id:params.id, heatIndex: heatIndex, lanes: raceInstance.lanes]
 				}else{
 					flash.message = "Please select a race."
-							render(view: "selectRace", model: [actionName: "nextHeat"])
+					render(view: "selectRace", model: [actionName: "nextHeat"])
 				}
+	}
+	
+	private boolean invalidDoubles(def values){
+		def invalid = false
+		values.each{value ->
+			try{
+				Double.parseDouble(value)
+			}catch(NumberFormatException e){
+				invalid = true;
+			}
+		}
+		return invalid;
 	}
 	
 	def report = {

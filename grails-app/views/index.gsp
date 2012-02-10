@@ -78,19 +78,11 @@
 	<div id="list-car" class="content scaffold-list" role="main">
 				<h1>Pinewood Derby</h1>
 				<table>
-					<tbody>
-						<tr>
-							<td><g:link controller="derby" action="create">Create Derby</g:link></td>
-						</tr>				
-						<tr>
-							<td><g:link controller="race" action="create">Add Race</g:link></td>	
-						</tr>				
+					<tbody>						
 						<tr>
 							<td><g:link controller="car" action="create">Add Car</g:link></td>	
 						</tr>				
-						<tr>
-							<td><g:link controller="race" action="nextHeat">Next Heat</g:link></td>	
-						</tr>				
+			
 						<tr>
 							<td><g:link controller="race" action="report">Race Stats</g:link></td>	
 						</tr>
