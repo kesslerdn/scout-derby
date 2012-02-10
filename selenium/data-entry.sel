@@ -1,0 +1,952 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:8080/" />
+<title>data-entry</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">data-entry</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/scout-derby/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Pinewood Derby</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Create Derby</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Create Derby</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=location</td>
+	<td>Family Life Center</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=date_day</td>
+	<td>label=9</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=date_month</td>
+	<td>label=February</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=date_year</td>
+	<td>label=2012</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=organizationNumber</td>
+	<td>355</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=create</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Show Derby</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Home</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Pinewood Derby</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Add Race</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Create Race</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=name</td>
+	<td>Scout</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=numberOfLanes</td>
+	<td>4</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=create</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Show Race</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=New Race</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Create Race</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=name</td>
+	<td>Outlaw</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=numberOfLanes</td>
+	<td>4</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=create</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Show Race</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Home</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Pinewood Derby</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Add Car</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Create Car</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=raceId</td>
+	<td>label=Scout: 02/09/2012: Family Life Center</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=firstName</td>
+	<td>Bob</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lastName</td>
+	<td>Bobberson</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=name</td>
+	<td>The Sky</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=create</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Car List</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=New Car</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Create Car</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=raceId</td>
+	<td>label=Scout: 02/09/2012: Family Life Center</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=firstName</td>
+	<td>Howard</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lastName</td>
+	<td>Duck</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=name</td>
+	<td>Slurper</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=create</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Car List</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=New Car</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Create Car</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=raceId</td>
+	<td>label=Scout: 02/09/2012: Family Life Center</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=firstName</td>
+	<td>Fred</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lastName</td>
+	<td>Flintstone</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=name</td>
+	<td>Yaba Daba</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=create</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Car List</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=New Car</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Create Car</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=raceId</td>
+	<td>label=Scout: 02/09/2012: Family Life Center</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=firstName</td>
+	<td>David</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lastName</td>
+	<td>Kessler</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=name</td>
+	<td>The Block</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=create</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Car List</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=New Car</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Create Car</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=raceId</td>
+	<td>label=Scout: 02/09/2012: Family Life Center</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=firstName</td>
+	<td>Simple</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lastName</td>
+	<td>Simon</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=name</td>
+	<td>Red, White &amp; Blue</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=create</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Car List</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=New Car</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Create Car</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=raceId</td>
+	<td>label=Scout: 02/09/2012: Family Life Center</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=firstName</td>
+	<td>Ronald</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lastName</td>
+	<td>Regan</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=name</td>
+	<td>America The Beautiful</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=create</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Car List</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=New Car</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Create Car</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=raceId</td>
+	<td>label=Scout: 02/09/2012: Family Life Center</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=firstName</td>
+	<td>Stan</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lastName</td>
+	<td>Kenton</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=name</td>
+	<td>Trumpet</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=create</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Car List</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=New Car</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Create Car</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=raceId</td>
+	<td>label=Scout: 02/09/2012: Family Life Center</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=firstName</td>
+	<td>Simon</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lastName</td>
+	<td>Garfunkel</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=name</td>
+	<td>Guitar</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=create</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Car List</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=New Car</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Create Car</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=raceId</td>
+	<td>label=Scout: 02/09/2012: Family Life Center</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=firstName</td>
+	<td>George</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lastName</td>
+	<td>Jettson</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=name</td>
+	<td>Spaceship</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=create</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Car List</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=New Car</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Create Car</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=raceId</td>
+	<td>label=Scout: 02/09/2012: Family Life Center</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=firstName</td>
+	<td>Harry</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lastName</td>
+	<td>Howardson</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=name</td>
+	<td>Monster</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=create</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Car List</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=New Car</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Create Car</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=raceId</td>
+	<td>label=Scout: 02/09/2012: Family Life Center</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=firstName</td>
+	<td>Charlie</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lastName</td>
+	<td>Chaplin</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=name</td>
+	<td>The Stand</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=create</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Car List</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Home</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Pinewood Derby</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Next Heat</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Select Race</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=race</td>
+	<td>label=Scout: 02/09/2012: Family Life Center</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=create</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_0</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_1</td>
+	<td>2</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_2</td>
+	<td>3</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_3</td>
+	<td>4</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=create</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Next Heat</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_0</td>
+	<td>5</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_1</td>
+	<td>6</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_2</td>
+	<td>7</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_3</td>
+	<td>8</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=create</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Next Heat</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_0</td>
+	<td>10</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_1</td>
+	<td>11</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_2</td>
+	<td>12</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_3</td>
+	<td>13</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=create</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Next Heat</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_0</td>
+	<td>14</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_1</td>
+	<td>15</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_2</td>
+	<td>16</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_3</td>
+	<td>17</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=create</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Next Heat</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=create</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_0</td>
+	<td>18</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_1</td>
+	<td>19</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_2</td>
+	<td>20</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_3</td>
+	<td>21</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=create</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Next Heat</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_0</td>
+	<td>22</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_1</td>
+	<td>23</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_2</td>
+	<td>24</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_3</td>
+	<td>25</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=create</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Next Heat</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_0</td>
+	<td>26</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_1</td>
+	<td>27</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_2</td>
+	<td>28</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_3</td>
+	<td>29</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=create</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Next Heat</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_0</td>
+	<td>30</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_1</td>
+	<td>31</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_2</td>
+	<td>32</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_3</td>
+	<td>33</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=create</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Next Heat</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_0</td>
+	<td>34</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_1</td>
+	<td>35</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_2</td>
+	<td>36</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_3</td>
+	<td>37</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=create</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Next Heat</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_0</td>
+	<td>38</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_1</td>
+	<td>39</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_2</td>
+	<td>40</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_3</td>
+	<td>41</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=create</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Next Heat</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_0</td>
+	<td>42</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_1</td>
+	<td>43</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_2</td>
+	<td>44</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=finishTimes_3</td>
+	<td>45</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=create</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

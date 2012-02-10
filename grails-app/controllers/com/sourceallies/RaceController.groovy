@@ -9,21 +9,26 @@ class RaceController {
 		flash.message = ""
 				if(params.id){
 					def raceInstance = Race.get(params.id)
-							def cars = raceInstance.cars.toList()
-							if(!cars){
-								flash.message = "Please add cars to ${raceInstance}."
-										render(view: "selectRace", model: [actionName: "nextHeat"])
-										return
-							}
+					def cars = raceInstance.cars.toList()
+					if(!cars){
+						flash.message = "Please add cars to the ${raceInstance} race."
+						render(view: "selectRace", model: [actionName: "nextHeat"])
+						return
+					}
+					if(cars.size < raceInstance.numberOfLanes){
+						flash.message = "Please add at least ${raceInstance.numberOfLanes + 1} cars to the ${raceInstance} race."
+						render(view: "selectRace", model: [actionName: "nextHeat"])
+						return
+					}
 					if(!raceInstance.lanes || raceInstance.lanes.isEmpty()){
 						Collections.shuffle(cars)
 						(1..(raceInstance.numberOfLanes)).each{ laneNumber ->
-						def lane = new Lane(number: laneNumber);
-						cars[laneNumber..-1].each{car ->
-						lane.addToCars(car)
+							def lane = new Lane(number: laneNumber);
+							cars[laneNumber..-1].each{car ->
+							lane.addToCars(car)
 						}
 						cars[0..(laneNumber-1)].each{car ->
-						lane.addToCars(car)
+							lane.addToCars(car)
 						}
 						raceInstance.addToLanes(lane)
 						}
