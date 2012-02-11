@@ -33,7 +33,7 @@
 					<g:each in="${lanes}" status="i" var="lane">
 						<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 							<td><g:textField id="finishTimes_${i}" name="finishTimes" required="true"/> 
-							<a href="javascript:func()" onclick="document.getElementById('finishTimes_${i}').value = '60.0'" tabindex="-1">Not Finished</a></td>
+							<a href="javascript:func()" onclick="document.getElementById('finishTimes_${i}').value = '15.0'" tabindex="-1">Not Finished</a></td>
 							<td>${lane.number}</td>	
 							<td>${lane.cars[heatIndex].id}</td>								
 							<td>${lane.cars[heatIndex].carName}</td>								
