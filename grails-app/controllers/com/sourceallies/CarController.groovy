@@ -11,6 +11,14 @@ class CarController {
    static scaffold = true
 		   
 
+   
+   def list() {
+	   params.max = Math.min(params.max ? params.int('max') : 10, 100)
+	   params.sort = 'id'
+	   params.order = 'desc'
+	   [carInstanceList: Car.list(params), carInstanceTotal: Car.count()]
+   }
+
     def create() {
 		def races = Race.list()
 		def availableRaces = races.findAll{it.lanes.empty}
