@@ -86,8 +86,7 @@ class RaceController {
 					
 					[id:params.id, heatIndex: heatIndex, lanes: raceInstance.lanes]
 				}else{
-					flash.message = "Please select a race."
-					render(view: "selectRace", model: [actionName: "nextHeat"])
+					render(view: "selectRace", model: [actionName: "nextHeat"]) //kjkhkh
 				}
 	}
 	
@@ -102,17 +101,21 @@ class RaceController {
 		}
 		return invalid;
 	}
+ 
 	
 	def report = {
 		flash.message = ""
 		if(params.id){
+			params.max = params.max ? params.int('max') : 5
 			def raceInstance = Race.get(params.id)
 			def allCars = raceInstance.cars.toList()
 			def cars = allCars.findAll{!(it.finishTimes?.isEmpty())}
 			cars.sort{ it.averageTime() }
-			[raceInstance: raceInstance, cars: cars]
+			def start = params.offset ? params.int('offset') : 0
+			def min =  Math.min((start + params.max), cars.size)
+			def stop = min - 1
+			[id:params.id, raceInstance: raceInstance, cars: cars[start..stop], carInstanceTotal: cars.size, start: start]
 		}else{
-			flash.message = "Please select a race."
 			render(view: "selectRace", model: [actionName: "report"])
 		}
 	}

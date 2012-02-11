@@ -87,6 +87,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>select</td>
+	<td>id=derby</td>
+	<td>label=02/09/2012: Family Life Center</td>
+</tr>
+<tr>
 	<td>type</td>
 	<td>id=name</td>
 	<td>Scout</td>
@@ -115,6 +120,11 @@
 	<td>assertTitle</td>
 	<td>Create Race</td>
 	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=derby</td>
+	<td>label=02/09/2012: Family Life Center</td>
 </tr>
 <tr>
 	<td>type</td>
@@ -147,8 +157,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>link=Add Car</td>
+	<td>open</td>
+	<td>/scout-derby/car/create</td>
 	<td></td>
 </tr>
 <tr>
