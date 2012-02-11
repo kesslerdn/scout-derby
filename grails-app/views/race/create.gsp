@@ -34,7 +34,7 @@
 							<g:message code="race.derby.label" default="Derby" />
 							<span class="required-indicator">*</span>
 						</label>
-						<g:select id="derby" name="derby.id" from="${com.sourceallies.Derby.list()}" optionKey="id" required="" value="${raceInstance?.derby?.id}" class="many-to-one"/>
+						<g:select id="derby" name="derby.id" from="${com.sourceallies.Derby.list()}" optionKey="id" required="true" value="${raceInstance?.derby?.id}" noSelection="['':'- Select -']" class="many-to-one"/>
 					</div>
 					<div class="fieldcontain ${hasErrors(bean: raceInstance, field: 'name', 'error')} required">
 						<label for="name">
@@ -43,13 +43,12 @@
 						</label>
 						<g:textField name="name" required="" value="${raceInstance?.name}"/>
 					</div>
-					
 					<div class="fieldcontain ${hasErrors(bean: raceInstance, field: 'numberOfLanes', 'error')} required">
 						<label for="numberOfLanes">
 							<g:message code="race.numberOfLanes.label" default="Number Of Lanes" />
 							<span class="required-indicator">*</span>
 						</label>
-						<g:field type="number" name="numberOfLanes" required="" value="${fieldValue(bean: raceInstance, field: 'numberOfLanes')}"/>
+						<g:select name="numberOfLanes" from="${raceInstance.constraints.numberOfLanes.inList}" required="true" noSelection="['':'- Select -']" value="${fieldValue(bean: raceInstance, field: 'numberOfLanes')}" valueMessagePrefix="race.numberOfLanes"/>
 					</div>
 				</fieldset>
 				<fieldset class="buttons">

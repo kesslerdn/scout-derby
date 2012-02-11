@@ -173,7 +173,7 @@
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=name</td>
+	<td>id=carName</td>
 	<td>The Sky</td>
 </tr>
 <tr>
@@ -213,7 +213,7 @@
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=name</td>
+	<td>id=carName</td>
 	<td>Slurper</td>
 </tr>
 <tr>
@@ -253,7 +253,7 @@
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=name</td>
+	<td>id=carName</td>
 	<td>Yaba Daba</td>
 </tr>
 <tr>
@@ -293,7 +293,7 @@
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=name</td>
+	<td>id=carName</td>
 	<td>The Block</td>
 </tr>
 <tr>
@@ -333,7 +333,7 @@
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=name</td>
+	<td>id=carName</td>
 	<td>Red, White &amp; Blue</td>
 </tr>
 <tr>
@@ -373,7 +373,7 @@
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=name</td>
+	<td>id=carName</td>
 	<td>America The Beautiful</td>
 </tr>
 <tr>
@@ -413,7 +413,7 @@
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=name</td>
+	<td>id=carName</td>
 	<td>Trumpet</td>
 </tr>
 <tr>
@@ -453,7 +453,7 @@
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=name</td>
+	<td>id=carName</td>
 	<td>Guitar</td>
 </tr>
 <tr>
@@ -493,7 +493,7 @@
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=name</td>
+	<td>id=carName</td>
 	<td>Spaceship</td>
 </tr>
 <tr>
@@ -533,7 +533,7 @@
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=name</td>
+	<td>id=carName</td>
 	<td>Monster</td>
 </tr>
 <tr>
@@ -573,7 +573,7 @@
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=name</td>
+	<td>id=carName</td>
 	<td>The Stand</td>
 </tr>
 <tr>

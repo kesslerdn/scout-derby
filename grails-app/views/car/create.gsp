@@ -47,7 +47,7 @@
 							<g:message code="race.label" default="Race" />
 							
 						</label>
-						<g:select name="raceId" from="${com.sourceallies.Race.list()}" optionKey="id" required="true" noSelection="['':'- Select -']" value="${raceInstance?.id}" class="many-to-one"/>
+						<g:select name="raceId" from="${availableRaces}" optionKey="id" required="true" noSelection="['':'- Select -']" value="${raceInstance?.id}" class="many-to-one"/>
 					</div>
 					<div class="fieldcontain ${hasErrors(bean: ownerInstance, field: 'firstName', 'error')} ">
 						<label for="firstName">
@@ -65,12 +65,12 @@
 						<g:textField name="lastName" value="${ownerInstance?.lastName}"/>
 					</div>
 					
-					<div class="fieldcontain ${hasErrors(bean: carInstance, field: 'name', 'error')} ">
-						<label for="name">
-							<g:message code="car.name.label" default="Car Name" />
+					<div class="fieldcontain ${hasErrors(bean: carInstance, field: 'carName', 'error')} ">
+						<label for="carName">
+							<g:message code="car.carName.label" default="Car Name" />
 							
 						</label>
-						<g:textField name="name" value="${carInstance?.name}" required="true"/>
+						<g:textField name="carName" value="${carInstance?.carName}" required="true"/>
 					</div>
 					
 				</fieldset>

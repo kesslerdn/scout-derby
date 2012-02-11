@@ -31,7 +31,7 @@
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 						<td><g:ordinalFormat value="${i + 1}"/></td>															
 						<td>${car.id}</td>								
-						<td>${car.name}</td>								
+						<td>${car.carName}</td>								
 						<td>${car.owner}</td>	
 						<td>${car.averageTime()} seconds</td>	
 					</tr>

@@ -36,7 +36,7 @@
 							<a href="javascript:func()" onclick="document.getElementById('finishTimes_${i}').value = '60.0'" tabindex="-1">Not Finished</a></td>
 							<td>${lane.number}</td>	
 							<td>${lane.cars[heatIndex].id}</td>								
-							<td>${lane.cars[heatIndex].name}</td>								
+							<td>${lane.cars[heatIndex].carName}</td>								
 							<td>${lane.cars[heatIndex].owner}</td>	
 						</tr>
 					</g:each>

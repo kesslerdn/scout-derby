@@ -4,7 +4,7 @@ import java.util.Date;
 
 class Car {
 
-	String name
+	String carName
 	Date dateCreated
 	Date lastUpdated
 	List finishTimes
@@ -15,7 +15,7 @@ class Car {
 	
     static constraints = {
 		owner(nullable:true)
-		name(blank:false, unique:true)
+		carName(blank:false, unique:true)
     }
 	
 	def averageTime(){
@@ -26,5 +26,5 @@ class Car {
 		return (total / (finishTimes.size()))
 	}
 	
-	String toString() { "Number: $id; Name: $name; Owner: $owner"}
+	String toString() { "Number: $id; Name: $carName; Owner: $owner"}
 }
