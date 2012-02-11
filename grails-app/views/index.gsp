@@ -80,10 +80,6 @@
 				<table>
 					<tbody>						
 						<tr>
-							<td><g:link controller="car" action="create">Add Car</g:link></td>	
-						</tr>				
-			
-						<tr>
 							<td><g:link controller="race" action="report">Race Stats</g:link></td>	
 						</tr>
 					</tbody>
