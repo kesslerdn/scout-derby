@@ -3,10 +3,12 @@ package scout.derby
 class OrdinalFormatTagLib {
 	
 	def ordinalFormat = {attrs, body ->
-		def value = attrs.value
+		def value = attrs.int('value')
 		def output = value
-		def teens = [11, 12, 13]
-		if(teens.contains(value)){
+		def stringValue = '' + value
+		def lastDigits = stringValue[(stringValue.size()-2)..(stringValue.size()-1)]
+		def teens = ['11', '12', '13']
+		if(teens.contains(lastDigits)){
 		  output =  value + 'th'
 		}else{
 			def modValue = value % 10
