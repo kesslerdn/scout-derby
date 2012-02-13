@@ -1,16 +1,12 @@
 package com.sourceallies
 
-import com.sourceallies.Car;
-import com.sourceallies.Derby;
-import com.sourceallies.Owner;
-import com.sourceallies.Race;
-
-
 class CarController {
 
-   static scaffold = true
-		   
+    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
+    def index = {
+        redirect(action: "list", params: params)
+    }
    
    def list() {
 	   params.max = Math.min(params.max ? params.int('max') : 10, 100)
@@ -74,5 +70,73 @@ class CarController {
 
 		flash.message = message(code: 'default.created.message', args: [message(code: 'car.label', default: 'Car'), carInstance.id])
         redirect(action: "list")
+    }
+
+    def show = {
+        def carInstance = Car.get(params.id)
+        if (!carInstance) {
+            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'car.label', default: 'Car'), params.id])}"
+            redirect(action: "list")
+        }
+        else {
+            [carInstance: carInstance]
+        }
+    }
+
+    def edit = {
+        def carInstance = Car.get(params.id)
+        if (!carInstance) {
+            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'car.label', default: 'Car'), params.id])}"
+            redirect(action: "list")
+        }
+        else {
+            return [carInstance: carInstance]
+        }
+    }
+
+    def update = {
+        def carInstance = Car.get(params.id)
+        if (carInstance) {
+            if (params.version) {
+                def version = params.version.toLong()
+                if (carInstance.version > version) {
+                    
+                    carInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'car.label', default: 'Car')] as Object[], "Another user has updated this Car while you were editing")
+                    render(view: "edit", model: [carInstance: carInstance])
+                    return
+                }
+            }
+            carInstance.properties = params
+            if (!carInstance.hasErrors() && carInstance.save(flush: true)) {
+                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'car.label', default: 'Car'), carInstance.id])}"
+                redirect(action: "show", id: carInstance.id)
+            }
+            else {
+                render(view: "edit", model: [carInstance: carInstance])
+            }
+        }
+        else {
+            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'car.label', default: 'Car'), params.id])}"
+            redirect(action: "list")
+        }
+    }
+
+    def delete = {
+        def carInstance = Car.get(params.id)
+        if (carInstance) {
+            try {
+                carInstance.delete(flush: true)
+                flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'car.label', default: 'Car'), params.id])}"
+                redirect(action: "list")
+            }
+            catch (org.springframework.dao.DataIntegrityViolationException e) {
+                flash.message = "${message(code: 'default.not.deleted.message', args: [message(code: 'car.label', default: 'Car'), params.id])}"
+                redirect(action: "show", id: params.id)
+            }
+        }
+        else {
+            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'car.label', default: 'Car'), params.id])}"
+            redirect(action: "list")
+        }
     }
 }

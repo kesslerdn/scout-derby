@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 	<head>
-		<meta name="layout" content="main"/>
+		<meta name="layout" content="mobile"/>
 		<title>Pinewood Derby</title>
 		<style type="text/css" media="screen">
 			#status {
@@ -75,6 +75,14 @@
 		</style>
 	</head>
 	<body>
+		<div data-role="header" data-position="fixed">
+			<h1>Main Menu</h1>
+			<div data-role="navbar">
+				<ul>
+					<li><a data-icon="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+				</ul>
+			</div>
+		</div>
 	<div id="list-car" class="content scaffold-list" role="main">
 				<h1>Pinewood Derby</h1>
 				<table>
@@ -85,5 +93,8 @@
 					</tbody>
 				</table>
 			</div>
+		</div>
+		<div data-role="footer">
+		</div>
 	</body>
 </html>

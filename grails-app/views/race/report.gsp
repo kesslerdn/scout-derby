@@ -1,20 +1,21 @@
 <!doctype html>
 <html>
 	<head>
-		<meta name="layout" content="main">
+		<meta name="layout" content="mobile">
 		<title>Race Report</title>
 	</head>
 	<body>
-		<a href="#create-car" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-			</ul>
-		</div>
-		<div id="create-car" class="content scaffold-create" role="main">
+		<div data-role="header" data-position="fixed">
 			<h1>Race Report - ${raceInstance}</h1>
+			<div data-role="navbar">
+				<ul>
+					<li><a data-icon="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+				</ul>
+			</div>
+		</div>
+		<div data-role="content">
 			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
+			<div class="message">${flash.message}</div>
 			</g:if>
 			&nbsp;&nbsp;&nbsp;&nbsp;
 			<g:link controller="race" action="report" id="${id}">Update Race Stats</g:link>
@@ -44,5 +45,8 @@
 				<g:paginate total="${carInstanceTotal}" id="${id}"/>
 			</div>
 		</div>
+		<div data-role="footer">
+		</div>
+ 		</div>
 	</body>
 </html>
