@@ -1,10 +1,10 @@
 
-<%@ page import="com.sourceallies.Car" %>
+<%@ page import="com.sourceallies.Owner" %>
 <!doctype html>
 <html>
     <head>
         <meta name="layout" content="mobile">
-        <g:set var="entityName" value="${message(code: 'car.label', default: 'Car')}" />
+        <g:set var="entityName" value="${message(code: 'owner.label', default: 'Owner')}" />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
     </head>
 	<body>
@@ -22,15 +22,15 @@
 			<div class="message">${flash.message}</div>
 			</g:if>
 			<ul data-role="listview" data-split-icon="gear" data-filter="true">
-				<g:each in="${carInstanceList}" status="i" var="carInstance">
+				<g:each in="${ownerInstanceList}" status="i" var="ownerInstance">
 					<li>
-						<g:link action="show" id="${carInstance.id}">${carInstance}</g:link>
-						<g:link action="edit" id="${carInstance.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+						<g:link action="show" id="${ownerInstance.id}">${ownerInstance}</g:link>
+						<g:link action="edit" id="${ownerInstance.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					</li>
 				</g:each>
 			</ol>
 			<fieldset class="pagination">
-				<g:paginate total="${carInstanceTotal}" />
+				<g:paginate total="${ownerInstanceTotal}" />
 			</fieldset>
 		</div>
 		<div data-role="footer">

@@ -1,32 +1,25 @@
-<%@ page import="com.sourceallies.Car" %>
 <!doctype html>
 <html>
 	<head>
-		<meta name="layout" content="main">
+		<meta name="layout" content="mobile">
 		<title>Select Race</title>
 	</head>
 	<body>
-		<a href="#create-car" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-			</ul>
-		</div>
-		<div id="create-car" class="content scaffold-create" role="main">
+		<div data-role="header" data-position="inline">
 			<h1>Select Race</h1>
+			<div data-role="navbar">
+				<ul>
+					<li><a data-icon="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+				</ul>
+			</div>
+		</div>
+		<div data-role="content">
 			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
+			<div class="message" role="alert">${flash.message}</div>
 			</g:if>
-			<g:hasErrors bean="${raceInstance}">
-			<ul class="errors" role="alert">
-				<g:eachError bean="${raceInstance}" var="error">
-				<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
-				</g:eachError>
-			</ul>
-			</g:hasErrors>
 			<g:form action="${actionName}" >
 				<fieldset class="form">
-					<div class="fieldcontain ${hasErrors(bean: raceInstance, field: 'id', 'error')} ">
+					<div class="fieldcontain">
 						<label for="race">
 							<g:message code="race.label" default="Race" />
 							
@@ -39,5 +32,8 @@
 				</fieldset>
 			</g:form>
 		</div>
+		<div data-role="footer">
+		</div>
+ 		</div>
 	</body>
 </html>

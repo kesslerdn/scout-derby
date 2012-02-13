@@ -1,7 +1,100 @@
 package com.sourceallies
 
-
 class DerbyController {
 
-	static scaffold = true
+    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+
+    def index = {
+        redirect(action: "list", params: params)
+    }
+
+    def list = {
+        params.max = Math.min(params.max ? params.int('max') : 10, 100)
+        [derbyInstanceList: Derby.list(params), derbyInstanceTotal: Derby.count()]
+    }
+
+    def create = {
+        def derbyInstance = new Derby()
+        derbyInstance.properties = params
+        return [derbyInstance: derbyInstance]
+    }
+
+    def save = {
+        def derbyInstance = new Derby(params)
+        if (derbyInstance.save(flush: true)) {
+            flash.message = "${message(code: 'default.created.message', args: [message(code: 'derby.label', default: 'Derby'), derbyInstance.id])}"
+            redirect(action: "show", id: derbyInstance.id)
+        }
+        else {
+            render(view: "create", model: [derbyInstance: derbyInstance])
+        }
+    }
+
+    def show = {
+        def derbyInstance = Derby.get(params.id)
+        if (!derbyInstance) {
+            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'derby.label', default: 'Derby'), params.id])}"
+            redirect(action: "list")
+        }
+        else {
+            [derbyInstance: derbyInstance]
+        }
+    }
+
+    def edit = {
+        def derbyInstance = Derby.get(params.id)
+        if (!derbyInstance) {
+            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'derby.label', default: 'Derby'), params.id])}"
+            redirect(action: "list")
+        }
+        else {
+            return [derbyInstance: derbyInstance]
+        }
+    }
+
+    def update = {
+        def derbyInstance = Derby.get(params.id)
+        if (derbyInstance) {
+            if (params.version) {
+                def version = params.version.toLong()
+                if (derbyInstance.version > version) {
+                    
+                    derbyInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'derby.label', default: 'Derby')] as Object[], "Another user has updated this Derby while you were editing")
+                    render(view: "edit", model: [derbyInstance: derbyInstance])
+                    return
+                }
+            }
+            derbyInstance.properties = params
+            if (!derbyInstance.hasErrors() && derbyInstance.save(flush: true)) {
+                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'derby.label', default: 'Derby'), derbyInstance.id])}"
+                redirect(action: "show", id: derbyInstance.id)
+            }
+            else {
+                render(view: "edit", model: [derbyInstance: derbyInstance])
+            }
+        }
+        else {
+            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'derby.label', default: 'Derby'), params.id])}"
+            redirect(action: "list")
+        }
+    }
+
+    def delete = {
+        def derbyInstance = Derby.get(params.id)
+        if (derbyInstance) {
+            try {
+                derbyInstance.delete(flush: true)
+                flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'derby.label', default: 'Derby'), params.id])}"
+                redirect(action: "list")
+            }
+            catch (org.springframework.dao.DataIntegrityViolationException e) {
+                flash.message = "${message(code: 'default.not.deleted.message', args: [message(code: 'derby.label', default: 'Derby'), params.id])}"
+                redirect(action: "show", id: params.id)
+            }
+        }
+        else {
+            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'derby.label', default: 'Derby'), params.id])}"
+            redirect(action: "list")
+        }
+    }
 }

@@ -1,11 +1,11 @@
 
 
-<%@ page import="com.sourceallies.Race" %>
+<%@ page import="com.sourceallies.Owner" %>
 <!doctype html>
 <html>
     <head>
         <meta name="layout" content="mobile">
-        <g:set var="entityName" value="${message(code: 'race.label', default: 'Race')}" />
+        <g:set var="entityName" value="${message(code: 'owner.label', default: 'Owner')}" />
         <title><g:message code="default.create.label" args="[entityName]" /></title>
     </head>
     <body>
@@ -22,26 +22,26 @@
 			<g:if test="${flash.message}">
 			<div class="message" role="alert">${flash.message}</div>
 			</g:if>
-			<g:hasErrors bean="${raceInstance}">
+			<g:hasErrors bean="${ownerInstance}">
 			<div class="errors" role="alert">
-				<g:renderErrors bean="${raceInstance}" as="list" />
+				<g:renderErrors bean="${ownerInstance}" as="list" />
 			</div>
 			</g:hasErrors>
 			<g:form action="save" >
-				
+			
 				<div data-role="fieldcontain">
-					<label for="derby"><g:message code="race.derby.label" default="Derby" /></label>
-					<g:select name="derby.id" from="${com.sourceallies.Derby.list()}" optionKey="id" value="${raceInstance?.derby?.id}" noSelection="['null':'']"/>
+					<label for="firstName"><g:message code="owner.firstName.label" default="First Name" /></label>
+					<g:textField name="firstName" required="required" value="${ownerInstance?.firstName}" />
 				</div>
 			
 				<div data-role="fieldcontain">
-					<label for="name"><g:message code="race.name.label" default="Name" /></label>
-					<g:textField name="name" required="required" value="${raceInstance?.name}" />
+					<label for="car"><g:message code="owner.car.label" default="Car" /></label>
+					<g:select name="car.id" from="${com.sourceallies.Car.list()}" optionKey="id" value="${ownerInstance?.car?.id}"  />
 				</div>
 			
 				<div data-role="fieldcontain">
-					<label for="numberOfLanes"><g:message code="race.numberOfLanes.label" default="Number Of Lanes" /></label>
-					<g:select name="numberOfLanes" from="${raceInstance.constraints.numberOfLanes.inList}" value="${fieldValue(bean: raceInstance, field: 'numberOfLanes')}" valueMessagePrefix="race.numberOfLanes" noSelection="['null':'']"/>
+					<label for="lastName"><g:message code="owner.lastName.label" default="Last Name" /></label>
+					<g:textField name="lastName" value="${ownerInstance?.lastName}" />
 				</div>
 			
 				<g:submitButton name="create" data-icon="check" value="${message(code: 'default.button.create.label', default: 'Create')}" />

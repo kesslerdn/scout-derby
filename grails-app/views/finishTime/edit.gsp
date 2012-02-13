@@ -1,11 +1,11 @@
 
 
-<%@ page import="com.sourceallies.Lane" %>
+<%@ page import="com.sourceallies.FinishTime" %>
 <!doctype html>
 <html>
     <head>
         <meta name="layout" content="mobile">
-        <g:set var="entityName" value="${message(code: 'lane.label', default: 'Lane')}" />
+        <g:set var="entityName" value="${message(code: 'finishTime.label', default: 'FinishTime')}" />
         <title><g:message code="default.edit.label" args="[entityName]" /></title>
     </head>
     <body>
@@ -22,23 +22,28 @@
 			<g:if test="${flash.message}">
 			<div class="message" role="alert">${flash.message}</div>
 			</g:if>
-			<g:hasErrors bean="${laneInstance}">
+			<g:hasErrors bean="${finishTimeInstance}">
 			<div class="errors" role="alert">
-				<g:renderErrors bean="${laneInstance}" as="list" />
+				<g:renderErrors bean="${finishTimeInstance}" as="list" />
 			</div>
 			</g:hasErrors>
 			<g:form method="post" >
-				<g:hiddenField name="id" value="${laneInstance?.id}" />
-				<g:hiddenField name="version" value="${laneInstance?.version}" />
+				<g:hiddenField name="id" value="${finishTimeInstance?.id}" />
+				<g:hiddenField name="version" value="${finishTimeInstance?.version}" />
 			
 				<div data-role="fieldcontain">
-					<label for="number"><g:message code="lane.number.label" default="Number" /></label>
-					<g:field type="number" name="number" value="${fieldValue(bean: laneInstance, field: 'number')}" />
+					<label for="seconds"><g:message code="finishTime.seconds.label" default="Seconds" /></label>
+					<g:field type="number" name="seconds" value="${fieldValue(bean: finishTimeInstance, field: 'seconds')}" />
 				</div>
 			
 				<div data-role="fieldcontain">
-					<label for="cars"><g:message code="lane.cars.label" default="Cars" /></label>
-					<g:select name="cars" from="${com.sourceallies.Car.list()}" multiple="multiple" optionKey="id" size="5" value="${laneInstance?.cars*.id}" />
+					<label for="laneNumber"><g:message code="finishTime.laneNumber.label" default="Lane Number" /></label>
+					<g:field type="number" name="laneNumber" value="${fieldValue(bean: finishTimeInstance, field: 'laneNumber')}" />
+				</div>
+			
+				<div data-role="fieldcontain">
+					<label for="car"><g:message code="finishTime.car.label" default="Car" /></label>
+					<g:select name="car.id" from="${com.sourceallies.Car.list()}" optionKey="id" value="${finishTimeInstance?.car?.id}"  />
 				</div>
 			
 				<g:actionSubmit data-icon="check" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
