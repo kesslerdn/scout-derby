@@ -15,7 +15,7 @@ class RaceController {
 						render(view: "selectRace", model: [actionName: "nextHeat"])
 						return
 					}
-					if(cars.size < raceInstance.numberOfLanes){
+					if(cars.size < (raceInstance.numberOfLanes + 1)){
 						flash.message = "Please add at least ${raceInstance.numberOfLanes + 1} cars to the ${raceInstance} race."
 						render(view: "selectRace", model: [actionName: "nextHeat"])
 						return
