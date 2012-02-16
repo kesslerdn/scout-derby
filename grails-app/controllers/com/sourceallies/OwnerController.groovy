@@ -2,6 +2,7 @@ package com.sourceallies
 
 class OwnerController {
 
+	private static final int RESULT_SIZE = 10
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index = {
@@ -9,8 +10,17 @@ class OwnerController {
     }
 
     def list = {
-        params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [ownerInstanceList: Owner.list(params), ownerInstanceTotal: Owner.count()]
+		def entityListSize = Owner.count()
+		
+		def max = params.max ? params.int('max') : 0
+		max += RESULT_SIZE
+		max = Math.min(entityListSize, max)
+		
+		def showMoreSize = entityListSize - max
+		showMoreSize = Math.min(showMoreSize, RESULT_SIZE)
+		
+		params.max = max
+		[ownerInstanceList: Owner.list(params), max: max, showMoreSize: showMoreSize]	
     }
 
     def create = {

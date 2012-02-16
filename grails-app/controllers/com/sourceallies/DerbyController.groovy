@@ -2,6 +2,7 @@ package com.sourceallies
 
 class DerbyController {
 
+	private static final int RESULT_SIZE = 10
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index = {
@@ -9,8 +10,17 @@ class DerbyController {
     }
 
     def list = {
-        params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [derbyInstanceList: Derby.list(params), derbyInstanceTotal: Derby.count()]
+		def entityListSize = Derby.count()
+		
+		def max = params.max ? params.int('max') : 0
+		max += RESULT_SIZE
+		max = Math.min(entityListSize, max)
+		
+		def showMoreSize = entityListSize - max
+		showMoreSize = Math.min(showMoreSize, RESULT_SIZE)
+		
+		params.max = max
+		[derbyInstanceList: Derby.list(params), max: max, showMoreSize: showMoreSize]
     }
 
     def create = {

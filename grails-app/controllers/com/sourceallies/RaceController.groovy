@@ -2,6 +2,7 @@ package com.sourceallies
 
 class RaceController {
 
+	private static final int RESULT_SIZE = 10
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index = {
@@ -9,8 +10,17 @@ class RaceController {
     }
 
     def list = {
-        params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [raceInstanceList: Race.list(params), raceInstanceTotal: Race.count()]
+		def entityListSize = Race.count()
+		
+		def max = params.max ? params.int('max') : 0
+		max += RESULT_SIZE
+		max = Math.min(entityListSize, max)
+		
+		def showMoreSize = entityListSize - max
+		showMoreSize = Math.min(showMoreSize, RESULT_SIZE)
+		
+		params.max = max
+		[raceInstanceList: Race.list(params), max: max, showMoreSize: showMoreSize]
     }
 
     def create = {
@@ -196,18 +206,23 @@ class RaceController {
 	}
  
 	
-	def report = {
+	def report = {		
 		flash.message = ""
 		if(params.id){
-			params.max = params.max ? params.int('max') : 5
 			def raceInstance = Race.get(params.id)
 			def allCars = raceInstance.cars.toList()
 			def cars = allCars.findAll{!(it.finishTimes?.isEmpty())}
 			cars.sort{ it.averageTime() }
-			def start = params.offset ? params.int('offset') : 0
-			def min =  Math.min((start + params.max), cars.size)
-			def stop = min - 1
-			[id:params.id, raceInstance: raceInstance, cars: cars[start..stop], carInstanceTotal: cars.size, start: start]
+
+			def entityListSize = cars.size
+			
+			def max = params.max ? params.int('max') : 0
+			max += 5
+			max = Math.min(entityListSize, max)
+			
+			def showMoreSize = entityListSize - max
+			showMoreSize = Math.min(showMoreSize, 5)
+			[id:params.id, raceInstance: raceInstance, cars: cars[0..(max -1)], max: max, showMoreSize: showMoreSize]
 		}else{
 			render(view: "selectRace", model: [actionName: "report"])
 		}

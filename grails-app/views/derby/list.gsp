@@ -19,7 +19,7 @@
 		</div>
 		<div data-role="content">
 			<g:if test="${flash.message}">
-			<div class="message">${flash.message}</div>
+			<div class="message"><p>${flash.message}</p></div>
 			</g:if>
 			<ul data-role="listview" data-split-icon="gear" data-filter="true">
 				<g:each in="${derbyInstanceList}" status="i" var="derbyInstance">
@@ -29,9 +29,9 @@
 					</li>
 				</g:each>
 			</ol>
-			<fieldset class="pagination">
-				<g:paginate total="${derbyInstanceTotal}" />
-			</fieldset>
+			<g:if test="${showMoreSize > 0}">
+			<g:link data-role="button" action="list" params="[max:max]">Show ${showMoreSize} More</g:link>
+			</g:if>
 		</div>
 		<div data-role="footer">
 		</div>
