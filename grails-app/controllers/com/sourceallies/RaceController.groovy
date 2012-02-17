@@ -222,7 +222,8 @@ class RaceController {
 			
 			def showMoreSize = entityListSize - max
 			showMoreSize = Math.min(showMoreSize, 5)
-			[id:params.id, raceInstance: raceInstance, cars: cars[0..(max -1)], max: max, showMoreSize: showMoreSize]
+			def carList = cars.isEmpty() ? [] : cars[0..(max -1)]
+			[id:params.id, raceInstance: raceInstance, cars: carList, max: max, showMoreSize: showMoreSize]
 		}else{
 			render(view: "selectRace", model: [actionName: "report"])
 		}

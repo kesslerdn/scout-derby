@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta name="layout" content="mobile"/>
-		<title>Pinewood Derby</title>
+		<title>Mobile Derby</title>
 		<style type="text/css" media="screen">
 			#status {
 				background-color: #eee;
@@ -84,7 +84,7 @@
 			</div>
 		</div>
 	<div id="list-car" class="content scaffold-list" role="main">
-				<h1>Pinewood Derby</h1>
+				<h1>Mobile Derby</h1>
 				<table>
 					<tbody>						
 						<tr>
