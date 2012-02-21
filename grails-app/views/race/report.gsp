@@ -19,34 +19,56 @@
 			</g:if>
 			&nbsp;&nbsp;&nbsp;&nbsp;
 			<g:link controller="race" action="report" id="${id}" data-ajax="false">Update Race Stats</g:link>
-			<table>
-				<thead>
-					<tr>	
-						<th>Place</th>		
-						<th>Car #</th>					
-						<th>Car Name</th>					
-						<th>Car Owner</th>					
-						<th>Average Time</th>									
-					</tr>
-				</thead>
-				<tbody>
+			<div class="ui-grid-d">
+				<div class="ui-block-a">
+				 <div class="ui-bar ui-bar-b" style="font-weight:bold;">Place</div>
+				</div>
+				<div class="ui-block-b">
+				 <div class="ui-bar ui-bar-b" style="font-weight:bold;">Car #</div>
+				</div>
+				<div class="ui-block-c">
+				 <div class="ui-bar ui-bar-b" style="font-weight:bold;">Car Name</div>
+				</div>
+				<div class="ui-block-d">
+				 <div class="ui-bar ui-bar-b" style="font-weight:bold;">Car Owner</div>
+				</div>
+				<div class="ui-block-e">
+				 <div class="ui-bar ui-bar-b" style="font-weight:bold;">Average Time</div>
+				</div>
+				
 				<g:each in="${cars}" status="i" var="car">
-					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-						<td><g:ordinalFormat value="${i + 1}"/></td>															
-						<td>${car.id}</td>								
-						<td>${car.carName}</td>								
-						<td>${car.owner}</td>	
-						<td>${car.averageTime()} seconds</td>	
-					</tr>
+					<div class="ui-block-a">
+				 		<div class="ui-bar ui-bar-b">
+				 			<g:ordinalFormat value="${i + 1}"/>
+				 		</div>
+				 	</div>															
+					<div class="ui-block-b">
+				 		<div class="ui-bar ui-bar-b">
+				 			${car.id}
+				 		</div>
+				 	</div>							
+					<div class="ui-block-c">
+				 		<div class="ui-bar ui-bar-b">
+							${car.carName}
+						</div>
+					</div>								
+					<div class="ui-block-d">
+				 		<div class="ui-bar ui-bar-b">
+							${car.owner}
+						</div>
+					</div>	
+					<div class="ui-block-e">
+				 		<div class="ui-bar ui-bar-b">
+							${car.averageTime()} seconds
+						</div>
+					</div>	
 				</g:each>
-				</tbody>
-			</table>
+			</div>
 			<g:if test="${showMoreSize > 0}">
 			<g:link data-role="button" action="report" params="[max:max, id:id]">Show ${showMoreSize} More</g:link>
 			</g:if>
 		</div>
 		<div data-role="footer">
 		</div>
- 		</div>
 	</body>
 </html>
