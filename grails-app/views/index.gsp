@@ -84,15 +84,12 @@
 			</div>
 		</div>
 	<div id="list-car" class="content scaffold-list" role="main">
-				<h1>Mobile Derby</h1>
-				<table>
-					<tbody>						
-						<tr>
-							<td><g:link controller="race" action="report">Race Stats</g:link></td>	
-						</tr>
-					</tbody>
-				</table>
-			</div>
+			<h1>Mobile Derby</h1>
+			<ul data-role="listview" data-filter="true">
+				<li>
+					<g:link controller="race" action="report">Race Stats</g:link>
+				</li>
+			</ul>
 		</div>
 		<div data-role="footer">
 		</div>
