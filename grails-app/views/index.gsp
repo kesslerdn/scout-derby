@@ -85,7 +85,7 @@
 		</div>
 	<div id="list-car" class="content scaffold-list" role="main">
 			<h1>Mobile Derby</h1>
-			<ul data-role="listview" data-filter="true">
+			<ul data-role="listview" data-filter="false">
 				<li>
 					<g:link controller="race" action="report">Race Stats</g:link>
 				</li>

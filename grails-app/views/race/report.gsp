@@ -19,28 +19,17 @@
 			</g:if>
 			&nbsp;&nbsp;&nbsp;&nbsp;
 			<g:link controller="race" action="report" id="${id}" data-ajax="false">Update Race Stats</g:link>
-			<table>
-				<thead>
-					<tr>	
-						<th>Place</th>		
-						<th>Car #</th>					
-						<th>Car Name</th>					
-						<th>Car Owner</th>					
-						<th>Average Time</th>									
-					</tr>
-				</thead>
-				<tbody>
-				<g:each in="${cars}" status="i" var="car">
-					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-						<td><g:ordinalFormat value="${i + 1}"/></td>															
-						<td>${car.id}</td>								
-						<td>${car.carName}</td>								
-						<td>${car.owner}</td>	
-						<td>${car.averageTime()} seconds</td>	
-					</tr>
-				</g:each>
-				</tbody>
-			</table>
+			
+			<g:each in="${cars}" status="i" var="car">
+				<div data-role="collapsible">
+					<h3><g:ordinalFormat value="${i + 1}"/>: ${car.owner}: ${car.averageTime()} seconds</h3>
+					<p><b>Place: </b><g:ordinalFormat value="${i + 1}"/></p>
+					<p><b>Car #: </b>${car.id}</p>
+					<p><b>Car Name: </b>${car.carName}</p>
+					<p><b>Car Owner: </b>${car.owner}</p>
+					<p><b>Average Time: </b>${car.averageTime()} seconds</p>
+				</div>
+			</g:each>
 			<g:if test="${showMoreSize > 0}">
 			<g:link data-role="button" action="report" params="[max:max, id:id]">Show ${showMoreSize} More</g:link>
 			</g:if>
