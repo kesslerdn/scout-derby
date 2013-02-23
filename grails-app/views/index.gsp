@@ -80,6 +80,7 @@
 			<div data-role="navbar">
 				<ul>
 					<li><a data-icon="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+					<li><g:link data-icon="grid" data-ajax="false" controller="donate">Donate</g:link></li>
 				</ul>
 			</div>
 		</div>
