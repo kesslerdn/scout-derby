@@ -9,7 +9,7 @@
         <title><g:message code="default.create.label" args="[entityName]" /></title>
     </head>
     <body>
-		<div data-role="header" data-position="inline">
+		<div data-role="header" data-position="inline" data-theme="b">
 			<h1><g:message code="default.create.label" args="[entityName]" /></h1>
 			<div data-role="navbar">
 				<ul>
@@ -18,7 +18,7 @@
 				</ul>
 			</div>
 		</div>
-		<div data-role="content">
+		<div data-role="content" data-theme="b">
 			<g:if test="\${flash.message}">
 			<div class="message" role="alert">\${flash.message}</div>
 			</g:if>
@@ -50,7 +50,7 @@
 				<g:submitButton name="create" data-icon="check" value="\${message(code: 'default.button.create.label', default: 'Create')}" />
 			</g:form>
 		</div>
-		<div data-role="footer">
+		<div data-role="footer" data-theme="b">
 		</div>
     </body>
 </html>

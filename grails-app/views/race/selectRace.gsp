@@ -5,7 +5,7 @@
 		<title>Select Race</title>
 	</head>
 	<body>
-		<div data-role="header" data-position="inline">
+		<div data-role="header" data-position="inline" data-theme="b">
 			<h1>Select Race</h1>
 			<div data-role="navbar">
 				<ul>
@@ -13,7 +13,7 @@
 				</ul>
 			</div>
 		</div>
-		<div data-role="content">
+		<div data-role="content" data-theme="b">
 			<g:if test="${flash.message}">
 			<div class="message" role="alert">${flash.message}</div>
 			</g:if>

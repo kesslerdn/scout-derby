@@ -7,7 +7,7 @@
 	<title>Thank You</title>
 </head>
 <body>
-	<div data-role="header" data-position="inline">
+	<div data-role="header" data-position="inline" data-theme="b">
 		<h1>Thank You</h1>
 		<div data-role="navbar">
 			<ul>
@@ -15,7 +15,7 @@
 			</ul>
 		</div>
 	</div>
-	<div data-role="content" style="text-align: center">
+	<div data-role="content" data-theme="b" style="text-align: center">
 		<p>Thank you for your donation.  Your donation helps keep MobileDerby.org available to scouts free of charge.</p>
 		<p>100% of all donations are used to support costs related to MobileDerby.org and local scouting.</p>
 	</div>

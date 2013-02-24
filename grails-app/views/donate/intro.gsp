@@ -7,7 +7,7 @@
 	<title>Donate</title>
 </head>
 <body>
-	<div data-role="header" data-position="inline">
+	<div data-role="header" data-position="inline" data-theme="b">
 		<h1>Donate</h1>
 		<div data-role="navbar">
 			<ul>
@@ -15,7 +15,7 @@
 			</ul>
 		</div>
 	</div>
-	<div data-role="content" style="text-align: center">
+	<div data-role="content"  data-theme="b" style="text-align: center">
 		<p>Pack/Troop 133 in Carlisle Iowa makes this software available free of charge.
 		Please help us ensure that this site remains available for scouts everywhere.</p>
 		<form action="https://www.paypal.com/cgi-bin/webscr" method="post">

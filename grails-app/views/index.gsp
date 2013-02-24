@@ -75,16 +75,17 @@
 		</style>
 	</head>
 	<body>
-		<div data-role="header" data-position="inline">
+		<div data-role="header" data-position="inline" data-theme="b">
 			<h1>Main Menu</h1>
 			<div data-role="navbar">
 				<ul>
 					<li><a data-icon="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-					<li><g:link data-icon="grid" data-ajax="false" controller="donate">Donate</g:link></li>
+					<li><g:link data-icon="check" data-ajax="false" controller="donate">Donate</g:link></li>
+					<li><a data-icon="info" href="mailto:help@mobilederby.org?subject=MobileDerby.org%20Help">Contact</a></li>
 				</ul>
 			</div>
 		</div>
-	<div id="list-car" class="content scaffold-list" role="main">
+	<div id="list-car" class="content scaffold-list" role="main" data-theme="b">
 			<h1>Mobile Derby</h1>
 			<ul data-role="listview" data-filter="false">
 				<li>
