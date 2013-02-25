@@ -10,6 +10,8 @@
 			<div data-role="navbar">
 				<ul>
 					<li><a data-icon="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+					<li><g:link data-icon="check" data-ajax="false" controller="donate">Donate</g:link></li>
+					<li><a data-icon="info" href="mailto:help@mobilederby.org?subject=MobileDerby.org%20Help">Contact</a></li>
 				</ul>
 			</div>
 		</div>

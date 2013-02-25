@@ -1,9 +1,30 @@
 <!doctype html>
 <html>
 	<head>
+		<!-- before -->
+		<link rel="stylesheet" href="${resource(dir: 'css', file: 'camera.css')}" type="text/css">
+		<script src="${resource(dir: 'js', file: 'camera-min.js')}" type="text/javascript"></script>
+		<script src="${resource(dir: 'js', file: 'jquery-easing.js')}" type="text/javascript"></script>
+		<!-- after -->
 		<meta name="layout" content="mobile"/>
 		<title>Mobile Derby</title>
+		<script>
+			jQuery(function(){			
+				jQuery('#camera_wrap_1').camera({
+					thumbnails: false,
+					pagination: false,
+					navigation: false,
+					pauseOnClick: false,
+					playPause: false,
+					loader: 'bar'
+				});
+			});
+		</script>
 		<style type="text/css" media="screen">
+			.fluid_container{
+				max-width:1200px;
+			    margin: 0px auto;
+			}
 			#status {
 				background-color: #eee;
 				border: .2em solid #fff;
@@ -76,20 +97,25 @@
 	</head>
 	<body>
 		<div data-role="header" data-position="inline" data-theme="b">
-			<h1>Main Menu</h1>
-			<div data-role="navbar">
-				<ul>
-					<li><a data-icon="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-					<li><g:link data-icon="check" data-ajax="false" controller="donate">Donate</g:link></li>
-					<li><a data-icon="info" href="mailto:help@mobilederby.org?subject=MobileDerby.org%20Help">Contact</a></li>
-				</ul>
-			</div>
+			<h1>MobileDerby.org</h1>
 		</div>
-	<div id="list-car" class="content scaffold-list" role="main" data-theme="b">
-			<h1>Mobile Derby</h1>
+		<div class="fluid_container">
+	        <div class="camera_wrap camera_azure_skin" id="camera_wrap_1">
+	            <div data-src="${createLinkTo(dir:'images/slides',file:'sm-mobilederby-banner-1.jpg')}"></div>
+	            <div data-src="${createLinkTo(dir:'images/slides',file:'sm-mobilederby-banner-4.jpg')}"></div>
+	            <div data-src="${createLinkTo(dir:'images/slides',file:'sm-mobilederby-banner-2.jpg')}"></div>
+	            <div data-src="${createLinkTo(dir:'images/slides',file:'sm-mobilederby-banner-5.jpg')}"></div>
+	            <div data-src="${createLinkTo(dir:'images/slides',file:'sm-mobilederby-banner-3.jpg')}"></div>
+	        </div><!-- #camera_wrap_1 -->
+	    </div><!-- .fluid_container -->
+	    <div style="clear:both; display:block; height:1px"></div>
+		<div data-role="content" data-theme="b">
 			<ul data-role="listview" data-filter="false">
 				<li>
-					<g:link controller="race" action="report">Race Stats</g:link>
+					<g:link controller="race" action="report">View Derby</g:link>
+				</li>
+				<li>
+					<g:link controller="derby" action="list">Manage Derby</g:link>
 				</li>
 			</ul>
 		</div>
