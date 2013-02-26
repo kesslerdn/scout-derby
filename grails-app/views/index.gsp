@@ -21,10 +21,6 @@
 			});
 		</script>
 		<style type="text/css" media="screen">
-			.fluid_container{
-				max-width:1200px;
-			    margin: 0px auto;
-			}
 			#status {
 				background-color: #eee;
 				border: .2em solid #fff;
@@ -96,9 +92,6 @@
 		</style>
 	</head>
 	<body>
-		<div data-role="header" data-position="inline" data-theme="b">
-			<h1>MobileDerby.org</h1>
-		</div>
 		<div class="fluid_container">
 	        <div class="camera_wrap camera_azure_skin" id="camera_wrap_1">
 	            <div data-src="${createLinkTo(dir:'images/slides',file:'sm-mobilederby-banner-1.jpg')}"></div>
@@ -117,6 +110,16 @@
 				<li>
 					<g:link controller="derby" action="list">Manage Derby</g:link>
 				</li>
+				<li>
+					<g:link controller="donate">Donate</g:link>
+				</li>
+				<li>
+					<a href="${createLink(uri: '/about')}">About</a>
+				</li>
+				<li>
+					<a href="mailto:help@mobilederby.org?subject=MobileDerby.org%20Help">Contact</a>
+				</li>
+
 			</ul>
 		</div>
 		<div data-role="footer">
