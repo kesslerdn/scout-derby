@@ -78,6 +78,7 @@ log4j = {
     //appenders {
     //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
     //}
+	debug 'org.springframework.security'
 
     error  'org.codehaus.groovy.grails.web.servlet',  //  controllers
            'org.codehaus.groovy.grails.web.pages', //  GSP
@@ -91,3 +92,34 @@ log4j = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 }
+
+// Added by the Spring Security Core plugin:
+grails.plugins.springsecurity.userLookup.userDomainClassName = 'com.sourceallies.User'
+grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'com.sourceallies.UserRole'
+grails.plugins.springsecurity.authority.className = 'com.sourceallies.Role'
+
+grails.plugins.springsecurity.ui.password.minLength=8
+grails.plugins.springsecurity.ui.password.maxLength=50
+grails.plugins.springsecurity.ui.password.validationRegex='^.*(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).*$'
+
+//configure register
+grails.plugins.springsecurity.ui.register.emailFrom = 'no-reply@mobilederby.org'
+grails.plugins.springsecurity.ui.register.emailSubject = 'Welcome to MobileDerby.org'
+grails.plugins.springsecurity.ui.register.emailBody = 'Hi $user.username, <br><br> Thank you for registering with MobileDerby.org. <br> To activate your account, please click <a href="$url" target="_blank"> here</a>. <br><br> Thank you'
+
+//configure forgot password
+grails.plugins.springsecurity.ui.forgotPassword.emailFrom = 'no-reply@mobilederby.org'
+grails.plugins.springsecurity.ui.forgotPassword.emailSubject = 'Reset password on MobileDerby.org'
+grails.plugins.springsecurity.ui.forgotPassword.emailBody = 'Hi $user.username, <br><br> You have made a request to change your password. <br> To reset your password, please click <a href="$url" target="_blank"> here</a>.<br> If you did not make the request, please ignore this email. No changes have been made. <br><br> Thank you'
+
+grails.plugins.springsecurity.ui.register.defaultRoleNames = ['ROLE_MANAGER']
+
+grails {
+  mail {
+    host = "s155.eatj.com"
+    port = 25
+    username = "[username]"
+    password = "[password]"
+  }
+}
+
