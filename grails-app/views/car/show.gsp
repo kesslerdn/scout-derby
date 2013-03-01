@@ -3,7 +3,7 @@
 <!doctype html>
 <html>
     <head>
-        <meta name="layout" content="mobile">
+        <meta name="layout" content="derbyMobile">
         <g:set var="entityName" value="${message(code: 'car.label', default: 'Car')}" />
         <title><g:message code="default.show.label" args="[entityName]" /></title>
     </head>

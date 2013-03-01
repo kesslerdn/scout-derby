@@ -4,7 +4,7 @@
 <!doctype html>
 <html>
     <head>
-        <meta name="layout" content="mobile">
+        <meta name="layout" content="derbyMobile">
         <g:set var="entityName" value="${message(code: 'finishTime.label', default: 'FinishTime')}" />
         <title><g:message code="default.create.label" args="[entityName]" /></title>
     </head>

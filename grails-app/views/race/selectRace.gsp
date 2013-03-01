@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 	<head>
-		<meta name="layout" content="mobile">
+		<meta name="layout" content="derbyMobile">
 		<title>Select Race</title>
 	</head>
 	<body>
