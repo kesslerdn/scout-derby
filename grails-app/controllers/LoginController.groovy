@@ -11,7 +11,9 @@ import org.springframework.security.authentication.LockedException
 import org.springframework.security.core.context.SecurityContextHolder as SCH
 import org.springframework.security.web.WebAttributes
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
+import grails.plugins.springsecurity.Secured
 
+@Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
 class LoginController {
 
 	/**

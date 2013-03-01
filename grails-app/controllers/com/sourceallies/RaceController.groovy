@@ -1,14 +1,18 @@
 package com.sourceallies
 
+import grails.plugins.springsecurity.Secured
+
 class RaceController {
 
 	private static final int RESULT_SIZE = 10
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
+	@Secured(['ROLE_MANAGER'])
     def index = {
         redirect(action: "list", params: params)
     }
 
+	@Secured(['ROLE_MANAGER'])
     def list = {
 		def entityListSize = Race.count()
 		
@@ -23,12 +27,14 @@ class RaceController {
 		[raceInstanceList: Race.list(params), max: max, showMoreSize: showMoreSize]
     }
 
+	@Secured(['ROLE_MANAGER'])
     def create = {
         def raceInstance = new Race()
         raceInstance.properties = params
         return [raceInstance: raceInstance]
     }
 
+	@Secured(['ROLE_MANAGER'])
     def save = {
         def raceInstance = new Race(params)
         if (raceInstance.save(flush: true)) {
@@ -40,6 +46,7 @@ class RaceController {
         }
     }
 
+	@Secured(['ROLE_MANAGER'])
     def show = {
         def raceInstance = Race.get(params.id)
         if (!raceInstance) {
@@ -51,6 +58,7 @@ class RaceController {
         }
     }
 
+	@Secured(['ROLE_MANAGER'])
     def edit = {
         def raceInstance = Race.get(params.id)
         if (!raceInstance) {
@@ -62,6 +70,7 @@ class RaceController {
         }
     }
 
+	@Secured(['ROLE_MANAGER'])
     def update = {
         def raceInstance = Race.get(params.id)
         if (raceInstance) {
@@ -89,6 +98,7 @@ class RaceController {
         }
     }
 
+	@Secured(['ROLE_MANAGER'])
     def delete = {
         def raceInstance = Race.get(params.id)
         if (raceInstance) {
@@ -108,6 +118,7 @@ class RaceController {
         }
     }
 	
+	@Secured(['ROLE_MANAGER'])
 	def nextHeat = {
 		flash.message = ""
 				if(params.id){
@@ -205,7 +216,7 @@ class RaceController {
 		return invalid;
 	}
  
-	
+	@Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
 	def report = {		
 		flash.message = ""
 		if(params.id){

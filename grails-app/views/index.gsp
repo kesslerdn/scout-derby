@@ -105,10 +105,10 @@
 		<div data-role="content" data-theme="b">
 			<ul data-role="listview" data-filter="false">
 				<li>
-					<g:link controller="race" action="report">View Derby</g:link>
+					<g:link controller="race" action="report" data-ajax="false">View Derby</g:link>
 				</li>
 				<li>
-					<g:link controller="derby" action="list">Manage Derby</g:link>
+					<g:link controller="derby" action="list" data-ajax="false">Manage Derby</g:link>
 				</li>
 				<li>
 					<g:link controller="donate">Donate</g:link>

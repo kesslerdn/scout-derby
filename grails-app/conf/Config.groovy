@@ -78,7 +78,7 @@ log4j = {
     //appenders {
     //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
     //}
-	debug 'org.springframework.security'
+	//debug 'org.springframework.security'
 
     error  'org.codehaus.groovy.grails.web.servlet',  //  controllers
            'org.codehaus.groovy.grails.web.pages', //  GSP
@@ -113,6 +113,9 @@ grails.plugins.springsecurity.ui.forgotPassword.emailSubject = 'Reset password o
 grails.plugins.springsecurity.ui.forgotPassword.emailBody = 'Hi $user.username, <br><br> You have made a request to change your password. <br> To reset your password, please click <a href="$url" target="_blank"> here</a>.<br> If you did not make the request, please ignore this email. No changes have been made. <br><br> Thank you'
 
 grails.plugins.springsecurity.ui.register.defaultRoleNames = ['ROLE_MANAGER']
+
+grails.plugins.springsecurity.securityConfigType = "Annotation"
+
 
 grails {
   mail {

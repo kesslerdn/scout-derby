@@ -1,5 +1,8 @@
 package com.sourceallies
 
+import grails.plugins.springsecurity.Secured
+
+@Secured(['ROLE_MANAGER'])
 class LaneController {
 
 	private static final int RESULT_SIZE = 10

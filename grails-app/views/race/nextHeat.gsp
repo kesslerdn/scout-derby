@@ -9,7 +9,7 @@
 			<h1>Heat ${heatIndex + 1}</h1>
 			<div data-role="navbar">
 				<ul>
-					<li><a data-icon="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+					<li><a data-icon="home" href="${createLink(uri: '/')}" data-ajax="false"><g:message code="default.home.label"/></a></li>
 				</ul>
 			</div>
 		</div>
