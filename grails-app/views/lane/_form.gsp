@@ -10,11 +10,11 @@
 	<g:field type="number" name="number" value="${fieldValue(bean: laneInstance, field: 'number')}" />
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: laneInstance, field: 'cars', 'error')} ">
-	<label for="cars">
-		<g:message code="lane.cars.label" default="Cars" />
+<div class="fieldcontain ${hasErrors(bean: laneInstance, field: 'vehicles', 'error')} ">
+	<label for="vehicles">
+		<g:message code="lane.vehicles.label" default="Vehicles" />
 		
 	</label>
-	<g:select name="cars" from="${com.sourceallies.Car.list()}" multiple="multiple" optionKey="id" size="5" value="${laneInstance?.cars*.id}" />
+	<g:select name="vehicles" from="${com.sourceallies.Vehicle.list()}" multiple="multiple" optionKey="id" size="5" value="${laneInstance?.vehicles*.id}" />
 </div>
 

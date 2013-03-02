@@ -42,8 +42,8 @@
 				</div>
 			
 				<div data-role="fieldcontain">
-					<label for="car"><g:message code="finishTime.car.label" default="Car" /></label>
-					<g:select name="car.id" from="${com.sourceallies.Car.list()}" optionKey="id" value="${finishTimeInstance?.car?.id}"  />
+					<label for="vehicle"><g:message code="finishTime.vehicle.label" default="Vehicle" /></label>
+					<g:select name="vehicle.id" from="${com.sourceallies.Vehicle.list()}" optionKey="id" value="${finishTimeInstance?.vehicle?.id}"  />
 				</div>
 			
 				<g:actionSubmit data-icon="check" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />

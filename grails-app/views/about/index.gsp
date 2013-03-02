@@ -1,5 +1,5 @@
 
-<%@ page import="com.sourceallies.Car"%>
+<%@ page import="com.sourceallies.Vehicle"%>
 <!doctype html>
 <html>
 <head>

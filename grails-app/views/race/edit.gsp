@@ -42,8 +42,8 @@
 				</div>
 			
 				<div data-role="fieldcontain">
-					<label for="cars"><g:message code="race.cars.label" default="Cars" /></label>
-					<g:select name="cars" from="${com.sourceallies.Car.list()}" multiple="multiple" optionKey="id" size="5" value="${raceInstance?.cars*.id}" />
+					<label for="vehicles"><g:message code="race.vehicles.label" default="Vehicles" /></label>
+					<g:select name="vehicles" from="${com.sourceallies.Vehicle.list()}" multiple="multiple" optionKey="id" size="5" value="${raceInstance?.vehicles*.id}" />
 				</div>
 			
 				<div data-role="fieldcontain">

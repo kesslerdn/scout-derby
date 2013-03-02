@@ -7,10 +7,10 @@ class Lane {
 	int number
 	Date dateCreated
 	Date lastUpdated
-	List cars
+	List vehicles
 	
 	static belongsTo = Race
-	static hasMany = [cars:Car]
+	static hasMany = [vehicles:Vehicle]
 	
     static constraints = {
 		number(blank:false)

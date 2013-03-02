@@ -1,11 +1,11 @@
 
 
-<%@ page import="com.sourceallies.Car" %>
+<%@ page import="com.sourceallies.Vehicle" %>
 <!doctype html>
 <html>
     <head>
         <meta name="layout" content="derbyMobile">
-        <g:set var="entityName" value="${message(code: 'car.label', default: 'Car')}" />
+        <g:set var="entityName" value="${message(code: 'vehicle.label', default: 'Vehicle')}" />
         <title><g:message code="default.edit.label" args="[entityName]" /></title>
     </head>
     <body>
@@ -22,34 +22,34 @@
 			<g:if test="${flash.message}">
 			<div class="message" role="alert">${flash.message}</div>
 			</g:if>
-			<g:hasErrors bean="${carInstance}">
+			<g:hasErrors bean="${vehicleInstance}">
 			<div class="errors" role="alert">
-				<g:renderErrors bean="${carInstance}" as="list" />
+				<g:renderErrors bean="${vehicleInstance}" as="list" />
 			</div>
 			</g:hasErrors>
 			<g:form method="post" >
-				<g:hiddenField name="id" value="${carInstance?.id}" />
-				<g:hiddenField name="version" value="${carInstance?.version}" />
+				<g:hiddenField name="id" value="${vehicleInstance?.id}" />
+				<g:hiddenField name="version" value="${vehicleInstance?.version}" />
 			
 				<div data-role="fieldcontain">
-					<label for="owner"><g:message code="car.owner.label" default="Owner" /></label>
-					<g:select name="owner.id" from="${com.sourceallies.Owner.list()}" optionKey="id" value="${carInstance?.owner?.id}" noSelection="['null': '']" />
+					<label for="owner"><g:message code="vehicle.owner.label" default="Owner" /></label>
+					<g:select name="owner.id" from="${com.sourceallies.Owner.list()}" optionKey="id" value="${vehicleInstance?.owner?.id}" noSelection="['null': '']" />
 				</div>
 			
 				<div data-role="fieldcontain">
-					<label for="carName"><g:message code="car.carName.label" default="Car Name" /></label>
-					<g:textField name="carName" required="required" value="${carInstance?.carName}" />
+					<label for="vehicleName"><g:message code="vehicle.vehicleName.label" default="Vehicle Name" /></label>
+					<g:textField name="vehicleName" required="required" value="${vehicleInstance?.vehicleName}" />
 				</div>
 			
 				<div data-role="fieldcontain">
-					<label for="finishTimes"><g:message code="car.finishTimes.label" default="Finish Times" /></label>
+					<label for="finishTimes"><g:message code="vehicle.finishTimes.label" default="Finish Times" /></label>
 					
 <ul>
-<g:each in="${carInstance?.finishTimes?}" var="f">
+<g:each in="${vehicleInstance?.finishTimes?}" var="f">
     <li><g:link controller="finishTime" action="show" id="${f.id}">${f?.encodeAsHTML()}</g:link></li>
 </g:each>
 </ul>
-<g:link controller="finishTime" action="create" params="['car.id': carInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'finishTime.label', default: 'FinishTime')])}</g:link>
+<g:link controller="finishTime" action="create" params="['vehicle.id': vehicleInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'finishTime.label', default: 'FinishTime')])}</g:link>
 
 				</div>
 			

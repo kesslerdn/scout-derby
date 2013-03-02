@@ -1,9 +1,9 @@
-<%@ page import="com.sourceallies.Car" %>
+<%@ page import="com.sourceallies.Vehicle" %>
 <!doctype html>
 <html>
     <head>
         <meta name="layout" content="derbyMobile">
-        <g:set var="entityName" value="${message(code: 'car.label', default: 'Car')}" />
+        <g:set var="entityName" value="${message(code: 'vehicle.label', default: 'Vehicle')}" />
         <title><g:message code="default.create.label" args="[entityName]" /></title>
     </head>
     <body>
@@ -20,9 +20,9 @@
 			<g:if test="${flash.message}">
 			<div class="message" role="alert">${flash.message}</div>
 			</g:if>
-			<g:hasErrors bean="${carInstance}">
+			<g:hasErrors bean="${vehicleInstance}">
 			<div class="errors" role="alert">
-				<g:renderErrors bean="${carInstance}" as="list" />
+				<g:renderErrors bean="${vehicleInstance}" as="list" />
 			</div>
 			</g:hasErrors>
 			<g:form action="save" >
@@ -41,8 +41,8 @@
 				</div>
 				
 				<div class="fieldcontain">
-					<label for="carName"><g:message code="car.carName.label" default="Car Name" /></label>
-					<g:textField name="carName" value="${carInstance?.carName}" required="true"/>
+					<label for="vehicleName"><g:message code="vehicle.vehicleName.label" default="Vehicle Name" /></label>
+					<g:textField name="vehicleName" value="${vehicleInstance?.vehicleName}" required="true"/>
 				</div>			
 				<g:submitButton name="create" data-icon="check" value="${message(code: 'default.button.create.label', default: 'Create')}" />
 			</g:form>

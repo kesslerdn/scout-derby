@@ -7,12 +7,12 @@ class FinishTime {
 	Date dateCreated
 	Date lastUpdated
 
-	static belongsTo = [car:Car]
+	static belongsTo = [vehicle:Vehicle]
 
     static constraints = {
 		seconds(blank:false)
 		laneNumber(blank:false)
     }
 	
-	String toString() { '' + seconds + ' second(s): ' + car }
+	String toString() { '' + seconds + ' second(s): ' + vehicle }
 }

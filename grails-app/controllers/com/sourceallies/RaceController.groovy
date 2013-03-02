@@ -123,41 +123,41 @@ class RaceController {
 		flash.message = ""
 				if(params.id){
 					def raceInstance = Race.get(params.id)
-					def cars = raceInstance.cars.toList()
-					if(!cars){
-						flash.message = "Please add cars to the ${raceInstance} race."
+					def vehicles = raceInstance.vehicles.toList()
+					if(!vehicles){
+						flash.message = "Please add vehicles to the ${raceInstance} race."
 						render(view: "selectRace", model: [actionName: "nextHeat"])
 						return
 					}
-					if(cars.size < (raceInstance.numberOfLanes + 1)){
-						flash.message = "Please add at least ${raceInstance.numberOfLanes + 1} cars to the ${raceInstance} race."
+					if(vehicles.size < (raceInstance.numberOfLanes + 1)){
+						flash.message = "Please add at least ${raceInstance.numberOfLanes + 1} vehicles to the ${raceInstance} race."
 						render(view: "selectRace", model: [actionName: "nextHeat"])
 						return
 					}
 					if(!raceInstance.lanes || raceInstance.lanes.isEmpty()){
-						Collections.shuffle(cars)
+						Collections.shuffle(vehicles)
 						(1..(raceInstance.numberOfLanes)).each{ laneNumber ->
 							def lane = new Lane(number: laneNumber);
-							cars[laneNumber..-1].each{car ->
-							lane.addToCars(car)
+							vehicles[laneNumber..-1].each{vehicle ->
+							lane.addToVehicles(vehicle)
 						}
-						cars[0..(laneNumber-1)].each{car ->
-							lane.addToCars(car)
+						vehicles[0..(laneNumber-1)].each{vehicle ->
+							lane.addToVehicles(vehicle)
 						}
 						raceInstance.addToLanes(lane)
 						}
 						raceInstance.currentHeat = 1
 								
-								for(int i = 0; i < cars.size; i++){
-									def carIds = []
+								for(int i = 0; i < vehicles.size; i++){
+									def vehicleIds = []
 											raceInstance.lanes.each{lane ->
-											def car = lane.cars[i]
-													carIds.add(car.id)
+											def vehicle = lane.vehicles[i]
+													vehicleIds.add(vehicle.id)
 									}
-									carIds.each{ id ->
-										def count = carIds.count{it == id}
+									vehicleIds.each{ id ->
+										def count = vehicleIds.count{it == id}
 										if(count != 1){
-											throw new IllegalStateException("Heat ${i + 1} contains car id $id $count times.")
+											throw new IllegalStateException("Heat ${i + 1} contains vehicle id $id $count times.")
 										}
 									}
 								}
@@ -182,8 +182,8 @@ class RaceController {
 						raceInstance.lanes.each{lane ->
 							double finishTime = (Double.parseDouble(finishTimes[lane.number - 1]))
 							def finishTimeInstance = new FinishTime(laneNumber:(lane.number), seconds: finishTime)
-							def car = lane.cars[heatIndex]
-							car.addToFinishTimes(finishTimeInstance)
+							def vehicle = lane.vehicles[heatIndex]
+							vehicle.addToFinishTimes(finishTimeInstance)
 						}
 						
 						heatIndex += 1
@@ -194,7 +194,7 @@ class RaceController {
 							return
 						}
 					}
-					if(heatIndex >= cars.size){
+					if(heatIndex >= vehicles.size){
 						redirect(action: "report", id: params.id)
 					}
 					
@@ -221,11 +221,11 @@ class RaceController {
 		flash.message = ""
 		if(params.id){
 			def raceInstance = Race.get(params.id)
-			def allCars = raceInstance.cars.toList()
-			def cars = allCars.findAll{!(it.finishTimes?.isEmpty())}
-			cars.sort{ it.averageTime() }
+			def allVehicles = raceInstance.vehicles.toList()
+			def vehicles = allVehicles.findAll{!(it.finishTimes?.isEmpty())}
+			vehicles.sort{ it.averageTime() }
 
-			def entityListSize = cars.size
+			def entityListSize = vehicles.size
 			
 			def max = params.max ? params.int('max') : 0
 			max += 5
@@ -233,8 +233,8 @@ class RaceController {
 			
 			def showMoreSize = entityListSize - max
 			showMoreSize = Math.min(showMoreSize, 5)
-			def carList = cars.isEmpty() ? [] : cars[0..(max -1)]
-			[id:params.id, raceInstance: raceInstance, cars: carList, max: max, showMoreSize: showMoreSize]
+			def vehicleList = vehicles.isEmpty() ? [] : vehicles[0..(max -1)]
+			[id:params.id, raceInstance: raceInstance, vehicles: vehicleList, max: max, showMoreSize: showMoreSize]
 		}else{
 			render(view: "selectRace", model: [actionName: "report"])
 		}

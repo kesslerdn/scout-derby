@@ -18,12 +18,12 @@
 	<g:select name="numberOfLanes" from="${raceInstance.constraints.numberOfLanes.inList}" value="${fieldValue(bean: raceInstance, field: 'numberOfLanes')}" valueMessagePrefix="race.numberOfLanes"  />
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: raceInstance, field: 'cars', 'error')} ">
-	<label for="cars">
-		<g:message code="race.cars.label" default="Cars" />
+<div class="fieldcontain ${hasErrors(bean: raceInstance, field: 'vehicles', 'error')} ">
+	<label for="vehicles">
+		<g:message code="race.vehicles.label" default="Vehicles" />
 		
 	</label>
-	<g:select name="cars" from="${com.sourceallies.Car.list()}" multiple="multiple" optionKey="id" size="5" value="${raceInstance?.cars*.id}" />
+	<g:select name="vehicles" from="${com.sourceallies.Vehicle.list()}" multiple="multiple" optionKey="id" size="5" value="${raceInstance?.vehicles*.id}" />
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: raceInstance, field: 'currentHeat', 'error')} required">

@@ -38,10 +38,10 @@
 					<dd><g:fieldValue bean="${raceInstance}" field="numberOfLanes"/></dd>
 				
 			
-				<dt><g:message code="race.cars.label" default="Cars" /></dt>
+				<dt><g:message code="race.vehicles.label" default="Vehicles" /></dt>
 				
-					<g:each in="${raceInstance.cars}" var="c">
-						<dd><g:link controller="car" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></dd>
+					<g:each in="${raceInstance.vehicles}" var="c">
+						<dd><g:link controller="vehicle" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></dd>
 					</g:each>
 				
 			

@@ -38,9 +38,9 @@
 					<dd><g:fieldValue bean="${finishTimeInstance}" field="laneNumber"/></dd>
 				
 			
-				<dt><g:message code="finishTime.car.label" default="Car" /></dt>
+				<dt><g:message code="finishTime.vehicle.label" default="Vehicle" /></dt>
 				
-					<dd><g:link controller="car" action="show" id="${finishTimeInstance?.car?.id}">${finishTimeInstance?.car?.encodeAsHTML()}</g:link></dd>
+					<dd><g:link controller="vehicle" action="show" id="${finishTimeInstance?.vehicle?.id}">${finishTimeInstance?.vehicle?.encodeAsHTML()}</g:link></dd>
 				
 			
 				<dt><g:message code="finishTime.dateCreated.label" default="Date Created" /></dt>

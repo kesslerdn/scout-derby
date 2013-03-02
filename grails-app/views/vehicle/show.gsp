@@ -1,10 +1,10 @@
 
-<%@ page import="com.sourceallies.Car" %>
+<%@ page import="com.sourceallies.Vehicle" %>
 <!doctype html>
 <html>
     <head>
         <meta name="layout" content="derbyMobile">
-        <g:set var="entityName" value="${message(code: 'car.label', default: 'Car')}" />
+        <g:set var="entityName" value="${message(code: 'vehicle.label', default: 'Vehicle')}" />
         <title><g:message code="default.show.label" args="[entityName]" /></title>
     </head>
     <body>
@@ -23,41 +23,41 @@
 			</g:if>
 			<dl>
 			
-				<dt><g:message code="car.id.label" default="Id" /></dt>
+				<dt><g:message code="vehicle.id.label" default="Id" /></dt>
 				
-					<dd><g:fieldValue bean="${carInstance}" field="id"/></dd>
-				
-			
-				<dt><g:message code="car.owner.label" default="Owner" /></dt>
-				
-					<dd><g:link controller="owner" action="show" id="${carInstance?.owner?.id}">${carInstance?.owner?.encodeAsHTML()}</g:link></dd>
+					<dd><g:fieldValue bean="${vehicleInstance}" field="id"/></dd>
 				
 			
-				<dt><g:message code="car.carName.label" default="Car Name" /></dt>
+				<dt><g:message code="vehicle.owner.label" default="Owner" /></dt>
 				
-					<dd><g:fieldValue bean="${carInstance}" field="carName"/></dd>
-				
-			
-				<dt><g:message code="car.dateCreated.label" default="Date Created" /></dt>
-				
-					<dd><g:formatDate date="${carInstance?.dateCreated}" /></dd>
+					<dd><g:link controller="owner" action="show" id="${vehicleInstance?.owner?.id}">${vehicleInstance?.owner?.encodeAsHTML()}</g:link></dd>
 				
 			
-				<dt><g:message code="car.finishTimes.label" default="Finish Times" /></dt>
+				<dt><g:message code="vehicle.vehicleName.label" default="Vehicle Name" /></dt>
 				
-					<g:each in="${carInstance.finishTimes}" var="f">
+					<dd><g:fieldValue bean="${vehicleInstance}" field="vehicleName"/></dd>
+				
+			
+				<dt><g:message code="vehicle.dateCreated.label" default="Date Created" /></dt>
+				
+					<dd><g:formatDate date="${vehicleInstance?.dateCreated}" /></dd>
+				
+			
+				<dt><g:message code="vehicle.finishTimes.label" default="Finish Times" /></dt>
+				
+					<g:each in="${vehicleInstance.finishTimes}" var="f">
 						<dd><g:link controller="finishTime" action="show" id="${f.id}">${f?.encodeAsHTML()}</g:link></dd>
 					</g:each>
 				
 			
-				<dt><g:message code="car.lastUpdated.label" default="Last Updated" /></dt>
+				<dt><g:message code="vehicle.lastUpdated.label" default="Last Updated" /></dt>
 				
-					<dd><g:formatDate date="${carInstance?.lastUpdated}" /></dd>
+					<dd><g:formatDate date="${vehicleInstance?.lastUpdated}" /></dd>
 				
 			
 			</dl>
 			<g:form>
-				<g:hiddenField name="id" value="${carInstance?.id}" />
+				<g:hiddenField name="id" value="${vehicleInstance?.id}" />
 				<g:actionSubmit data-icon="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" />
 			</g:form>
 		</div>

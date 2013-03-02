@@ -12,7 +12,7 @@ class Race {
 	List lanes
 
 	static belongsTo = [derby:Derby]
-	static hasMany = [lanes:Lane, cars:Car]
+	static hasMany = [lanes:Lane, vehicles:Vehicle]
 	
     static constraints = {
 		name(blank:false)

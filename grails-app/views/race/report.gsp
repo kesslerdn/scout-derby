@@ -22,14 +22,14 @@
 			&nbsp;&nbsp;&nbsp;&nbsp;
 			<g:link controller="race" action="report" id="${id}" data-ajax="false">Update Race Stats</g:link>
 			
-			<g:each in="${cars}" status="i" var="car">
+			<g:each in="${vehicles}" status="i" var="vehicle">
 				<div data-role="collapsible">
-					<h3><g:ordinalFormat value="${i + 1}"/>: ${car.owner}: <g:formatNumber number="${car.averageTime()}" type="number" maxFractionDigits="3" roundingMode="HALF_UP" /> seconds</h3>
+					<h3><g:ordinalFormat value="${i + 1}"/>: ${vehicle.owner}: <g:formatNumber number="${vehicle.averageTime()}" type="number" maxFractionDigits="3" roundingMode="HALF_UP" /> seconds</h3>
 					<p><b>Place: </b><g:ordinalFormat value="${i + 1}"/></p>
-					<p><b>Car #: </b>${car.id}</p>
-					<p><b>Car Name: </b>${car.carName}</p>
-					<p><b>Car Owner: </b>${car.owner}</p>
-					<p><b>Average Time: </b> <g:formatNumber number="${car.averageTime()}" type="number" maxFractionDigits="3" roundingMode="HALF_UP" /> seconds</p>
+					<p><b>Vehicle #: </b>${vehicle.id}</p>
+					<p><b>Vehicle Name: </b>${vehicle.vehicleName}</p>
+					<p><b>Vehicle Owner: </b>${vehicle.owner}</p>
+					<p><b>Average Time: </b> <g:formatNumber number="${vehicle.averageTime()}" type="number" maxFractionDigits="3" roundingMode="HALF_UP" /> seconds</p>
 				</div>
 			</g:each>
 			<g:if test="${showMoreSize > 0}">

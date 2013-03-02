@@ -25,9 +25,9 @@
 							<th>Time (secs)</th>
 							<th>Not Finished</th>	
 							<th>Lane</th>					
-							<th>Car #</th>					
-							<th>Car Name</th>					
-							<th>Car Owner</th>					
+							<th>Vehicle #</th>					
+							<th>Vehicle Name</th>					
+							<th>Vehicle Owner</th>					
 						</tr>
 					</thead>
 					<tbody>
@@ -36,9 +36,9 @@
 							<td><g:field id="finishTimes_${i}" type="number"  step="any" min="0" name="finishTimes" required="true"/></td>
 							<td><input type="button" value="X" onClick="document.getElementById('finishTimes_${i}').value = '15.0'"" /></td>
 							<td>${lane.number}</td>	
-							<td>${lane.cars[heatIndex].id}</td>								
-							<td>${lane.cars[heatIndex].carName}</td>								
-							<td>${lane.cars[heatIndex].owner}</td>	
+							<td>${lane.vehicles[heatIndex].id}</td>								
+							<td>${lane.vehicles[heatIndex].vehicleName}</td>								
+							<td>${lane.vehicles[heatIndex].owner}</td>	
 						</tr>
 					</g:each>
 					</tbody>

@@ -2,20 +2,20 @@ package com.sourceallies
 
 import java.util.Date;
 
-class Car {
+class Vehicle {
 
-	String carName
+	String vehicleName
 	Date dateCreated
 	Date lastUpdated
 	List finishTimes
 
-	static belongsTo = [Race, Lane]
+	static belongsTo = [race:Race]
 	static hasMany = [finishTimes:FinishTime]
 	static hasOne = [owner:Owner]
 	
     static constraints = {
 		owner(nullable:true)
-		carName(blank:false, unique:true)
+		vehicleName(blank:false, unique:true)
     }
 	
 	def averageTime(){
@@ -26,5 +26,5 @@ class Car {
 		return (total / (finishTimes.size()))
 	}
 	
-	String toString() { "$id: $carName: $owner"}
+	String toString() { "$id: $vehicleName: $owner"}
 }

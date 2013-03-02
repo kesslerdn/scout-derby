@@ -18,11 +18,11 @@
 	<g:field type="number" name="laneNumber" value="${fieldValue(bean: finishTimeInstance, field: 'laneNumber')}" />
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: finishTimeInstance, field: 'car', 'error')} required">
-	<label for="car">
-		<g:message code="finishTime.car.label" default="Car" />
+<div class="fieldcontain ${hasErrors(bean: finishTimeInstance, field: 'vehicle', 'error')} required">
+	<label for="vehicle">
+		<g:message code="finishTime.vehicle.label" default="Vehicle" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select name="car.id" from="${com.sourceallies.Car.list()}" optionKey="id" value="${finishTimeInstance?.car?.id}"  />
+	<g:select name="vehicle.id" from="${com.sourceallies.Vehicle.list()}" optionKey="id" value="${finishTimeInstance?.vehicle?.id}"  />
 </div>
 

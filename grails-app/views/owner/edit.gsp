@@ -37,8 +37,8 @@
 				</div>
 			
 				<div data-role="fieldcontain">
-					<label for="car"><g:message code="owner.car.label" default="Car" /></label>
-					<g:select name="car.id" from="${com.sourceallies.Car.list()}" optionKey="id" value="${ownerInstance?.car?.id}"  />
+					<label for="vehicle"><g:message code="owner.vehicle.label" default="Vehicle" /></label>
+					<g:select name="vehicle.id" from="${com.sourceallies.Vehicle.list()}" optionKey="id" value="${ownerInstance?.vehicle?.id}"  />
 				</div>
 			
 				<div data-role="fieldcontain">

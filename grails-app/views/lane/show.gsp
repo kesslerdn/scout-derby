@@ -33,10 +33,10 @@
 					<dd><g:fieldValue bean="${laneInstance}" field="number"/></dd>
 				
 			
-				<dt><g:message code="lane.cars.label" default="Cars" /></dt>
+				<dt><g:message code="lane.vehicles.label" default="Vehicles" /></dt>
 				
-					<g:each in="${laneInstance.cars}" var="c">
-						<dd><g:link controller="car" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></dd>
+					<g:each in="${laneInstance.vehicles}" var="c">
+						<dd><g:link controller="vehicle" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></dd>
 					</g:each>
 				
 			

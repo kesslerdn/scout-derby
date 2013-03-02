@@ -33,9 +33,9 @@
 					<dd><g:fieldValue bean="${ownerInstance}" field="firstName"/></dd>
 				
 			
-				<dt><g:message code="owner.car.label" default="Car" /></dt>
+				<dt><g:message code="owner.vehicle.label" default="Vehicle" /></dt>
 				
-					<dd><g:link controller="car" action="show" id="${ownerInstance?.car?.id}">${ownerInstance?.car?.encodeAsHTML()}</g:link></dd>
+					<dd><g:link controller="vehicle" action="show" id="${ownerInstance?.vehicle?.id}">${ownerInstance?.vehicle?.encodeAsHTML()}</g:link></dd>
 				
 			
 				<dt><g:message code="owner.dateCreated.label" default="Date Created" /></dt>

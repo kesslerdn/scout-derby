@@ -1,10 +1,10 @@
 
-<%@ page import="com.sourceallies.Car" %>
+<%@ page import="com.sourceallies.Vehicle" %>
 <!doctype html>
 <html>
     <head>
         <meta name="layout" content="derbyMobile">
-        <g:set var="entityName" value="${message(code: 'car.label', default: 'Car')}" />
+        <g:set var="entityName" value="${message(code: 'vehicle.label', default: 'Vehicle')}" />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
     </head>
 	<body>
@@ -22,10 +22,10 @@
 			<div class="message"><p>${flash.message}</p></div>
 			</g:if>
 			<ul data-role="listview" data-split-icon="delete" data-filter="true">
-				<g:each in="${carInstanceList}" status="i" var="carInstance">
+				<g:each in="${vehicleInstanceList}" status="i" var="vehicleInstance">
 					<li>
-						<g:link action="edit" id="${carInstance.id}">${carInstance}</g:link>
-						<g:link action="delete" id="${carInstance.id}" data-ajax="false"><g:message code="default.button.delete.label" default="Delete" /></g:link>
+						<g:link action="edit" id="${vehicleInstance.id}">${vehicleInstance}</g:link>
+						<g:link action="delete" id="${vehicleInstance.id}" data-ajax="false"><g:message code="default.button.delete.label" default="Delete" /></g:link>
 					</li>
 				</g:each>
 			</ol>
