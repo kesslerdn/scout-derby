@@ -15,7 +15,7 @@
 		<g:message code="owner.vehicle.label" default="Vehicle" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select name="vehicle.id" from="${com.sourceallies.Vehicle.list()}" optionKey="id" value="${ownerInstance?.vehicle?.id}"  />
+	<g:select name="vehicle.id" from="${vehicleSelectOptions}" optionKey="id" value="${ownerInstance?.vehicle?.id}"  />
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: ownerInstance, field: 'lastName', 'error')} ">

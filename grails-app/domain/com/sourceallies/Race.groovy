@@ -10,7 +10,8 @@ class Race {
 	Date dateCreated
 	Date lastUpdated
 	List lanes
-
+	User user
+	
 	static belongsTo = [derby:Derby]
 	static hasMany = [lanes:Lane, vehicles:Vehicle]
 	

@@ -31,7 +31,7 @@
 				
 				<div data-role="fieldcontain">
 					<label for="derby"><g:message code="race.derby.label" default="Derby" /></label>
-					<g:select name="derby.id" from="${com.sourceallies.Derby.list()}" optionKey="id" value="${raceInstance?.derby?.id}" noSelection="['null':'- Select -']"/>
+					<g:select name="derby.id" from="${derbySelectOptions}" optionKey="id" value="${raceInstance?.derby?.id}" noSelection="['null':'- Select -']"/>
 				</div>
 			
 				<div data-role="fieldcontain">

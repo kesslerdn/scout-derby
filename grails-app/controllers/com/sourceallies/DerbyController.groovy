@@ -4,6 +4,7 @@ import grails.plugins.springsecurity.Secured
 
 @Secured(['ROLE_ADMIN'])
 class DerbyController {
+	def springSecurityService
 	
 	private static final int RESULT_SIZE = 10
 
@@ -26,7 +27,7 @@ class DerbyController {
 		params.max = max
 		params.sort = 'id'
 		params.order = 'desc'
-		[derbyInstanceList: Derby.list(params), max: max, showMoreSize: showMoreSize]
+		[derbyInstanceList: Derby.findByUser(springSecurityService.getCurrentUser(), params), max: max, showMoreSize: showMoreSize]
     }
 
     def create = {
@@ -37,6 +38,7 @@ class DerbyController {
 
     def save = {
         def derbyInstance = new Derby(params)
+		derbyInstance.user = springSecurityService.getCurrentUser()
         if (derbyInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'derby.label', default: 'Derby'), derbyInstance.id])}"
             redirect(action: "list", params: params)

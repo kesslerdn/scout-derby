@@ -4,6 +4,7 @@ import grails.plugins.springsecurity.Secured
 
 @Secured(['ROLE_MANAGER'])
 class VehicleController {
+	def springSecurityService
 
 	private static final int RESULT_SIZE = 10
 	
@@ -26,12 +27,15 @@ class VehicleController {
 	   params.max = max
 	   params.sort = 'id'
 	   params.order = 'desc'
-	   [vehicleInstanceList: Vehicle.list(params), max: max, showMoreSize: showMoreSize]
+	   [vehicleInstanceList: Vehicle.findByUser(springSecurityService.getCurrentUser(), params), max: max, showMoreSize: showMoreSize]
    }
 
     def create() {
-		def races = Race.list()
+
+		def races = Race.findAll{user == springSecurityService.getCurrentUser()}
+		
 		def availableRaces = races.findAll{it.lanes.empty}
+		params.user = springSecurityService.getCurrentUser()
         [vehicleInstance: new Vehicle(params), ownerInstance: new Owner(params), raceInstance: Race.get(params.raceId), availableRaces:availableRaces]
     }
 
@@ -39,10 +43,12 @@ class VehicleController {
 		if(params.raceId == "null") params.raceId = null
 		
  		def vehicleInstance = new Vehicle(params)
+		 vehicleInstance.user = springSecurityService.getCurrentUser()
  		def ownerInstance = new Owner(params)
+		 ownerInstance.user = springSecurityService.getCurrentUser()
  		def raceInstance = Race.get(params.raceId)
 		 
-		 def races = Race.list()
+		 def races = Race.findAll{user == springSecurityService.getCurrentUser()}
 		 def availableRaces = races.findAll{it.lanes.empty}
 
 		 if(!raceInstance){
@@ -101,7 +107,8 @@ class VehicleController {
             redirect(action: "list")
         }
         else {
-            return [vehicleInstance: vehicleInstance]
+            return [vehicleInstance: vehicleInstance,
+			ownerSelectOptions: Owner.findByUser(springSecurityService.getCurrentUser())]
         }
     }
 
@@ -113,7 +120,8 @@ class VehicleController {
                 if (vehicleInstance.version > version) {
                     
                     vehicleInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'vehicle.label', default: 'Vehicle')] as Object[], "Another user has updated this Vehicle while you were editing")
-                    render(view: "edit", model: [vehicleInstance: vehicleInstance])
+                    render(view: "edit", model: [vehicleInstance: vehicleInstance,
+			ownerSelectOptions: Owner.findByUser(springSecurityService.getCurrentUser())])
                     return
                 }
             }
@@ -123,7 +131,8 @@ class VehicleController {
                 redirect(action: "show", id: vehicleInstance.id)
             }
             else {
-                render(view: "edit", model: [vehicleInstance: vehicleInstance])
+                render(view: "edit", model: [vehicleInstance: vehicleInstance,
+			ownerSelectOptions: Owner.findByUser(springSecurityService.getCurrentUser())])
             }
         }
         else {

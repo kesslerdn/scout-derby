@@ -33,7 +33,7 @@
 			
 				<div data-role="fieldcontain">
 					<label for="owner"><g:message code="vehicle.owner.label" default="Owner" /></label>
-					<g:select name="owner.id" from="${com.sourceallies.Owner.list()}" optionKey="id" value="${vehicleInstance?.owner?.id}" noSelection="['null': '']" />
+					<g:select name="owner.id" from="${ownerSelectOptions}" optionKey="id" value="${vehicleInstance?.owner?.id}" noSelection="['null': '']" />
 				</div>
 			
 				<div data-role="fieldcontain">

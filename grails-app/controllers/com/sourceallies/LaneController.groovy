@@ -4,6 +4,7 @@ import grails.plugins.springsecurity.Secured
 
 @Secured(['ROLE_MANAGER'])
 class LaneController {
+	def springSecurityService
 
 	private static final int RESULT_SIZE = 10
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -23,17 +24,18 @@ class LaneController {
 		showMoreSize = Math.min(showMoreSize, RESULT_SIZE)
 		
 		params.max = max
-		[laneInstanceList: Lane.list(params), max: max, showMoreSize: showMoreSize]	
+		[laneInstanceList: Lane.findByUser(springSecurityService.getCurrentUser(), params), max: max, showMoreSize: showMoreSize]	
     }
 
     def create = {
         def laneInstance = new Lane()
         laneInstance.properties = params
-        return [laneInstance: laneInstance]
+        return [laneInstance: laneInstance, vehicleSelectOptions: Vehicle.findByUser(springSecurityService.getCurrentUser())]
     }
 
     def save = {
         def laneInstance = new Lane(params)
+		laneInstance.user = springSecurityService.getCurrentUser()
         if (laneInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'lane.label', default: 'Lane'), laneInstance.id])}"
             redirect(action: "show", id: laneInstance.id)
@@ -61,7 +63,7 @@ class LaneController {
             redirect(action: "list")
         }
         else {
-            return [laneInstance: laneInstance]
+            return [laneInstance: laneInstance, vehicleSelectOptions: Vehicle.findByUser(springSecurityService.getCurrentUser())]
         }
     }
 
@@ -73,7 +75,7 @@ class LaneController {
                 if (laneInstance.version > version) {
                     
                     laneInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'lane.label', default: 'Lane')] as Object[], "Another user has updated this Lane while you were editing")
-                    render(view: "edit", model: [laneInstance: laneInstance])
+                    render(view: "edit", model: [laneInstance: laneInstance, vehicleSelectOptions: Vehicle.findByUser(springSecurityService.getCurrentUser())])
                     return
                 }
             }
@@ -83,7 +85,7 @@ class LaneController {
                 redirect(action: "show", id: laneInstance.id)
             }
             else {
-                render(view: "edit", model: [laneInstance: laneInstance])
+                render(view: "edit", model: [laneInstance: laneInstance, vehicleSelectOptions: Vehicle.findByUser(springSecurityService.getCurrentUser())])
             }
         }
         else {

@@ -8,6 +8,7 @@ class Vehicle {
 	Date dateCreated
 	Date lastUpdated
 	List finishTimes
+	User user
 
 	static belongsTo = [race:Race]
 	static hasMany = [finishTimes:FinishTime]
@@ -25,6 +26,6 @@ class Vehicle {
 		}
 		return (total / (finishTimes.size()))
 	}
-	
+
 	String toString() { "$id: $vehicleName: $owner"}
 }

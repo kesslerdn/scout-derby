@@ -43,7 +43,7 @@
 			
 				<div data-role="fieldcontain">
 					<label for="vehicles"><g:message code="race.vehicles.label" default="Vehicles" /></label>
-					<g:select name="vehicles" from="${com.sourceallies.Vehicle.list()}" multiple="multiple" optionKey="id" size="5" value="${raceInstance?.vehicles*.id}" />
+					<g:select name="vehicles" from="${vehicleSelectOptions}" multiple="multiple" optionKey="id" size="5" value="${raceInstance?.vehicles*.id}" />
 				</div>
 			
 				<div data-role="fieldcontain">
@@ -53,12 +53,12 @@
 			
 				<div data-role="fieldcontain">
 					<label for="derby"><g:message code="race.derby.label" default="Derby" /></label>
-					<g:select name="derby.id" from="${com.sourceallies.Derby.list()}" optionKey="id" value="${raceInstance?.derby?.id}"  />
+					<g:select name="derby.id" from="${derbySelectOptions}" optionKey="id" value="${raceInstance?.derby?.id}"  />
 				</div>
 			
 				<div data-role="fieldcontain">
 					<label for="lanes"><g:message code="race.lanes.label" default="Lanes" /></label>
-					<g:select name="lanes" from="${com.sourceallies.Lane.list()}" multiple="multiple" optionKey="id" size="5" value="${raceInstance?.lanes*.id}" />
+					<g:select name="lanes" from="${laneSelectOptions}" multiple="multiple" optionKey="id" size="5" value="${raceInstance?.lanes*.id}" />
 				</div>
 			
 				<g:actionSubmit data-icon="check" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />

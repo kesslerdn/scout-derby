@@ -3,7 +3,6 @@ package com.sourceallies
 import java.util.Date
 
 class Derby {
-
 	String organizationNumber
 	String city
 	String state
@@ -12,8 +11,10 @@ class Derby {
 	Date date
 	Date dateCreated
 	Date lastUpdated
+	User user
 	static hasMany = [races:Race]
 
+	
     static constraints = {
 		city(blank:false, maxSize: 25)
 		state (blank:false, inList: ['AK', 'AL', 'AR', 'AZ', 'CA', 'CO', 'CT', 

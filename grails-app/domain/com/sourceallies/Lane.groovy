@@ -8,6 +8,7 @@ class Lane {
 	Date dateCreated
 	Date lastUpdated
 	List vehicles
+	User user
 	
 	static belongsTo = Race
 	static hasMany = [vehicles:Vehicle]
@@ -15,6 +16,6 @@ class Lane {
     static constraints = {
 		number(blank:false)
     }
-	
+
 	String toString() { 'Lane ' + number}
 }

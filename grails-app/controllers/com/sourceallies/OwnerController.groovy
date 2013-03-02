@@ -4,6 +4,7 @@ import grails.plugins.springsecurity.Secured
 
 @Secured(['ROLE_MANAGER'])
 class OwnerController {
+	def springSecurityService
 
 	private static final int RESULT_SIZE = 10
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -23,23 +24,24 @@ class OwnerController {
 		showMoreSize = Math.min(showMoreSize, RESULT_SIZE)
 		
 		params.max = max
-		[ownerInstanceList: Owner.list(params), max: max, showMoreSize: showMoreSize]	
+		[ownerInstanceList: Owner.findByUser(springSecurityService.getCurrentUser(), params), max: max, showMoreSize: showMoreSize]	
     }
 
     def create = {
         def ownerInstance = new Owner()
         ownerInstance.properties = params
-        return [ownerInstance: ownerInstance]
+        return [ownerInstance: ownerInstance, vehicleSelectOptions: Vehicle.findByUser(springSecurityService.getCurrentUser())]
     }
 
     def save = {
         def ownerInstance = new Owner(params)
+		ownerInstance.user = springSecurityService.getCurrentUser()
         if (ownerInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'owner.label', default: 'Owner'), ownerInstance.id])}"
             redirect(action: "show", id: ownerInstance.id)
         }
         else {
-            render(view: "create", model: [ownerInstance: ownerInstance])
+            render(view: "create", model: [ownerInstance: ownerInstance, vehicleSelectOptions: Vehicle.findByUser(springSecurityService.getCurrentUser())])
         }
     }
 
@@ -61,7 +63,7 @@ class OwnerController {
             redirect(action: "list")
         }
         else {
-            return [ownerInstance: ownerInstance]
+            return [ownerInstance: ownerInstance, vehicleSelectOptions: Vehicle.findByUser(springSecurityService.getCurrentUser())]
         }
     }
 
@@ -73,7 +75,7 @@ class OwnerController {
                 if (ownerInstance.version > version) {
                     
                     ownerInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'owner.label', default: 'Owner')] as Object[], "Another user has updated this Owner while you were editing")
-                    render(view: "edit", model: [ownerInstance: ownerInstance])
+                    render(view: "edit", model: [ownerInstance: ownerInstance, vehicleSelectOptions: Vehicle.findByUser(springSecurityService.getCurrentUser())])
                     return
                 }
             }

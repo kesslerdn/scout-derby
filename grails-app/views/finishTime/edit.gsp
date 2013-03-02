@@ -43,7 +43,7 @@
 			
 				<div data-role="fieldcontain">
 					<label for="vehicle"><g:message code="finishTime.vehicle.label" default="Vehicle" /></label>
-					<g:select name="vehicle.id" from="${com.sourceallies.Vehicle.list()}" optionKey="id" value="${finishTimeInstance?.vehicle?.id}"  />
+					<g:select name="vehicle.id" from="${vehicleSelectOptions}" optionKey="id" value="${finishTimeInstance?.vehicle?.id}"  />
 				</div>
 			
 				<g:actionSubmit data-icon="check" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />

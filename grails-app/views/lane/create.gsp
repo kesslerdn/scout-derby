@@ -36,7 +36,7 @@
 			
 				<div data-role="fieldcontain">
 					<label for="vehicles"><g:message code="lane.vehicles.label" default="Vehicles" /></label>
-					<g:select name="vehicles" from="${com.sourceallies.Vehicle.list()}" multiple="multiple" optionKey="id" size="5" value="${laneInstance?.vehicles*.id}" />
+					<g:select name="vehicles" from="${vehicleSelectOptions}" multiple="multiple" optionKey="id" size="5" value="${laneInstance?.vehicles*.id}" />
 				</div>
 			
 				<g:submitButton name="create" data-icon="check" value="${message(code: 'default.button.create.label', default: 'Create')}" />

@@ -3,6 +3,7 @@ package com.sourceallies
 import grails.plugins.springsecurity.Secured
 
 class RaceController {
+	def springSecurityService
 
 	private static final int RESULT_SIZE = 10
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -24,25 +25,32 @@ class RaceController {
 		showMoreSize = Math.min(showMoreSize, RESULT_SIZE)
 		
 		params.max = max
-		[raceInstanceList: Race.list(params), max: max, showMoreSize: showMoreSize]
+		[raceInstanceList: Race.findByUser(springSecurityService.getCurrentUser(), params), max: max, showMoreSize: showMoreSize]
     }
 
 	@Secured(['ROLE_MANAGER'])
     def create = {
         def raceInstance = new Race()
         raceInstance.properties = params
-        return [raceInstance: raceInstance]
+        return [raceInstance: raceInstance, 
+			vehicleSelectOptions: Vehicle.findByUser(springSecurityService.getCurrentUser()),
+			derbySelectOptions: Derby.findByUser(springSecurityService.getCurrentUser()),
+			laneSelectOptions: Lane.findByUser(springSecurityService.getCurrentUser())]
     }
 
 	@Secured(['ROLE_MANAGER'])
     def save = {
         def raceInstance = new Race(params)
+		raceInstance.user = springSecurityService.getCurrentUser()
         if (raceInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'race.label', default: 'Race'), raceInstance.id])}"
             redirect(action: "show", id: raceInstance.id)
         }
         else {
-            render(view: "create", model: [raceInstance: raceInstance])
+            render(view: "create", model: [raceInstance: raceInstance, 
+				vehicleSelectOptions: Vehicle.findByUser(springSecurityService.getCurrentUser()),
+			derbySelectOptions: Derby.findByUser(springSecurityService.getCurrentUser()),
+			laneSelectOptions: Lane.findByUser(springSecurityService.getCurrentUser())])
         }
     }
 
@@ -66,7 +74,10 @@ class RaceController {
             redirect(action: "list")
         }
         else {
-            return [raceInstance: raceInstance]
+            return [raceInstance: raceInstance, 
+				vehicleSelectOptions: Vehicle.findByUser(springSecurityService.getCurrentUser()),
+			derbySelectOptions: Derby.findByUser(springSecurityService.getCurrentUser()),
+			laneSelectOptions: Lane.findByUser(springSecurityService.getCurrentUser())]
         }
     }
 
@@ -79,7 +90,10 @@ class RaceController {
                 if (raceInstance.version > version) {
                     
                     raceInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'race.label', default: 'Race')] as Object[], "Another user has updated this Race while you were editing")
-                    render(view: "edit", model: [raceInstance: raceInstance])
+                    render(view: "edit", model: [raceInstance: raceInstance, 
+						vehicleSelectOptions: Vehicle.findByUser(springSecurityService.getCurrentUser())],
+			derbySelectOptions: Derby.findByUser(springSecurityService.getCurrentUser()),
+			laneSelectOptions: Lane.findByUser(springSecurityService.getCurrentUser()))
                     return
                 }
             }
@@ -89,7 +103,10 @@ class RaceController {
                 redirect(action: "show", id: raceInstance.id)
             }
             else {
-                render(view: "edit", model: [raceInstance: raceInstance])
+                render(view: "edit", model: [raceInstance: raceInstance, 
+					vehicleSelectOptions: Vehicle.findByUser(springSecurityService.getCurrentUser())],
+			derbySelectOptions: Derby.findByUser(springSecurityService.getCurrentUser()),
+			laneSelectOptions: Lane.findByUser(springSecurityService.getCurrentUser()))
             }
         }
         else {
@@ -137,7 +154,8 @@ class RaceController {
 					if(!raceInstance.lanes || raceInstance.lanes.isEmpty()){
 						Collections.shuffle(vehicles)
 						(1..(raceInstance.numberOfLanes)).each{ laneNumber ->
-							def lane = new Lane(number: laneNumber);
+							def lane = new Lane(number: laneNumber)
+							lane.user = springSecurityService.getCurrentUser()
 							vehicles[laneNumber..-1].each{vehicle ->
 							lane.addToVehicles(vehicle)
 						}
@@ -182,6 +200,7 @@ class RaceController {
 						raceInstance.lanes.each{lane ->
 							double finishTime = (Double.parseDouble(finishTimes[lane.number - 1]))
 							def finishTimeInstance = new FinishTime(laneNumber:(lane.number), seconds: finishTime)
+							finishTimeInstance.user = springSecurityService.getCurrentUser()
 							def vehicle = lane.vehicles[heatIndex]
 							vehicle.addToFinishTimes(finishTimeInstance)
 						}
@@ -236,7 +255,8 @@ class RaceController {
 			def vehicleList = vehicles.isEmpty() ? [] : vehicles[0..(max -1)]
 			[id:params.id, raceInstance: raceInstance, vehicles: vehicleList, max: max, showMoreSize: showMoreSize]
 		}else{
-			render(view: "selectRace", model: [actionName: "report"])
+			render(view: "selectRace", model: [actionName: "report", ,
+			raceSelectOptions: Race.findByUser(springSecurityService.getCurrentUser())])
 		}
 	}
 }
