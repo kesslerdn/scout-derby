@@ -256,7 +256,7 @@ class RaceController {
 			[id:params.id, raceInstance: raceInstance, vehicles: vehicleList, max: max, showMoreSize: showMoreSize]
 		}else{
 			render(view: "selectRace", model: [actionName: "report", ,
-			raceSelectOptions: Race.findByUser(springSecurityService.getCurrentUser())])
+			raceSelectOptions: Race.list()])
 		}
 	}
 }
