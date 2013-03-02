@@ -2,12 +2,28 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: derbyInstance, field: 'location', 'error')} required">
-	<label for="location">
-		<g:message code="derby.location.label" default="Location" />
+<div class="fieldcontain ${hasErrors(bean: derbyInstance, field: 'city', 'error')} required">
+	<label for="city">
+		<g:message code="derby.city.label" default="City" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="location" required="required" value="${derbyInstance?.location}" />
+	<g:textField name="city" maxlength="25" required="required" value="${derbyInstance?.city}" />
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: derbyInstance, field: 'state', 'error')} required">
+	<label for="state">
+		<g:message code="derby.state.label" default="State" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select name="state" from="${derbyInstance.constraints.state.inList}" value="${derbyInstance?.state}" valueMessagePrefix="derby.state"  />
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: derbyInstance, field: 'locationName', 'error')} required">
+	<label for="locationName">
+		<g:message code="derby.locationName.label" default="Location Name" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="locationName" maxlength="25" required="required" value="${derbyInstance?.locationName}" />
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: derbyInstance, field: 'date', 'error')} required">

@@ -30,8 +30,18 @@
 			<g:form action="save" >
 			
 				<div data-role="fieldcontain">
-					<label for="location"><g:message code="derby.location.label" default="Location" /></label>
-					<g:textField name="location" required="required" value="${derbyInstance?.location}" />
+					<label for="city"><g:message code="derby.city.label" default="City" /></label>
+					<g:textField name="city" maxlength="25" required="required" value="${derbyInstance?.city}" />
+				</div>
+			
+				<div data-role="fieldcontain">
+					<label for="state"><g:message code="derby.state.label" default="State" /></label>
+					<g:select name="state" from="${derbyInstance.constraints.state.inList}" value="${derbyInstance?.state}" noSelection="['null':'- Select -']" valueMessagePrefix="derby.state"  />
+				</div>
+			
+				<div data-role="fieldcontain">
+					<label for="locationName"><g:message code="derby.locationName.label" default="Location Name" /></label>
+					<g:textField name="locationName" maxlength="25" required="required" value="${derbyInstance?.locationName}" />
 				</div>
 			
 				<div data-role="fieldcontain">
@@ -59,7 +69,7 @@
 				<g:submitButton name="create" data-icon="check" value="${message(code: 'default.button.create.label', default: 'Create')}" />
 			</g:form>
 		</div>
-		<div data-role="footer">
+		<div data-role="footer" data-theme="b">
 		</div>
     </body>
 </html>

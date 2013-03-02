@@ -28,14 +28,29 @@
 					<dd><g:fieldValue bean="${derbyInstance}" field="id"/></dd>
 				
 			
-				<dt><g:message code="derby.location.label" default="Location" /></dt>
+				<dt><g:message code="derby.city.label" default="City" /></dt>
 				
-					<dd><g:fieldValue bean="${derbyInstance}" field="location"/></dd>
+					<dd><g:fieldValue bean="${derbyInstance}" field="city"/></dd>
+				
+			
+				<dt><g:message code="derby.state.label" default="State" /></dt>
+				
+					<dd><g:fieldValue bean="${derbyInstance}" field="state"/></dd>
+				
+			
+				<dt><g:message code="derby.locationName.label" default="Location Name" /></dt>
+				
+					<dd><g:fieldValue bean="${derbyInstance}" field="locationName"/></dd>
 				
 			
 				<dt><g:message code="derby.date.label" default="Date" /></dt>
 				
 					<dd><g:formatDate date="${derbyInstance?.date}" /></dd>
+				
+			
+				<dt><g:message code="derby.organizationNumber.label" default="Organization Number" /></dt>
+				
+					<dd><g:fieldValue bean="${derbyInstance}" field="organizationNumber"/></dd>
 				
 			
 				<dt><g:message code="derby.dateCreated.label" default="Date Created" /></dt>
@@ -46,11 +61,6 @@
 				<dt><g:message code="derby.lastUpdated.label" default="Last Updated" /></dt>
 				
 					<dd><g:formatDate date="${derbyInstance?.lastUpdated}" /></dd>
-				
-			
-				<dt><g:message code="derby.organizationNumber.label" default="Organization Number" /></dt>
-				
-					<dd><g:fieldValue bean="${derbyInstance}" field="organizationNumber"/></dd>
 				
 			
 				<dt><g:message code="derby.races.label" default="Races" /></dt>
@@ -66,7 +76,7 @@
 				<g:actionSubmit data-icon="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" />
 			</g:form>
 		</div>
-		<div data-role="footer">
+		<div data-role="footer" data-theme="b">
 		</div>
     </body>
 </html>

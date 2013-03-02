@@ -26,5 +26,5 @@ class Car {
 		return (total / (finishTimes.size()))
 	}
 	
-	String toString() { "Number: $id; Name: $carName; Owner: $owner"}
+	String toString() { "$id: $carName: $owner"}
 }

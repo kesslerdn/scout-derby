@@ -4,25 +4,28 @@ import grails.plugins.springsecurity.Secured
 
 @Secured(['ROLE_MANAGER'])
 class DerbyController {
-
+	
 	private static final int RESULT_SIZE = 10
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+
+    static allowedMethods = [save: "POST", update: "POST"]
 
     def index = {
         redirect(action: "list", params: params)
     }
 
     def list = {
-		def entityListSize = Derby.count()
+		def derbyInstanceListSize = Derby.count()
 		
 		def max = params.max ? params.int('max') : 0
 		max += RESULT_SIZE
-		max = Math.min(entityListSize, max)
+		max = Math.min(derbyInstanceListSize, max)
 		
-		def showMoreSize = entityListSize - max
+		def showMoreSize = derbyInstanceListSize - max
 		showMoreSize = Math.min(showMoreSize, RESULT_SIZE)
 		
 		params.max = max
+		params.sort = 'id'
+		params.order = 'desc'
 		[derbyInstanceList: Derby.list(params), max: max, showMoreSize: showMoreSize]
     }
 
@@ -36,7 +39,7 @@ class DerbyController {
         def derbyInstance = new Derby(params)
         if (derbyInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'derby.label', default: 'Derby'), derbyInstance.id])}"
-            redirect(action: "show", id: derbyInstance.id)
+            redirect(action: "list", id: derbyInstance.id)
         }
         else {
             render(view: "create", model: [derbyInstance: derbyInstance])

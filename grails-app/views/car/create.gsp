@@ -28,7 +28,7 @@
 			<g:form action="save" >
 				<div class="fieldcontain">
 					<label for="race"><g:message code="race.label" default="Race" /></label>
-					<g:select name="raceId" from="${availableRaces}" optionKey="id" value="${raceInstance?.id}" noSelection="['null':'']" required="true"/>
+					<g:select name="raceId" from="${availableRaces}" optionKey="id" value="${raceInstance?.id}" noSelection="['null':'- Select -']" required="true"/>
 				</div>
 				<div class="fieldcontain">
 					<label for="firstName"><g:message code="owner.firstName.label" default="Owner First Name" /></label>

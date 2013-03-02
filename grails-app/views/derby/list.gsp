@@ -21,11 +21,11 @@
 			<g:if test="${flash.message}">
 			<div class="message"><p>${flash.message}</p></div>
 			</g:if>
-			<ul data-role="listview" data-split-icon="gear" data-filter="true">
+			<ul data-role="listview" data-split-icon="delete" data-filter="true">
 				<g:each in="${derbyInstanceList}" status="i" var="derbyInstance">
 					<li>
-						<g:link action="show" id="${derbyInstance.id}">${derbyInstance}</g:link>
-						<g:link action="edit" id="${derbyInstance.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+						<g:link action="edit" id="${derbyInstance.id}">${derbyInstance}</g:link>
+						<g:link action="delete" id="${derbyInstance.id}" data-ajax="false"><g:message code="default.button.delete.label" default="Delete" /></g:link>
 					</li>
 				</g:each>
 			</ol>
@@ -33,7 +33,7 @@
 			<g:link data-role="button" action="list" params="[max:max]">Show ${showMoreSize} More</g:link>
 			</g:if>
 		</div>
-		<div data-role="footer">
+		<div data-role="footer" data-theme="b">
 		</div>
     </body>
 </html>

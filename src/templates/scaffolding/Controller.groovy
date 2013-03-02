@@ -1,14 +1,27 @@
-<%=packageName ? "package ${packageName}\n\n" : ''%>class ${className}Controller {
+<%=packageName ? "package ${packageName}\n\nimport grails.plugins.springsecurity.Secured\n\n@Secured(['ROLE_ADMIN'])\n" : ''%>class ${className}Controller {
+	
+	private static final int RESULT_SIZE = 10
 
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+    static allowedMethods = [save: "POST", update: "POST"]
 
     def index = {
         redirect(action: "list", params: params)
     }
 
     def list = {
-        params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [${propertyName}List: ${className}.list(params), ${propertyName}Total: ${className}.count()]
+		def ${propertyName}ListSize = ${className}.count()
+		
+		def max = params.max ? params.int('max') : 0
+		max += RESULT_SIZE
+		max = Math.min(${propertyName}ListSize, max)
+		
+		def showMoreSize = ${propertyName}ListSize - max
+		showMoreSize = Math.min(showMoreSize, RESULT_SIZE)
+		
+		params.max = max
+		params.sort = 'id'
+		params.order = 'desc'
+		[${propertyName}List: ${className}.list(params), max: max, showMoreSize: showMoreSize]
     }
 
     def create = {
@@ -21,7 +34,7 @@
         def ${propertyName} = new ${className}(params)
         if (${propertyName}.save(flush: true)) {
             flash.message = "\${message(code: 'default.created.message', args: [message(code: '${domainClass.propertyName}.label', default: '${className}'), ${propertyName}.id])}"
-            redirect(action: "show", id: ${propertyName}.id)
+            redirect(action: "list", params: params)
         }
         else {
             render(view: "create", model: [${propertyName}: ${propertyName}])

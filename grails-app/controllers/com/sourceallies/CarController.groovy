@@ -7,7 +7,7 @@ class CarController {
 
 	private static final int RESULT_SIZE = 10
 	
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+    static allowedMethods = [save: "POST", update: "POST"]
 
     def index = {
         redirect(action: "list", params: params)

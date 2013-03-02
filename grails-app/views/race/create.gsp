@@ -31,7 +31,7 @@
 				
 				<div data-role="fieldcontain">
 					<label for="derby"><g:message code="race.derby.label" default="Derby" /></label>
-					<g:select name="derby.id" from="${com.sourceallies.Derby.list()}" optionKey="id" value="${raceInstance?.derby?.id}" noSelection="['null':'']"/>
+					<g:select name="derby.id" from="${com.sourceallies.Derby.list()}" optionKey="id" value="${raceInstance?.derby?.id}" noSelection="['null':'- Select -']"/>
 				</div>
 			
 				<div data-role="fieldcontain">
@@ -41,7 +41,7 @@
 			
 				<div data-role="fieldcontain">
 					<label for="numberOfLanes"><g:message code="race.numberOfLanes.label" default="Number Of Lanes" /></label>
-					<g:select name="numberOfLanes" from="${raceInstance.constraints.numberOfLanes.inList}" value="${fieldValue(bean: raceInstance, field: 'numberOfLanes')}" valueMessagePrefix="race.numberOfLanes" noSelection="['null':'']"/>
+					<g:select name="numberOfLanes" from="${raceInstance.constraints.numberOfLanes.inList}" value="${fieldValue(bean: raceInstance, field: 'numberOfLanes')}" valueMessagePrefix="race.numberOfLanes" noSelection="['null':'- Select -']"/>
 				</div>
 			
 				<g:submitButton name="create" data-icon="check" value="${message(code: 'default.button.create.label', default: 'Create')}" />
