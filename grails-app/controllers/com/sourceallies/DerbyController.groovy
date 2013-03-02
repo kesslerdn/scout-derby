@@ -2,7 +2,7 @@ package com.sourceallies
 
 import grails.plugins.springsecurity.Secured
 
-@Secured(['ROLE_MANAGER'])
+@Secured(['ROLE_ADMIN'])
 class DerbyController {
 	
 	private static final int RESULT_SIZE = 10
@@ -39,7 +39,7 @@ class DerbyController {
         def derbyInstance = new Derby(params)
         if (derbyInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'derby.label', default: 'Derby'), derbyInstance.id])}"
-            redirect(action: "list", id: derbyInstance.id)
+            redirect(action: "list", params: params)
         }
         else {
             render(view: "create", model: [derbyInstance: derbyInstance])

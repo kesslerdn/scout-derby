@@ -53,6 +53,11 @@
 					<dd><g:fieldValue bean="${derbyInstance}" field="organizationNumber"/></dd>
 				
 			
+				<dt><g:message code="derby.type.label" default="Type" /></dt>
+				
+					<dd><g:fieldValue bean="${derbyInstance}" field="type"/></dd>
+				
+			
 				<dt><g:message code="derby.dateCreated.label" default="Date Created" /></dt>
 				
 					<dd><g:formatDate date="${derbyInstance?.dateCreated}" /></dd>

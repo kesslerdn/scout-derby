@@ -19,5 +19,5 @@ class Race {
 		numberOfLanes(blank:false, inList:[2,3,4,5,6,7,8,9,10])
     }
 
-	String toString() { "" + name + ": " + derby}
+	String toString() { "$name: $derby" }
 }

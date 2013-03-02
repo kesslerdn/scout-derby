@@ -42,6 +42,14 @@
 	<g:textField name="organizationNumber" value="${derbyInstance?.organizationNumber}" />
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: derbyInstance, field: 'type', 'error')} required">
+	<label for="type">
+		<g:message code="derby.type.label" default="Type" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select name="type" from="${derbyInstance.constraints.type.inList}" value="${derbyInstance?.type}" valueMessagePrefix="derby.type"  />
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: derbyInstance, field: 'races', 'error')} ">
 	<label for="races">
 		<g:message code="derby.races.label" default="Races" />

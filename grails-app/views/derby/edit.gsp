@@ -38,7 +38,7 @@
 			
 				<div data-role="fieldcontain">
 					<label for="state"><g:message code="derby.state.label" default="State" /></label>
-					<g:select name="state" from="${derbyInstance.constraints.state.inList}" value="${derbyInstance?.state}" noSelection="['null':'- Select -']" valueMessagePrefix="derby.state"  />
+					<g:select name="state" from="${derbyInstance.constraints.state.inList}" value="${derbyInstance?.state}" valueMessagePrefix="derby.state"  />
 				</div>
 			
 				<div data-role="fieldcontain">
@@ -54,6 +54,11 @@
 				<div data-role="fieldcontain">
 					<label for="organizationNumber"><g:message code="derby.organizationNumber.label" default="Organization Number" /></label>
 					<g:textField name="organizationNumber" value="${derbyInstance?.organizationNumber}" />
+				</div>
+			
+				<div data-role="fieldcontain">
+					<label for="type"><g:message code="derby.type.label" default="Type" /></label>
+					<g:select name="type" from="${derbyInstance.constraints.type.inList}" value="${derbyInstance?.type}" valueMessagePrefix="derby.type"  />
 				</div>
 			
 				<div data-role="fieldcontain">

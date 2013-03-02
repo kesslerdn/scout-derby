@@ -8,6 +8,7 @@ class Derby {
 	String city
 	String state
 	String locationName
+	String type
 	Date date
 	Date dateCreated
 	Date lastUpdated
@@ -24,6 +25,7 @@ class Derby {
 		locationName(blank:false, maxSize: 25)
 		date(blank:false)
 		organizationNumber(blank:true)
+		type(blank:false, inList: ['Pinewood Derby', 'Raingutter Regatta', 'Space Derby', 'Cubmobile Derby'])
     }
 	
 	String toString() { "${date.format('MM/dd/yyyy')}: ${city}, ${state} : ${locationName}" }
