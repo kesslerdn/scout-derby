@@ -38,17 +38,7 @@
 			
 				<div data-role="fieldcontain">
 					<label for="password"><g:message code="user.password.label" default="Password" /></label>
-					<g:textField name="password" required="required" value="${userInstance?.password}" />
-				</div>
-			
-				<div data-role="fieldcontain">
-					<label for="accountExpired"><g:message code="user.accountExpired.label" default="Account Expired" /></label>
-					<g:checkBox name="accountExpired" value="${userInstance?.accountExpired}" />
-				</div>
-			
-				<div data-role="fieldcontain">
-					<label for="accountLocked"><g:message code="user.accountLocked.label" default="Account Locked" /></label>
-					<g:checkBox name="accountLocked" value="${userInstance?.accountLocked}" />
+					<g:passwordField name="password" required="required" value="${userInstance?.password}" />
 				</div>
 			
 				<div data-role="fieldcontain">
@@ -64,6 +54,16 @@
 				<div data-role="fieldcontain">
 					<label for="passwordExpired"><g:message code="user.passwordExpired.label" default="Password Expired" /></label>
 					<g:checkBox name="passwordExpired" value="${userInstance?.passwordExpired}" />
+				</div>
+			
+				<div data-role="fieldcontain">
+					<label for="accountExpired"><g:message code="user.accountExpired.label" default="Account Expired" /></label>
+					<g:checkBox name="accountExpired" value="${userInstance?.accountExpired}" />
+				</div>
+			
+				<div data-role="fieldcontain">
+					<label for="accountLocked"><g:message code="user.accountLocked.label" default="Account Locked" /></label>
+					<g:checkBox name="accountLocked" value="${userInstance?.accountLocked}" />
 				</div>
 			
 				<g:actionSubmit data-icon="check" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />

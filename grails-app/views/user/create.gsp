@@ -36,7 +36,17 @@
 			
 				<div data-role="fieldcontain">
 					<label for="password"><g:message code="user.password.label" default="Password" /></label>
-					<g:textField name="password" required="required" value="${userInstance?.password}" />
+					<g:passwordField name="password" required="required" value="${userInstance?.password}" />
+				</div>
+			
+				<div data-role="fieldcontain">
+					<label for="email"><g:message code="user.email.label" default="Email" /></label>
+					<g:textField name="email" value="${userInstance?.email}" />
+				</div>
+			
+				<div data-role="fieldcontain">
+					<label for="enabled"><g:message code="user.enabled.label" default="Enabled"/></label>
+					<g:checkBox name="enabled" value="${userInstance?.enabled}"/>
 				</div>
 			
 				<div data-role="fieldcontain">
@@ -47,16 +57,6 @@
 				<div data-role="fieldcontain">
 					<label for="accountLocked"><g:message code="user.accountLocked.label" default="Account Locked" /></label>
 					<g:checkBox name="accountLocked" value="${userInstance?.accountLocked}" />
-				</div>
-			
-				<div data-role="fieldcontain">
-					<label for="email"><g:message code="user.email.label" default="Email" /></label>
-					<g:textField name="email" value="${userInstance?.email}" />
-				</div>
-			
-				<div data-role="fieldcontain">
-					<label for="enabled"><g:message code="user.enabled.label" default="Enabled" /></label>
-					<g:checkBox name="enabled" value="${userInstance?.enabled}" />
 				</div>
 			
 				<div data-role="fieldcontain">
