@@ -255,8 +255,16 @@ class RaceController {
 			def vehicleList = vehicles.isEmpty() ? [] : vehicles[0..(max -1)]
 			[id:params.id, raceInstance: raceInstance, vehicles: vehicleList, max: max, showMoreSize: showMoreSize]
 		}else{
-			render(view: "selectRace", model: [actionName: "report", ,
-			raceSelectOptions: Race.list()])
+			def today = new Date()
+			def fiveDaysAgo = today - 5
+			def derbies = Derby.findAllByDateGreaterThan(fiveDaysAgo)
+			def races = []
+			derbies.each{ derby ->
+				derby.races.each{ race ->
+					races << race
+				}
+			}
+			render(view: "selectRace", model: [actionName: "report", raceSelectOptions: races])
 		}
 	}
 }
