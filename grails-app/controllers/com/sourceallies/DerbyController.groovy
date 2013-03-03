@@ -27,7 +27,7 @@ class DerbyController {
 		params.max = max
 		params.sort = 'id'
 		params.order = 'desc'
-		[derbyInstanceList: Derby.findByUser(springSecurityService.getCurrentUser(), params), max: max, showMoreSize: showMoreSize]
+		[derbyInstanceList: Derby.findAllByUser(springSecurityService.getCurrentUser(), params), max: max, showMoreSize: showMoreSize]
     }
 
     def create = {
@@ -41,7 +41,7 @@ class DerbyController {
 		derbyInstance.user = springSecurityService.getCurrentUser()
         if (derbyInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'derby.label', default: 'Derby'), derbyInstance.id])}"
-            redirect(action: "list", params: params)
+            redirect(action: "show", id: derbyInstance.id)
         }
         else {
             render(view: "create", model: [derbyInstance: derbyInstance])

@@ -24,13 +24,13 @@ class LaneController {
 		showMoreSize = Math.min(showMoreSize, RESULT_SIZE)
 		
 		params.max = max
-		[laneInstanceList: Lane.findByUser(springSecurityService.getCurrentUser(), params), max: max, showMoreSize: showMoreSize]	
+		[laneInstanceList: Lane.findAllByUser(springSecurityService.getCurrentUser(), params), max: max, showMoreSize: showMoreSize]	
     }
 
     def create = {
         def laneInstance = new Lane()
         laneInstance.properties = params
-        return [laneInstance: laneInstance, vehicleSelectOptions: Vehicle.findByUser(springSecurityService.getCurrentUser())]
+        return [laneInstance: laneInstance, vehicleSelectOptions: Vehicle.findAll{user == springSecurityService.getCurrentUser()}]
     }
 
     def save = {
@@ -63,7 +63,7 @@ class LaneController {
             redirect(action: "list")
         }
         else {
-            return [laneInstance: laneInstance, vehicleSelectOptions: Vehicle.findByUser(springSecurityService.getCurrentUser())]
+            return [laneInstance: laneInstance, vehicleSelectOptions: Vehicle.findAll{user == springSecurityService.getCurrentUser()}]
         }
     }
 
@@ -75,7 +75,7 @@ class LaneController {
                 if (laneInstance.version > version) {
                     
                     laneInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'lane.label', default: 'Lane')] as Object[], "Another user has updated this Lane while you were editing")
-                    render(view: "edit", model: [laneInstance: laneInstance, vehicleSelectOptions: Vehicle.findByUser(springSecurityService.getCurrentUser())])
+                    render(view: "edit", model: [laneInstance: laneInstance, vehicleSelectOptions: Vehicle.findAll{user == springSecurityService.getCurrentUser()}])
                     return
                 }
             }
@@ -85,7 +85,7 @@ class LaneController {
                 redirect(action: "show", id: laneInstance.id)
             }
             else {
-                render(view: "edit", model: [laneInstance: laneInstance, vehicleSelectOptions: Vehicle.findByUser(springSecurityService.getCurrentUser())])
+                render(view: "edit", model: [laneInstance: laneInstance, vehicleSelectOptions: Vehicle.findAll{user == springSecurityService.getCurrentUser()}])
             }
         }
         else {

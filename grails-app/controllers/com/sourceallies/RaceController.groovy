@@ -25,7 +25,7 @@ class RaceController {
 		showMoreSize = Math.min(showMoreSize, RESULT_SIZE)
 		
 		params.max = max
-		[raceInstanceList: Race.findByUser(springSecurityService.getCurrentUser(), params), max: max, showMoreSize: showMoreSize]
+		[raceInstanceList: Race.findAllByUser(springSecurityService.getCurrentUser(), params), max: max, showMoreSize: showMoreSize]
     }
 
 	@Secured(['ROLE_MANAGER'])
@@ -33,9 +33,9 @@ class RaceController {
         def raceInstance = new Race()
         raceInstance.properties = params
         return [raceInstance: raceInstance, 
-			vehicleSelectOptions: Vehicle.findByUser(springSecurityService.getCurrentUser()),
-			derbySelectOptions: Derby.findByUser(springSecurityService.getCurrentUser()),
-			laneSelectOptions: Lane.findByUser(springSecurityService.getCurrentUser())]
+			vehicleSelectOptions: Vehicle.findAll{user == springSecurityService.getCurrentUser()},
+			derbySelectOptions: Derby.findAll{user == springSecurityService.getCurrentUser()},
+			laneSelectOptions: Lane.findAll{user == springSecurityService.getCurrentUser()}]
     }
 
 	@Secured(['ROLE_MANAGER'])
@@ -44,13 +44,13 @@ class RaceController {
 		raceInstance.user = springSecurityService.getCurrentUser()
         if (raceInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'race.label', default: 'Race'), raceInstance.id])}"
-            redirect(action: "show", id: raceInstance.id)
+            redirect(controller:"derby", action: "show", id: raceInstance.derby.id)
         }
         else {
             render(view: "create", model: [raceInstance: raceInstance, 
-				vehicleSelectOptions: Vehicle.findByUser(springSecurityService.getCurrentUser()),
-			derbySelectOptions: Derby.findByUser(springSecurityService.getCurrentUser()),
-			laneSelectOptions: Lane.findByUser(springSecurityService.getCurrentUser())])
+				vehicleSelectOptions: Vehicle.findAll{user == springSecurityService.getCurrentUser()},
+			derbySelectOptions: Derby.findAll{user == springSecurityService.getCurrentUser()},
+			laneSelectOptions: Lane.findAll{user == springSecurityService.getCurrentUser()}])
         }
     }
 
@@ -75,9 +75,9 @@ class RaceController {
         }
         else {
             return [raceInstance: raceInstance, 
-				vehicleSelectOptions: Vehicle.findByUser(springSecurityService.getCurrentUser()),
-			derbySelectOptions: Derby.findByUser(springSecurityService.getCurrentUser()),
-			laneSelectOptions: Lane.findByUser(springSecurityService.getCurrentUser())]
+				vehicleSelectOptions: Vehicle.findAll{user == springSecurityService.getCurrentUser()},
+			derbySelectOptions: Derby.findAll{user == springSecurityService.getCurrentUser()},
+			laneSelectOptions: Lane.findAll{user == springSecurityService.getCurrentUser()}]
         }
     }
 
@@ -91,9 +91,9 @@ class RaceController {
                     
                     raceInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'race.label', default: 'Race')] as Object[], "Another user has updated this Race while you were editing")
                     render(view: "edit", model: [raceInstance: raceInstance, 
-						vehicleSelectOptions: Vehicle.findByUser(springSecurityService.getCurrentUser())],
-			derbySelectOptions: Derby.findByUser(springSecurityService.getCurrentUser()),
-			laneSelectOptions: Lane.findByUser(springSecurityService.getCurrentUser()))
+						vehicleSelectOptions: Vehicle.findAll{user == springSecurityService.getCurrentUser()}],
+			derbySelectOptions: Derby.findAll{user == springSecurityService.getCurrentUser()},
+			laneSelectOptions: Lane.findAll{user == springSecurityService.getCurrentUser()})
                     return
                 }
             }
@@ -104,9 +104,9 @@ class RaceController {
             }
             else {
                 render(view: "edit", model: [raceInstance: raceInstance, 
-					vehicleSelectOptions: Vehicle.findByUser(springSecurityService.getCurrentUser())],
-			derbySelectOptions: Derby.findByUser(springSecurityService.getCurrentUser()),
-			laneSelectOptions: Lane.findByUser(springSecurityService.getCurrentUser()))
+					vehicleSelectOptions: Vehicle.findAll{user == springSecurityService.getCurrentUser()}],
+			derbySelectOptions: Derby.findAll{user == springSecurityService.getCurrentUser()},
+			laneSelectOptions: Lane.findAll{user == springSecurityService.getCurrentUser()})
             }
         }
         else {

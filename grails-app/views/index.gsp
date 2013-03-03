@@ -108,7 +108,7 @@
 					<g:link controller="race" action="report" data-ajax="false">View Derby</g:link>
 				</li>
 				<li>
-					<g:link controller="derby" action="list" data-ajax="false">Manage Derby</g:link>
+					<g:link controller="manager" data-ajax="false">Manage Derby</g:link>
 				</li>
 				<li>
 					<g:link controller="donate">Donate</g:link>

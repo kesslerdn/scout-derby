@@ -45,7 +45,7 @@
 			
 				<dt><g:message code="derby.date.label" default="Date" /></dt>
 				
-					<dd><g:formatDate date="${derbyInstance?.date}" /></dd>
+					<dd><g:formatDate date="${derbyInstance?.date}" format="MM/dd/yyyy"/></dd>
 				
 			
 				<dt><g:message code="derby.organizationNumber.label" default="Organization Number" /></dt>
@@ -56,27 +56,26 @@
 				<dt><g:message code="derby.type.label" default="Type" /></dt>
 				
 					<dd><g:fieldValue bean="${derbyInstance}" field="type"/></dd>
-				
-			
-				<dt><g:message code="derby.dateCreated.label" default="Date Created" /></dt>
-				
-					<dd><g:formatDate date="${derbyInstance?.dateCreated}" /></dd>
-				
-			
-				<dt><g:message code="derby.lastUpdated.label" default="Last Updated" /></dt>
-				
-					<dd><g:formatDate date="${derbyInstance?.lastUpdated}" /></dd>
-				
-			
-				<dt><g:message code="derby.races.label" default="Races" /></dt>
-				
-					<g:each in="${derbyInstance.races}" var="r">
-						<dd><g:link controller="race" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></dd>
-					</g:each>
-				
+								
 			
 			</dl>
+				<ul data-role="listview" data-filter="false">
+					<g:each in="${derbyInstance.races}" var="r">
+						<li><g:link controller="race" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></li>
+					</g:each>
+				</ul>
 			<g:form>
+								<div data-role="fieldcontain">
+			<ul data-role="listview" data-filter="false">
+				<li>
+					<g:link controller="race" action="create" params="['derby.id': derbyInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'race.label', default: 'Race')])}</g:link>
+
+				</li>
+			</ul>
+
+
+				</div>
+				
 				<g:hiddenField name="id" value="${derbyInstance?.id}" />
 				<g:actionSubmit data-icon="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" />
 			</g:form>

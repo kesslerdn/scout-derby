@@ -27,7 +27,7 @@ class VehicleController {
 	   params.max = max
 	   params.sort = 'id'
 	   params.order = 'desc'
-	   [vehicleInstanceList: Vehicle.findByUser(springSecurityService.getCurrentUser(), params), max: max, showMoreSize: showMoreSize]
+	   [vehicleInstanceList: Vehicle.findAllByUser(springSecurityService.getCurrentUser(), params), max: max, showMoreSize: showMoreSize]
    }
 
     def create() {
@@ -108,7 +108,7 @@ class VehicleController {
         }
         else {
             return [vehicleInstance: vehicleInstance,
-			ownerSelectOptions: Owner.findByUser(springSecurityService.getCurrentUser())]
+			ownerSelectOptions: Owner.findAll{user == springSecurityService.getCurrentUser()}]
         }
     }
 
@@ -121,7 +121,7 @@ class VehicleController {
                     
                     vehicleInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'vehicle.label', default: 'Vehicle')] as Object[], "Another user has updated this Vehicle while you were editing")
                     render(view: "edit", model: [vehicleInstance: vehicleInstance,
-			ownerSelectOptions: Owner.findByUser(springSecurityService.getCurrentUser())])
+			ownerSelectOptions: Owner.findAll{user == springSecurityService.getCurrentUser()}])
                     return
                 }
             }
@@ -132,7 +132,7 @@ class VehicleController {
             }
             else {
                 render(view: "edit", model: [vehicleInstance: vehicleInstance,
-			ownerSelectOptions: Owner.findByUser(springSecurityService.getCurrentUser())])
+			ownerSelectOptions: Owner.findAll{user == springSecurityService.getCurrentUser()}])
             }
         }
         else {

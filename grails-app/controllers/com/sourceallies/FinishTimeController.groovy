@@ -24,13 +24,13 @@ class FinishTimeController {
 		showMoreSize = Math.min(showMoreSize, RESULT_SIZE)
 		
 		params.max = max
-		[finishTimeInstanceList: FinishTime.findByUser(springSecurityService.getCurrentUser(), params), max: max, showMoreSize: showMoreSize]
+		[finishTimeInstanceList: FinishTime.findAllByUser(springSecurityService.getCurrentUser(), params), max: max, showMoreSize: showMoreSize]
     }
 
     def create = {
         def finishTimeInstance = new FinishTime()
         finishTimeInstance.properties = params
-        return [finishTimeInstance: finishTimeInstance, vehicleSelectOptions: Vehicle.findByUser(springSecurityService.getCurrentUser())]
+        return [finishTimeInstance: finishTimeInstance, vehicleSelectOptions: Vehicle.findAll{user == springSecurityService.getCurrentUser()}]
     }
 
     def save = {
@@ -41,7 +41,7 @@ class FinishTimeController {
             redirect(action: "show", id: finishTimeInstance.id)
         }
         else {
-            render(view: "create", model: [finishTimeInstance: finishTimeInstance, vehicleSelectOptions: Vehicle.findByUser(springSecurityService.getCurrentUser())])
+            render(view: "create", model: [finishTimeInstance: finishTimeInstance, vehicleSelectOptions: Vehicle.findAll{user == springSecurityService.getCurrentUser()}])
         }
     }
 
@@ -63,7 +63,7 @@ class FinishTimeController {
             redirect(action: "list")
         }
         else {
-            return [finishTimeInstance: finishTimeInstance, vehicleSelectOptions: Vehicle.findByUser(springSecurityService.getCurrentUser())]
+            return [finishTimeInstance: finishTimeInstance, vehicleSelectOptions: Vehicle.findAll{user == springSecurityService.getCurrentUser()}]
         }
     }
 
@@ -75,7 +75,7 @@ class FinishTimeController {
                 if (finishTimeInstance.version > version) {
                     
                     finishTimeInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'finishTime.label', default: 'FinishTime')] as Object[], "Another user has updated this FinishTime while you were editing")
-                    render(view: "edit", model: [finishTimeInstance: finishTimeInstance, vehicleSelectOptions: Vehicle.findByUser(springSecurityService.getCurrentUser())])
+                    render(view: "edit", model: [finishTimeInstance: finishTimeInstance, vehicleSelectOptions: Vehicle.findAll{user == springSecurityService.getCurrentUser()}])
                     return
                 }
             }
@@ -85,7 +85,7 @@ class FinishTimeController {
                 redirect(action: "show", id: finishTimeInstance.id)
             }
             else {
-                render(view: "edit", model: [finishTimeInstance: finishTimeInstance, vehicleSelectOptions: Vehicle.findByUser(springSecurityService.getCurrentUser())])
+                render(view: "edit", model: [finishTimeInstance: finishTimeInstance, vehicleSelectOptions: Vehicle.findAll{user == springSecurityService.getCurrentUser()}])
             }
         }
         else {

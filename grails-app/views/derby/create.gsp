@@ -59,17 +59,6 @@
 					<g:select name="type" from="${derbyInstance.constraints.type.inList}" value="${derbyInstance?.type}" valueMessagePrefix="derby.type"  noSelection="['null':'- Select -']" required="true"/>
 				</div>
 			
-				<div data-role="fieldcontain">
-					<label for="races"><g:message code="derby.races.label" default="Races" /></label>
-					
-<ul>
-<g:each in="${derbyInstance?.races?}" var="r">
-    <li><g:link controller="race" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></li>
-</g:each>
-</ul>
-<g:link controller="race" action="create" params="['derby.id': derbyInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'race.label', default: 'Race')])}</g:link>
-
-				</div>
 			
 				<g:submitButton name="create" data-icon="check" value="${message(code: 'default.button.create.label', default: 'Create')}" />
 			</g:form>

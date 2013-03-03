@@ -24,13 +24,13 @@ class OwnerController {
 		showMoreSize = Math.min(showMoreSize, RESULT_SIZE)
 		
 		params.max = max
-		[ownerInstanceList: Owner.findByUser(springSecurityService.getCurrentUser(), params), max: max, showMoreSize: showMoreSize]	
+		[ownerInstanceList: Owner.findAllByUser(springSecurityService.getCurrentUser(), params), max: max, showMoreSize: showMoreSize]	
     }
 
     def create = {
         def ownerInstance = new Owner()
         ownerInstance.properties = params
-        return [ownerInstance: ownerInstance, vehicleSelectOptions: Vehicle.findByUser(springSecurityService.getCurrentUser())]
+        return [ownerInstance: ownerInstance, vehicleSelectOptions: Vehicle.findAll{user == springSecurityService.getCurrentUser()}]
     }
 
     def save = {
@@ -41,7 +41,7 @@ class OwnerController {
             redirect(action: "show", id: ownerInstance.id)
         }
         else {
-            render(view: "create", model: [ownerInstance: ownerInstance, vehicleSelectOptions: Vehicle.findByUser(springSecurityService.getCurrentUser())])
+            render(view: "create", model: [ownerInstance: ownerInstance, vehicleSelectOptions: Vehicle.findAll{user == springSecurityService.getCurrentUser()}])
         }
     }
 
@@ -63,7 +63,7 @@ class OwnerController {
             redirect(action: "list")
         }
         else {
-            return [ownerInstance: ownerInstance, vehicleSelectOptions: Vehicle.findByUser(springSecurityService.getCurrentUser())]
+            return [ownerInstance: ownerInstance, vehicleSelectOptions: Vehicle.findAll{user == springSecurityService.getCurrentUser()}]
         }
     }
 
@@ -75,7 +75,7 @@ class OwnerController {
                 if (ownerInstance.version > version) {
                     
                     ownerInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'owner.label', default: 'Owner')] as Object[], "Another user has updated this Owner while you were editing")
-                    render(view: "edit", model: [ownerInstance: ownerInstance, vehicleSelectOptions: Vehicle.findByUser(springSecurityService.getCurrentUser())])
+                    render(view: "edit", model: [ownerInstance: ownerInstance, vehicleSelectOptions: Vehicle.findAll{user == springSecurityService.getCurrentUser()}])
                     return
                 }
             }
