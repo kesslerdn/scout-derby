@@ -1,7 +1,7 @@
 <html>
 
 <head>
-	<meta name='layout' content='mobile'/>
+	<meta name='layout' content='derbyMobile'/>
 	<title><g:message code='spring.security.ui.register.title'/></title>
 	<style type="text/css">
 		.ui-btn-block{
@@ -22,6 +22,14 @@
 
 <div data-role="content" data-theme="b">
 <g:form action='register' name='registerForm'>
+	<g:hasErrors bean="${command}">
+		<div class="errors" role="alert">
+			<g:renderErrors bean="${command}" as="list" />
+		</div>
+	</g:hasErrors>
+	<g:if test="${flash.error}">
+		<div class="errors" role="alert">${flash.error}</div>
+	</g:if>
 	<g:if test="${flash.message}">
 		<div class="message" role="alert">${flash.message}</div>
 	</g:if>

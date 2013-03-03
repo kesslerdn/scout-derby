@@ -2,7 +2,7 @@
 
 <head>
 	<title>Login</title>
-	<meta name='layout' content='mobile'/>
+	<meta name='layout' content='derbyMobile'/>
 	<style type="text/css">
 		.ui-btn-block{
 			display: none;

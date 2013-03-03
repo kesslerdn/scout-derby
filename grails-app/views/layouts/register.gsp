@@ -8,6 +8,7 @@
 
 <link rel="shortcut icon" href="${resource(dir:'images',file:'favicon.ico')}" type="image/x-icon"/>
 
+
 <s2ui:resources module='register' />
 <%--
 
