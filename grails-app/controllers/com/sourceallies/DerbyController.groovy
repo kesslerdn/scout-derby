@@ -2,7 +2,7 @@ package com.sourceallies
 
 import grails.plugins.springsecurity.Secured
 
-@Secured(['ROLE_ADMIN'])
+@Secured(['ROLE_MANAGER'])
 class DerbyController {
 	def springSecurityService
 	
