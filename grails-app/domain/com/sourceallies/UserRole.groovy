@@ -54,4 +54,5 @@ class UserRole implements Serializable {
 		id composite: ['role', 'user']
 		version false
 	}
+	String toString() { "$user: $role"}
 }
