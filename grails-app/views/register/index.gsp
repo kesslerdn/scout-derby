@@ -46,7 +46,7 @@
                         
 	<div class="fieldcontain">
 		<label for="email">E-mail</label>
-		<g:textField name="email" id="email" size="40" />
+		<g:field type="email" name="email" id="email" size="40" />
 	</div>
                         
 	<div class="fieldcontain">

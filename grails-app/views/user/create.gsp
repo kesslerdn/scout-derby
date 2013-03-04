@@ -41,7 +41,7 @@
 			
 				<div data-role="fieldcontain">
 					<label for="email"><g:message code="user.email.label" default="Email" /></label>
-					<g:textField name="email" value="${userInstance?.email}" />
+					<g:field type="email" name="email" value="${userInstance?.email}" />
 				</div>
 			
 				<div data-role="fieldcontain">

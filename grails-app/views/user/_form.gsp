@@ -39,7 +39,7 @@
 		<g:message code="user.email.label" default="Email" />
 		
 	</label>
-	<g:textField name="email" value="${userInstance?.email}" />
+	<g:field type="email" name="email" value="${userInstance?.email}" />
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'enabled', 'error')} ">
