@@ -87,7 +87,7 @@
 	font-size: 0.8em;
 	line-height: 2;
 	margin: 1em 2em;
-	padding: 0.5em;
+	padding: 5px 5px 5px 25px;
 }
 
 .message {
@@ -108,9 +108,12 @@
 	        box-shadow: 0 0 0.25em #ff8888;
 }
 
-.errors ul,
 .message {
-	padding: 0;
+	padding: 5px 5px 5px 25px;
+}
+
+.errors ul{
+	padding: 0px;
 }
 
 .errors li {
@@ -121,7 +124,7 @@
 
 .message {
 	background: transparent url(../images/skin/information.png) 0 50% no-repeat;
-	text-indent: 22px;
+	text-indent: 10px;
 }
 	
 }

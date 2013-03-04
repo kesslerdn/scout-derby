@@ -264,6 +264,9 @@ class RaceController {
 					races << race
 				}
 			}
+			if(races.size() == 0){
+				flash.message = "There are no recent, current, or shceduled derbies to view."
+			}
 			render(view: "selectRace", model: [actionName: "report", raceSelectOptions: races])
 		}
 	}
