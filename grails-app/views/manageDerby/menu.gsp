@@ -22,6 +22,15 @@
 				<li>
 					<g:link controller="vehicle" data-ajax="false">Register Scout</g:link>
 				</li>
+								<li>
+					<g:link controller="donate">Donate</g:link>
+				</li>
+				<li>
+					<a href="${createLink(uri: '/about')}">About</a>
+				</li>
+				<li>
+					<a href="mailto:help@mobilederby.org?subject=MobileDerby.org%20Help">Contact</a>
+				</li>
 			</ul>
 		</div>
 		<div data-role="footer">
