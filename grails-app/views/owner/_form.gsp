@@ -7,7 +7,7 @@
 		<g:message code="owner.firstName.label" default="First Name" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="firstName" required="required" value="${ownerInstance?.firstName}" />
+	<g:textField name="firstName" value="${ownerInstance?.firstName}" />
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: ownerInstance, field: 'vehicle', 'error')} required">

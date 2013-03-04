@@ -24,7 +24,7 @@
 							<g:message code="race.label" default="Race" />
 							
 						</label>
-						<g:select id="race" name="id" from="${raceSelectOptions}" optionKey="id" required="true" noSelection="['':'- Select -']" value="${id}"/>
+						<g:select id="race" name="id" from="${raceSelectOptions}" optionKey="id"  noSelection="['':'- Select -']" value="${id}"/>
 					</div>					
 				</fieldset>
 				<fieldset class="buttons">

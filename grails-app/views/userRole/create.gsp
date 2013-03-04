@@ -27,7 +27,7 @@
 				<g:renderErrors bean="${userRoleInstance}" as="list" />
 			</div>
 			</g:hasErrors>
-			<g:form action="save" >
+			<g:form data-ajax="false" action="save" >
 			
 				<div data-role="fieldcontain">
 					<label for="role"><g:message code="userRole.role.label" default="Role" /></label>

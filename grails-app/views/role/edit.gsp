@@ -27,13 +27,13 @@
 				<g:renderErrors bean="${roleInstance}" as="list" />
 			</div>
 			</g:hasErrors>
-			<g:form method="post" >
+			<g:form data-ajax="false" method="post" >
 				<g:hiddenField name="id" value="${roleInstance?.id}" />
 				<g:hiddenField name="version" value="${roleInstance?.version}" />
 			
 				<div data-role="fieldcontain">
 					<label for="authority"><g:message code="role.authority.label" default="Authority" /></label>
-					<g:textField name="authority" required="required" value="${roleInstance?.authority}" />
+					<g:textField name="authority" value="${roleInstance?.authority}" />
 				</div>
 			
 				<g:actionSubmit data-icon="check" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />

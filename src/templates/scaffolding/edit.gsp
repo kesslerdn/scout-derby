@@ -27,7 +27,7 @@
 				<g:renderErrors bean="\${${propertyName}}" as="list" />
 			</div>
 			</g:hasErrors>
-			<g:form method="post" <%= multiPart ? ' enctype="multipart/form-data"' : '' %>>
+			<g:form data-ajax="false" method="post" <%= multiPart ? ' enctype="multipart/form-data"' : '' %>>
 				<g:hiddenField name="id" value="\${${propertyName}?.id}" />
 				<g:hiddenField name="version" value="\${${propertyName}?.version}" />
 			<%  excludedProps = Event.allEvents.toList() << 'version' << 'id' << 'dateCreated' << 'lastUpdated'

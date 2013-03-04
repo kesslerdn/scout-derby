@@ -27,21 +27,21 @@
 				<g:renderErrors bean="${raceInstance}" as="list" />
 			</div>
 			</g:hasErrors>
-			<g:form action="save" >
+			<g:form data-ajax="false" action="save" >
 				
 				<div data-role="fieldcontain">
 					<label for="derby"><g:message code="race.derby.label" default="Derby" /></label>
-					<g:select name="derby.id" from="${derbySelectOptions}" optionKey="id" value="${raceInstance?.derby?.id}" noSelection="['null':'- Select -']"/>
+					<g:select name="derby.id" from="${derbySelectOptions}" optionKey="id" value="${raceInstance?.derby?.id}" noSelection="['':'- Select -']"/>
 				</div>
 			
 				<div data-role="fieldcontain">
 					<label for="name"><g:message code="race.name.label" default="Name" /></label>
-					<g:textField name="name" required="required" value="${raceInstance?.name}" />
+					<g:textField name="name" value="${raceInstance?.name}" />
 				</div>
 			
 				<div data-role="fieldcontain">
 					<label for="numberOfLanes"><g:message code="race.numberOfLanes.label" default="Number Of Lanes" /></label>
-					<g:select name="numberOfLanes" from="${raceInstance.constraints.numberOfLanes.inList}" value="${fieldValue(bean: raceInstance, field: 'numberOfLanes')}" valueMessagePrefix="race.numberOfLanes" noSelection="['null':'- Select -']"/>
+					<g:select name="numberOfLanes" from="${raceInstance.constraints.numberOfLanes.inList}" value="${fieldValue(bean: raceInstance, field: 'numberOfLanes')}" valueMessagePrefix="race.numberOfLanes" noSelection="['':'- Select -']"/>
 				</div>
 			
 				<g:submitButton name="create" data-icon="check" value="${message(code: 'default.button.create.label', default: 'Create')}" />

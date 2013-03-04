@@ -27,7 +27,7 @@
 				<g:renderErrors bean="${finishTimeInstance}" as="list" />
 			</div>
 			</g:hasErrors>
-			<g:form action="save" >
+			<g:form data-ajax="false" action="save" >
 			
 				<div data-role="fieldcontain">
 					<label for="seconds"><g:message code="finishTime.seconds.label" default="Seconds" /></label>

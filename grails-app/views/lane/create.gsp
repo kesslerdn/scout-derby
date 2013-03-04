@@ -27,7 +27,7 @@
 				<g:renderErrors bean="${laneInstance}" as="list" />
 			</div>
 			</g:hasErrors>
-			<g:form action="save" >
+			<g:form data-ajax="false" action="save" >
 			
 				<div data-role="fieldcontain">
 					<label for="number"><g:message code="lane.number.label" default="Number" /></label>

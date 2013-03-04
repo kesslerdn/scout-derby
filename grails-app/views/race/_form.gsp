@@ -7,7 +7,7 @@
 		<g:message code="race.name.label" default="Name" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="name" required="required" value="${raceInstance?.name}" />
+	<g:textField name="name" value="${raceInstance?.name}" />
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: raceInstance, field: 'numberOfLanes', 'error')} required">

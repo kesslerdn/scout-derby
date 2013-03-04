@@ -27,13 +27,13 @@
 				<g:renderErrors bean="${ownerInstance}" as="list" />
 			</div>
 			</g:hasErrors>
-			<g:form method="post" >
+			<g:form data-ajax="false" method="post" >
 				<g:hiddenField name="id" value="${ownerInstance?.id}" />
 				<g:hiddenField name="version" value="${ownerInstance?.version}" />
 			
 				<div data-role="fieldcontain">
 					<label for="firstName"><g:message code="owner.firstName.label" default="First Name" /></label>
-					<g:textField name="firstName" required="required" value="${ownerInstance?.firstName}" />
+					<g:textField name="firstName" value="${ownerInstance?.firstName}" />
 				</div>
 			
 				<div data-role="fieldcontain">

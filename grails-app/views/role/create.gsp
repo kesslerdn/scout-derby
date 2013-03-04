@@ -27,11 +27,11 @@
 				<g:renderErrors bean="${roleInstance}" as="list" />
 			</div>
 			</g:hasErrors>
-			<g:form action="save" >
+			<g:form data-ajax="false" action="save" >
 			
 				<div data-role="fieldcontain">
 					<label for="authority"><g:message code="role.authority.label" default="Authority" /></label>
-					<g:textField name="authority" required="required" value="${roleInstance?.authority}" />
+					<g:textField name="authority" value="${roleInstance?.authority}" />
 				</div>
 			
 				<g:submitButton name="create" data-icon="check" value="${message(code: 'default.button.create.label', default: 'Create')}" />

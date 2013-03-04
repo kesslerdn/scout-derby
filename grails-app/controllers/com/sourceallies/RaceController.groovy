@@ -265,7 +265,7 @@ class RaceController {
 				}
 			}
 			if(races.size() == 0){
-				flash.message = "There are no recent, current, or shceduled derbies to view."
+				flash.message = "There are no derbies to view.<br/>Derbies are listed for 5 days after the race."
 			}
 			render(view: "selectRace", model: [actionName: "report", raceSelectOptions: races])
 		}

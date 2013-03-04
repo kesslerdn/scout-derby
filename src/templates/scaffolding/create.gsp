@@ -27,7 +27,7 @@
 				<g:renderErrors bean="\${${propertyName}}" as="list" />
 			</div>
 			</g:hasErrors>
-			<g:form action="save" <%= multiPart ? ' enctype="multipart/form-data"' : '' %>>
+			<g:form data-ajax="false" action="save" <%= multiPart ? ' enctype="multipart/form-data"' : '' %>>
 			<%  excludedProps = Event.allEvents.toList() << 'version' << 'id' << 'dateCreated' << 'lastUpdated'
 				persistentPropNames = domainClass.persistentProperties*.name
 				props = domainClass.properties.findAll { persistentPropNames.contains(it.name) && !excludedProps.contains(it.name) }

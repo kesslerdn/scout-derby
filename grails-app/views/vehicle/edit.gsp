@@ -27,7 +27,7 @@
 				<g:renderErrors bean="${vehicleInstance}" as="list" />
 			</div>
 			</g:hasErrors>
-			<g:form method="post" >
+			<g:form data-ajax="false" method="post" >
 				<g:hiddenField name="id" value="${vehicleInstance?.id}" />
 				<g:hiddenField name="version" value="${vehicleInstance?.version}" />
 			
@@ -38,7 +38,7 @@
 			
 				<div data-role="fieldcontain">
 					<label for="vehicleName"><g:message code="vehicle.vehicleName.label" default="Vehicle Name" /></label>
-					<g:textField name="vehicleName" required="required" value="${vehicleInstance?.vehicleName}" />
+					<g:textField name="vehicleName" value="${vehicleInstance?.vehicleName}" />
 				</div>
 			
 				<div data-role="fieldcontain">

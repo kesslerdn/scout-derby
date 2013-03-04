@@ -27,11 +27,11 @@
 				<g:renderErrors bean="${ownerInstance}" as="list" />
 			</div>
 			</g:hasErrors>
-			<g:form action="save" >
+			<g:form data-ajax="false" action="save" >
 			
 				<div data-role="fieldcontain">
 					<label for="firstName"><g:message code="owner.firstName.label" default="First Name" /></label>
-					<g:textField name="firstName" required="required" value="${ownerInstance?.firstName}" />
+					<g:textField name="firstName" value="${ownerInstance?.firstName}" />
 				</div>
 			
 				<div data-role="fieldcontain">

@@ -27,18 +27,18 @@
 				<g:renderErrors bean="${userInstance}" as="list" />
 			</div>
 			</g:hasErrors>
-			<g:form method="post" >
+			<g:form data-ajax="false" method="post" >
 				<g:hiddenField name="id" value="${userInstance?.id}" />
 				<g:hiddenField name="version" value="${userInstance?.version}" />
 			
 				<div data-role="fieldcontain">
 					<label for="username"><g:message code="user.username.label" default="Username" /></label>
-					<g:textField name="username" required="required" value="${userInstance?.username}" />
+					<g:textField name="username" value="${userInstance?.username}" />
 				</div>
 			
 				<div data-role="fieldcontain">
 					<label for="password"><g:message code="user.password.label" default="Password" /></label>
-					<g:passwordField name="password" required="required" value="${userInstance?.password}" />
+					<g:passwordField name="password" value="${userInstance?.password}" />
 				</div>
 			
 				<div data-role="fieldcontain">

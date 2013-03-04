@@ -27,21 +27,21 @@
 				<g:renderErrors bean="${derbyInstance}" as="list" />
 			</div>
 			</g:hasErrors>
-			<g:form action="save" >
+			<g:form data-ajax="false" action="save" >
 			
 				<div data-role="fieldcontain">
 					<label for="city"><g:message code="derby.city.label" default="City" /></label>
-					<g:textField name="city" maxlength="25" required="required" value="${derbyInstance?.city}" />
+					<g:textField name="city" maxlength="25" value="${derbyInstance?.city}" />
 				</div>
 			
 				<div data-role="fieldcontain">
 					<label for="state"><g:message code="derby.state.label" default="State" /></label>
-					<g:select name="state" from="${derbyInstance.constraints.state.inList}" value="${derbyInstance?.state}" valueMessagePrefix="derby.state"  noSelection="['null':'- Select -']" required="true"/>
+					<g:select name="state" from="${derbyInstance.constraints.state.inList}" value="${derbyInstance?.state}" valueMessagePrefix="derby.state"  noSelection="['':'- Select -']" />
 				</div>
 			
 				<div data-role="fieldcontain">
 					<label for="locationName"><g:message code="derby.locationName.label" default="Location Name" /></label>
-					<g:textField name="locationName" maxlength="25" required="required" value="${derbyInstance?.locationName}" />
+					<g:textField name="locationName" maxlength="25" value="${derbyInstance?.locationName}" />
 				</div>
 			
 				<div data-role="fieldcontain">
@@ -56,7 +56,7 @@
 			
 				<div data-role="fieldcontain">
 					<label for="type"><g:message code="derby.type.label" default="Type" /></label>
-					<g:select name="type" from="${derbyInstance.constraints.type.inList}" value="${derbyInstance?.type}" valueMessagePrefix="derby.type"  noSelection="['null':'- Select -']" required="true"/>
+					<g:select name="type" from="${derbyInstance.constraints.type.inList}" value="${derbyInstance?.type}" valueMessagePrefix="derby.type"  noSelection="['':'- Select -']" />
 				</div>
 			
 			

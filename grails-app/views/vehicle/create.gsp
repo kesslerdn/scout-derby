@@ -25,14 +25,14 @@
 				<g:renderErrors bean="${vehicleInstance}" as="list" />
 			</div>
 			</g:hasErrors>
-			<g:form action="save" >
+			<g:form data-ajax="false" action="save" >
 				<div class="fieldcontain">
 					<label for="race"><g:message code="race.label" default="Race" /></label>
-					<g:select name="raceId" from="${availableRaces}" optionKey="id" value="${raceInstance?.id}" noSelection="['null':'- Select -']" required="true"/>
+					<g:select name="raceId" from="${availableRaces}" optionKey="id" value="${raceInstance?.id}" noSelection="['':'- Select -']" />
 				</div>
 				<div class="fieldcontain">
 					<label for="firstName"><g:message code="owner.firstName.label" default="Owner First Name" /></label>
-					<g:textField name="firstName" value="${ownerInstance?.firstName}" required="true"/>
+					<g:textField name="firstName" value="${ownerInstance?.firstName}" />
 				</div>
 				
 				<div class="fieldcontain">
@@ -42,7 +42,7 @@
 				
 				<div class="fieldcontain">
 					<label for="vehicleName"><g:message code="vehicle.vehicleName.label" default="Vehicle Name" /></label>
-					<g:textField name="vehicleName" value="${vehicleInstance?.vehicleName}" required="true"/>
+					<g:textField name="vehicleName" value="${vehicleInstance?.vehicleName}" />
 				</div>			
 				<g:submitButton name="create" data-icon="check" value="${message(code: 'default.button.create.label', default: 'Create')}" />
 			</g:form>

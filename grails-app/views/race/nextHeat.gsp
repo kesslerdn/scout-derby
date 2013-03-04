@@ -33,7 +33,7 @@
 					<tbody>
 					<g:each in="${lanes}" status="i" var="lane">
 						<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-							<td><g:field id="finishTimes_${i}" type="number"  step="any" min="0" name="finishTimes" required="true"/></td>
+							<td><g:field id="finishTimes_${i}" type="number"  step="any" min="0" name="finishTimes" /></td>
 							<td><input type="button" value="X" onClick="document.getElementById('finishTimes_${i}').value = '15.0'"" /></td>
 							<td>${lane.number}</td>	
 							<td>${lane.vehicles[heatIndex].id}</td>								

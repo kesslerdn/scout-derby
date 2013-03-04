@@ -109,22 +109,11 @@
 }
 
 .message {
-	padding: 5px 5px 5px 25px;
+	padding: 5px;
 }
 
-.errors ul{
-	padding: 0px;
-}
-
-.errors li {
-	list-style: none;
-	background: transparent url(../images/skin/exclamation.png) 0 50% no-repeat;
-	text-indent: 22px;
-}
-
-.message {
-	background: transparent url(../images/skin/information.png) 0 50% no-repeat;
-	text-indent: 10px;
+.errors{
+	padding: 5px;
 }
 	
 }

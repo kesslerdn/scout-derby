@@ -7,7 +7,7 @@
 		<g:message code="derby.city.label" default="City" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="city" maxlength="25" required="required" value="${derbyInstance?.city}" />
+	<g:textField name="city" maxlength="25" value="${derbyInstance?.city}" />
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: derbyInstance, field: 'state', 'error')} required">
@@ -23,7 +23,7 @@
 		<g:message code="derby.locationName.label" default="Location Name" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="locationName" maxlength="25" required="required" value="${derbyInstance?.locationName}" />
+	<g:textField name="locationName" maxlength="25" value="${derbyInstance?.locationName}" />
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: derbyInstance, field: 'date', 'error')} required">

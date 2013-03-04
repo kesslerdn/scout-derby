@@ -15,7 +15,7 @@
 		<g:message code="vehicle.vehicleName.label" default="Vehicle Name" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="vehicleName" required="required" value="${vehicleInstance?.vehicleName}" />
+	<g:textField name="vehicleName" value="${vehicleInstance?.vehicleName}" />
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: vehicleInstance, field: 'finishTimes', 'error')} ">

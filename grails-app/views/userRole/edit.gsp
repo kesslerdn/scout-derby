@@ -27,7 +27,7 @@
 				<g:renderErrors bean="${userRoleInstance}" as="list" />
 			</div>
 			</g:hasErrors>
-			<g:form method="post" >
+			<g:form data-ajax="false" method="post" >
 				<g:hiddenField name="id" value="${userRoleInstance?.id}" />
 				<g:hiddenField name="version" value="${userRoleInstance?.version}" />
 			
