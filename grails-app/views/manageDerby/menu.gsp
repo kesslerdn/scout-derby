@@ -20,7 +20,7 @@
 					<g:link controller="derby" data-ajax="false">Manage Derby</g:link>
 				</li>
 				<li>
-					<g:link controller="vehicle" data-ajax="false">Register Scout</g:link>
+					<g:link controller="manageScoutRegistration" data-ajax="false">Manage Scout Registration</g:link>
 				</li>
 								<li>
 					<g:link controller="donate">Donate</g:link>

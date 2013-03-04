@@ -1,6 +1,8 @@
 package com.sourceallies
 
 import grails.plugins.springsecurity.Secured
+import java.security.MessageDigest
+
 
 @Secured(['ROLE_MANAGER'])
 class DerbyController {
@@ -39,6 +41,7 @@ class DerbyController {
     def save = {
         def derbyInstance = new Derby(params)
 		derbyInstance.user = springSecurityService.getCurrentUser()
+		derbyInstance.hashKey = generateKey(derbyInstance.toString())
         if (derbyInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'derby.label', default: 'Derby'), derbyInstance.id])}"
             redirect(action: "show", id: derbyInstance.id)
@@ -115,4 +118,13 @@ class DerbyController {
             redirect(action: "list")
         }
     }
+	
+	private String generateKey(String value){
+		def now = new Date()
+		MessageDigest messageDigest = MessageDigest.getInstance("SHA-1");
+		messageDigest.update("${value}-${now}".getBytes())
+		BigInteger bigInt = new BigInteger(1, messageDigest.digest())
+		bigInt.toString(16)
+	}
+
 }

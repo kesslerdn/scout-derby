@@ -62,13 +62,16 @@ grails.hibernate.cache.queries = true
 // set per-environment serverURL stem for creating absolute links
 environments {
     development {
+		grails.serverURL = "http://localhost:8080/${appName}"
         grails.logging.jul.usebridge = true
     }
     production {
+		grails.serverURL = "http://www.mobilederby.org"
         grails.logging.jul.usebridge = false
         // TODO: grails.serverURL = "http://www.changeme.com"
     }
 }
+
 
 // log4j configuration
 log4j = {

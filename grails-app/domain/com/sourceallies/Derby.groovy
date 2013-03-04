@@ -12,6 +12,8 @@ class Derby {
 	Date dateCreated
 	Date lastUpdated
 	User user
+	String hashKey
+	
 	static hasMany = [races:Race]
 
 	
