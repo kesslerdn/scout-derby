@@ -18,7 +18,7 @@
 	<div data-role="content" data-theme="b">
 			<ul data-role="listview" data-filter="false">
 				<li>
-					<a href="sms://?body=Please%20join%20our%20${derbyType}%20Registration%20Team.%20To%20start%20registering%20scouts%20please%20visit%20${registrationUrl}">Invite Registration Team</a>
+					<a href="mailto:?subject=${derbyType}%20Registration%20Team%20Invitation&body=Please%20join%20our%20${derbyType}%20Registration%20Team.%20To%20start%20registering%20scouts%20please%20visit%20${registrationUrl.encodeAsURL()}">Invite Registration Team</a>
 				</li>
 				<li>
 					<g:link action="registerScout" data-ajax="false" params="[hashKey:hashKey]">Register Scout</g:link>

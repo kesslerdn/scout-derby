@@ -264,10 +264,14 @@ class RaceController {
 					races << race
 				}
 			}
+			def id = null
 			if(races.size() == 0){
 				flash.message = "There are no derbies to view.<br/>Derbies are listed for 5 days after the race."
 			}
-			render(view: "selectRace", model: [actionName: "report", raceSelectOptions: races])
+			if(races.size() == 1){
+				id = races[0].id
+			}
+			render(view: "selectRace", model: [actionName: "report", raceSelectOptions: races, id: id])
 		}
 	}
 }
