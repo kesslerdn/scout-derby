@@ -16,7 +16,7 @@
 		</div>
 	</div>
 	<div data-role="content"  data-theme="b" style="text-align: center">
-		<p>Pack/Troop 133 in Vehiclelisle Iowa makes this software available free of charge.
+		<p>Pack/Troop 133 in Carlisle Iowa makes this software available free of charge.
 		Please help us ensure that this site remains available for scouts everywhere.</p>
 		<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 			<input type="hidden" name="cmd" value="_s-xclick"> <input

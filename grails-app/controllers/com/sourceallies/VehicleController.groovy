@@ -35,7 +35,7 @@ class VehicleController {
         params.user = springSecurityService.getCurrentUser()
         vehicleInstance.properties = params
         return [vehicleInstance: vehicleInstance,
-    			ownerSelectOptions: Owner.findAll{user == springSecurityService.getCurrentUser()}]
+    			ownerSelectOptions: Owner.findAll{user == springSecurityService.getCurrentUser()}, availableRaces: availableRaces()]
     }
 
     def save = {
@@ -70,7 +70,7 @@ class VehicleController {
         }
         else {
             return [vehicleInstance: vehicleInstance,
-        			ownerSelectOptions: Owner.findAll{user == springSecurityService.getCurrentUser()}]
+        			ownerSelectOptions: Owner.findAll{user == springSecurityService.getCurrentUser()}, availableRaces: availableRaces()]
         }
     }
 
@@ -121,4 +121,11 @@ class VehicleController {
             redirect(action: "list")
         }
     }
+	
+	
+	private def availableRaces(){
+		def races = Race.findAll{user == springSecurityService.getCurrentUser()}
+		races.findAll{it.lanes.empty}
+	}
+
 }

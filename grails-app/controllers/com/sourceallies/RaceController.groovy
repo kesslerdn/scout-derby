@@ -219,7 +219,12 @@ class RaceController {
 					
 					[id:params.id, heatIndex: heatIndex, lanes: raceInstance.lanes]
 				}else{
-					render(view: "selectRace", model: [actionName: "nextHeat"]) 
+				def availableRaces = availableRaces()
+				def raceId
+				if(availableRaces.size() == 1){
+					raceId = availableRaces[0].id
+				}
+					render(view: "selectRace", model: [actionName: "nextHeat", raceSelectOptions: availableRaces, id: raceId]) 
 				}
 	}
 	
@@ -273,5 +278,11 @@ class RaceController {
 			}
 			render(view: "selectRace", model: [actionName: "report", raceSelectOptions: races, id: id])
 		}
+	}
+	
+	
+	private def availableRaces(){
+		def races = Race.findAll{user == springSecurityService.getCurrentUser()}
+		races.findAll{it.lanes.empty}
 	}
 }

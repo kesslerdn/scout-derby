@@ -42,11 +42,6 @@
 				</div>
 			
 				<div data-role="fieldcontain">
-					<label for="vehicles"><g:message code="race.vehicles.label" default="Vehicles" /></label>
-					<g:select name="vehicles" from="${vehicleSelectOptions}" multiple="multiple" optionKey="id" size="5" value="${raceInstance?.vehicles*.id}" />
-				</div>
-			
-				<div data-role="fieldcontain">
 					<label for="currentHeat"><g:message code="race.currentHeat.label" default="Current Heat" /></label>
 					<g:field type="number" name="currentHeat" value="${fieldValue(bean: raceInstance, field: 'currentHeat')}" />
 				</div>
@@ -67,8 +62,7 @@
 					</g:each>
 				</ul>
 			
-				<button type='submit' id="_action_update"  name="_action_update" data-icon="check">Update</button>
-
+				<g:actionSubmit data-icon="check" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
 			</g:form>
 		</div>
 		<div data-role="footer">

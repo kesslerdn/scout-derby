@@ -23,6 +23,9 @@
 					<g:link controller="manageScoutRegistration" data-ajax="false">Manage Scout Registration</g:link>
 				</li>
 				<li>
+					<g:link controller="race" action="nextHeat" data-ajax="false">Start Race</g:link>
+				</li>
+				<li>
 					<g:link action="advanced" data-ajax="false">Advanced Management</g:link>
 				</li>
 				<li>
