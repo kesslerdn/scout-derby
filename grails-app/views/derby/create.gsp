@@ -59,8 +59,7 @@
 					<g:select name="type" from="${derbyInstance.constraints.type.inList}" value="${derbyInstance?.type}" valueMessagePrefix="derby.type"  noSelection="['':'- Select -']" />
 				</div>
 			
-			
-				<g:submitButton name="create" data-icon="check" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+				<button type='submit' id="create"  name="create" data-icon="check">Create</button>
 			</g:form>
 		</div>
 		<div data-role="footer" data-theme="b">

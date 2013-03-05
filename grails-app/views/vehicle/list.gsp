@@ -28,7 +28,7 @@
 						<g:link action="delete" id="${vehicleInstance.id}" data-ajax="false"><g:message code="default.button.delete.label" default="Delete" /></g:link>
 					</li>
 				</g:each>
-			</ol>
+			</ul>
 			<g:if test="${showMoreSize > 0}">
 			<g:link data-role="button" action="list" params="[max:max]">Show ${showMoreSize} More</g:link>
 			</g:if>

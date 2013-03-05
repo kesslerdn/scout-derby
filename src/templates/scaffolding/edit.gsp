@@ -49,7 +49,7 @@
 					${renderEditor(p)}
 				</div>
 			<%  }   } %>
-				<g:actionSubmit data-icon="check" action="update" value="\${message(code: 'default.button.update.label', default: 'Update')}" />
+				<button type='submit' id="_action_update"  name="_action_update" data-icon="check">Update</button>
 			</g:form>
 		</div>
 		<div data-role="footer" data-theme="b">

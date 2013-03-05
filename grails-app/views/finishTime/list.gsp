@@ -21,14 +21,14 @@
 			<g:if test="${flash.message}">
 			<div class="message"><p>${flash.message}</p></div>
 			</g:if>
-			<ul data-role="listview" data-split-icon="gear" data-filter="true">
+			<ul data-role="listview" data-split-icon="delete" data-filter="true">
 				<g:each in="${finishTimeInstanceList}" status="i" var="finishTimeInstance">
 					<li>
-						<g:link action="show" id="${finishTimeInstance.id}">${finishTimeInstance}</g:link>
-						<g:link action="edit" id="${finishTimeInstance.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+						<g:link action="edit" id="${finishTimeInstance.id}">${finishTimeInstance}</g:link>
+						<g:link action="delete" id="${finishTimeInstance.id}" data-ajax="false"><g:message code="default.button.delete.label" default="Delete" /></g:link>
 					</li>
 				</g:each>
-			</ol>
+			</ul>
 			<g:if test="${showMoreSize > 0}">
 			<g:link data-role="button" action="list" params="[max:max]">Show ${showMoreSize} More</g:link>
 			</g:if>

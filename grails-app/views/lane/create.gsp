@@ -39,7 +39,7 @@
 					<g:select name="vehicles" from="${vehicleSelectOptions}" multiple="multiple" optionKey="id" size="5" value="${laneInstance?.vehicles*.id}" />
 				</div>
 			
-				<g:submitButton name="create" data-icon="check" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+				<button type='submit' id="create"  name="create" data-icon="check">Create</button>
 			</g:form>
 		</div>
 		<div data-role="footer">

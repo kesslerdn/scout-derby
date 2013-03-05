@@ -31,7 +31,7 @@
 			
 				<div data-role="fieldcontain">
 					<label for="owner"><g:message code="vehicle.owner.label" default="Owner" /></label>
-					<g:select name="owner.id" from="${com.sourceallies.Owner.list()}" optionKey="id" value="${vehicleInstance?.owner?.id}" noSelection="['': '- Select -']" />
+					<g:select name="owner.id" from="${ownerSelectOptions}" optionKey="id" value="${vehicleInstance?.owner?.id}" noSelection="['': '- Select -']" />
 				</div>
 			
 				<div data-role="fieldcontain">
@@ -56,7 +56,7 @@
 					<g:select name="race.id" from="${availableRaces}" optionKey="id" value="${vehicleInstance?.race?.id}" noSelection="['': '- Select -']" />
 				</div>
 			
-				<g:submitButton name="create" data-icon="check" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+				<button type='submit' id="create"  name="create" data-icon="check">Create</button>
 			</g:form>
 		</div>
 		<div data-role="footer" data-theme="b">
