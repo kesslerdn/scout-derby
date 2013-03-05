@@ -1,3 +1,5 @@
+
+
 <%@ page import="com.sourceallies.Vehicle" %>
 <!doctype html>
 <html>
@@ -26,28 +28,38 @@
 			</div>
 			</g:hasErrors>
 			<g:form data-ajax="false" action="save" >
-				<div class="fieldcontain">
-					<label for="race"><g:message code="race.label" default="Race" /></label>
-					<g:select name="raceId" from="${availableRaces}" optionKey="id" value="${raceInstance?.id}" noSelection="['':'- Select -']" />
+			
+				<div data-role="fieldcontain">
+					<label for="owner"><g:message code="vehicle.owner.label" default="Owner" /></label>
+					<g:select name="owner.id" from="${com.sourceallies.Owner.list()}" optionKey="id" value="${vehicleInstance?.owner?.id}" noSelection="['': '- Select -']" />
 				</div>
-				<div class="fieldcontain">
-					<label for="firstName"><g:message code="owner.firstName.label" default="Owner First Name" /></label>
-					<g:textField name="firstName" value="${ownerInstance?.firstName}" />
-				</div>
-				
-				<div class="fieldcontain">
-					<label for="lastName"><g:message code="owner.lastName.label" default="Owner Last Name" /></label>
-					<g:textField name="lastName" value="${ownerInstance?.lastName}"/>
-				</div>
-				
-				<div class="fieldcontain">
+			
+				<div data-role="fieldcontain">
 					<label for="vehicleName"><g:message code="vehicle.vehicleName.label" default="Vehicle Name" /></label>
-					<g:textField name="vehicleName" value="${vehicleInstance?.vehicleName}" />
-				</div>			
+					<g:textField name="vehicleName" required="required" value="${vehicleInstance?.vehicleName}" />
+				</div>
+			
+				<div data-role="fieldcontain">
+					<label for="finishTimes"><g:message code="vehicle.finishTimes.label" default="Finish Times" /></label>
+					
+<ul>
+<g:each in="${vehicleInstance?.finishTimes?}" var="f">
+    <li><g:link controller="finishTime" action="show" id="${f.id}">${f?.encodeAsHTML()}</g:link></li>
+</g:each>
+</ul>
+<g:link controller="finishTime" action="create" params="['vehicle.id': vehicleInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'finishTime.label', default: 'FinishTime')])}</g:link>
+
+				</div>
+			
+				<div data-role="fieldcontain">
+					<label for="race"><g:message code="vehicle.race.label" default="Race" /></label>
+					<g:select name="race.id" from="${availableRaces}" optionKey="id" value="${vehicleInstance?.race?.id}" noSelection="['': '- Select -']" />
+				</div>
+			
 				<g:submitButton name="create" data-icon="check" value="${message(code: 'default.button.create.label', default: 'Create')}" />
 			</g:form>
 		</div>
-		<div data-role="footer">
+		<div data-role="footer" data-theme="b">
 		</div>
     </body>
 </html>

@@ -8,6 +8,7 @@ class ManageScoutRegistrationController {
 	def springSecurityService
 	
 	def index = {
+		println "index"
 		def today = new Date()
 		def yesterday = today - 1
 		def derbies = Derby.findAllByUserAndDateGreaterThan(springSecurityService.getCurrentUser(), yesterday)
@@ -22,12 +23,14 @@ class ManageScoutRegistrationController {
 	}
 	
     def menu = {
+		println "menu"
 		def derbyInstance = Derby.get(params.id)
 		def registrationUrl = "${ConfigurationHolder.config.grails.serverURL}/manageScoutRegistraion/registerScout?hashKey=${derbyInstance.hashKey}"
        render(view: "menu", model: [registrationUrl: registrationUrl, hashKey: derbyInstance.hashKey, derbyType: derbyInstance.type])
     }
 	
 	def registerScout = {
+		println "registerScout"
 		def derbyInstance = Derby.findByHashKey(params.hashKey)
 		if(derbyInstance){
 			def races = Race.findAll{user == springSecurityService.getCurrentUser()}
@@ -49,6 +52,7 @@ class ManageScoutRegistrationController {
 	}
 	
 	def save = {
+		println "save"
 		if(params.raceId == "null") params.raceId = null
 		
 		 def vehicleInstance = new Vehicle(params)

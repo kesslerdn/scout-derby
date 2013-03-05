@@ -44,7 +44,7 @@ class DerbyController {
 		derbyInstance.hashKey = generateKey(derbyInstance.toString())
         if (derbyInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'derby.label', default: 'Derby'), derbyInstance.id])}"
-            redirect(action: "show", id: derbyInstance.id)
+            redirect(action: "list", params: params)
         }
         else {
             render(view: "create", model: [derbyInstance: derbyInstance])

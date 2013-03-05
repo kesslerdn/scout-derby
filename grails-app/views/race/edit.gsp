@@ -61,6 +61,12 @@
 					<g:select name="lanes" from="${laneSelectOptions}" multiple="multiple" optionKey="id" size="5" value="${raceInstance?.lanes*.id}" />
 				</div>
 			
+				<ul>
+					<g:each in="${raceInstance?.vehicles?}" var="v">
+					    <li><g:link controller="vehicle" action="show" id="${v.id}">${v?.encodeAsHTML()}</g:link></li>
+					</g:each>
+				</ul>
+			
 				<g:actionSubmit data-icon="check" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
 			</g:form>
 		</div>

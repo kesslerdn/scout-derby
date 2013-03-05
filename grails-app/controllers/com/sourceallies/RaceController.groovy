@@ -44,7 +44,7 @@ class RaceController {
 		raceInstance.user = springSecurityService.getCurrentUser()
         if (raceInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'race.label', default: 'Race'), raceInstance.id])}"
-            redirect(controller:"derby", action: "show", id: raceInstance.derby.id)
+            redirect(action: "list", params: params)
         }
         else {
             render(view: "create", model: [raceInstance: raceInstance, 

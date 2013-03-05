@@ -33,12 +33,12 @@
 			
 				<div data-role="fieldcontain">
 					<label for="owner"><g:message code="vehicle.owner.label" default="Owner" /></label>
-					<g:select name="owner.id" from="${ownerSelectOptions}" optionKey="id" value="${vehicleInstance?.owner?.id}" noSelection="['null': '']" />
+					<g:select name="owner.id" from="${com.sourceallies.Owner.list()}" optionKey="id" value="${vehicleInstance?.owner?.id}" noSelection="['null': '']" />
 				</div>
 			
 				<div data-role="fieldcontain">
 					<label for="vehicleName"><g:message code="vehicle.vehicleName.label" default="Vehicle Name" /></label>
-					<g:textField name="vehicleName" value="${vehicleInstance?.vehicleName}" />
+					<g:textField name="vehicleName" required="required" value="${vehicleInstance?.vehicleName}" />
 				</div>
 			
 				<div data-role="fieldcontain">
@@ -53,10 +53,15 @@
 
 				</div>
 			
+				<div data-role="fieldcontain">
+					<label for="race"><g:message code="vehicle.race.label" default="Race" /></label>
+					<g:select name="race.id" from="${availableRaces}" optionKey="id" value="${vehicleInstance?.race?.id}"  />
+				</div>
+			
 				<g:actionSubmit data-icon="check" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
 			</g:form>
 		</div>
-		<div data-role="footer">
+		<div data-role="footer" data-theme="b">
 		</div>
     </body>
 </html>

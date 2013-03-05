@@ -8,4 +8,8 @@ class ManageDerbyController {
     def index = {
        render(view: "menu")
     }
+
+    def advanced = {
+       render(view: "advanced")
+    }
 }

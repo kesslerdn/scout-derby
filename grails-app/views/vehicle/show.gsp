@@ -55,13 +55,18 @@
 					<dd><g:formatDate date="${vehicleInstance?.lastUpdated}" /></dd>
 				
 			
+				<dt><g:message code="vehicle.race.label" default="Race" /></dt>
+				
+					<dd><g:link controller="race" action="show" id="${vehicleInstance?.race?.id}">${vehicleInstance?.race?.encodeAsHTML()}</g:link></dd>
+				
+			
 			</dl>
 			<g:form>
 				<g:hiddenField name="id" value="${vehicleInstance?.id}" />
 				<g:actionSubmit data-icon="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" />
 			</g:form>
 		</div>
-		<div data-role="footer">
+		<div data-role="footer" data-theme="b">
 		</div>
     </body>
 </html>

@@ -33,7 +33,7 @@
 			<g:link data-role="button" action="list" params="[max:max]">Show ${showMoreSize} More</g:link>
 			</g:if>
 		</div>
-		<div data-role="footer">
+		<div data-role="footer" data-theme="b">
 		</div>
     </body>
 </html>

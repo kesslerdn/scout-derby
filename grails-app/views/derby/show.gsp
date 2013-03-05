@@ -59,22 +59,15 @@
 								
 			
 			</dl>
-				<ul data-role="listview" data-filter="false">
-					<g:each in="${derbyInstance.races}" var="r">
-						<li><g:link controller="race" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></li>
+							
+				<ul>
+					<g:each in="${derbyInstance?.races?}" var="r">
+					    <li><g:link controller="race" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></li>
 					</g:each>
 				</ul>
+
 			<g:form>
-								<div data-role="fieldcontain">
-			<ul data-role="listview" data-filter="false">
-				<li>
-					<g:link controller="race" action="create" params="['derby.id': derbyInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'race.label', default: 'Race')])}</g:link>
 
-				</li>
-			</ul>
-
-
-				</div>
 				
 				<g:hiddenField name="id" value="${derbyInstance?.id}" />
 				<g:actionSubmit data-icon="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" />

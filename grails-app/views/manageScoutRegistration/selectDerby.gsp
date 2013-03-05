@@ -20,7 +20,7 @@
 			<g:if test="${flash.message}">
 			<div class="message" role="alert">${flash.message}</div>
 			</g:if>
-			<g:form action="${actionName}" >
+			<g:form action="menu" >
 				<fieldset class="form">
 					<div class="fieldcontain">
 						<label for="derby">

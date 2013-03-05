@@ -6,15 +6,17 @@
     <head>
         <meta name="layout" content="derbyMobile">
         <g:set var="entityName" value="${message(code: 'derby.label', default: 'Derby')}" />
-        <title><g:message code="default.edit.label" args="[entityName]" /></title>
+        <title>Setup Derby</title>
     </head>
     <body>
 		<div data-role="header" data-position="inline" data-theme="b">
-			<h1><g:message code="default.edit.label" args="[entityName]" /></h1>
+			<h1>Setup Derby</h1>
 			<div data-role="navbar">
 				<ul>
 					<li><a data-icon="home" href="${createLink(uri: '/')}" data-ajax="false"><g:message code="default.home.label"/></a></li>
-					<li><g:link data-icon="grid" data-ajax="false" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+					<li>
+						<g:link data-icon="arrow-l" controller="manageDerby" data-ajax="false">Manage Derby</g:link>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -27,9 +29,7 @@
 				<g:renderErrors bean="${derbyInstance}" as="list" />
 			</div>
 			</g:hasErrors>
-			<g:form data-ajax="false" method="post" >
-				<g:hiddenField name="id" value="${derbyInstance?.id}" />
-				<g:hiddenField name="version" value="${derbyInstance?.version}" />
+			<g:form data-ajax="false" action="saveDerby" >
 			
 				<div data-role="fieldcontain">
 					<label for="city"><g:message code="derby.city.label" default="City" /></label>
@@ -38,7 +38,7 @@
 			
 				<div data-role="fieldcontain">
 					<label for="state"><g:message code="derby.state.label" default="State" /></label>
-					<g:select name="state" from="${derbyInstance.constraints.state.inList}" value="${derbyInstance?.state}" valueMessagePrefix="derby.state"  />
+					<g:select name="state" from="${derbyInstance.constraints.state.inList}" value="${derbyInstance?.state}" valueMessagePrefix="derby.state"  noSelection="['':'- Select -']" />
 				</div>
 			
 				<div data-role="fieldcontain">
@@ -56,13 +56,13 @@
 					<g:textField name="organizationNumber" value="${derbyInstance?.organizationNumber}" />
 				</div>
 			
-				<ul>
-					<g:each in="${derbyInstance?.races?}" var="r">
-					    <li><g:link controller="race" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></li>
-					</g:each>
-				</ul>
+				<div data-role="fieldcontain">
+					<label for="type"><g:message code="derby.type.label" default="Type" /></label>
+					<g:select name="type" from="${derbyInstance.constraints.type.inList}" value="${derbyInstance?.type}" valueMessagePrefix="derby.type"  noSelection="['':'- Select -']" />
+				</div>
 			
-				<g:actionSubmit data-icon="check" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
+			
+				<g:submitButton name="create" data-icon="check" value="${message(code: 'default.button.create.label', default: 'Create')}" />
 			</g:form>
 		</div>
 		<div data-role="footer" data-theme="b">
