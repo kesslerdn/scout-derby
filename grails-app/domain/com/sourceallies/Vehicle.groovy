@@ -16,7 +16,7 @@ class Vehicle {
 	
     static constraints = {
 		owner(nullable:true)
-		vehicleName(blank:false, unique:true)
+		vehicleName(blank:false)
     }
 	
 	def averageTime(){

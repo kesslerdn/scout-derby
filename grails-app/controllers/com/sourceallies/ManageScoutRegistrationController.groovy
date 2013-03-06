@@ -25,7 +25,7 @@ class ManageScoutRegistrationController {
     def menu = {
 		println "menu"
 		def derbyInstance = Derby.get(params.id)
-		def registrationUrl = "${ConfigurationHolder.config.grails.serverURL}/manageScoutRegistraion/registerScout?hashKey=${derbyInstance.hashKey}"
+		def registrationUrl = "${ConfigurationHolder.config.grails.serverURL}/manageScoutRegistration/registerScout?hashKey=${derbyInstance.hashKey}"
        render(view: "menu", model: [registrationUrl: registrationUrl, hashKey: derbyInstance.hashKey, derbyType: derbyInstance.type])
     }
 	
@@ -66,35 +66,46 @@ class ManageScoutRegistrationController {
 
 		 if(!raceInstance){
 			 flash.message = "Please select a race."
-			 render(view: "create", model: [vehicleInstance: vehicleInstance, ownerInstance: ownerInstance, raceInstance: raceInstance, availableRaces:availableRaces])
+			 render(view: "registerScout", model: [vehicleInstance: vehicleInstance, ownerInstance: ownerInstance, raceInstance: raceInstance, availableRaces:availableRaces, hashKey: params.hashKey])
 			 return
 		 }
+	
 		 
+		 def hasDupName
+		 raceInstance.each{race ->
+			 race.vehicles.each{ vehicle ->
+				 if(vehicle.vehicleName == vehicleInstance.vehicleName){
+					 hasDupName = true
+					 flash.message = "The name '" + vehicleInstance.vehicleName + "' is already taken."
+				 }
+			 }
+		 }
+
 		vehicleInstance.owner = null
 		raceInstance.addToVehicles(vehicleInstance)
-		if (!vehicleInstance.validate()) {
-			render(view: "registerScout", model: [vehicleInstance: vehicleInstance, ownerInstance: ownerInstance, raceInstance: raceInstance, availableRaces:availableRaces])
+		if (!vehicleInstance.validate() || hasDupName) {
+			render(view: "registerScout", model: [vehicleInstance: vehicleInstance, ownerInstance: ownerInstance, raceInstance: raceInstance, availableRaces:availableRaces, hashKey: params.hashKey])
 			return
 		}
 
 		ownerInstance.vehicle = vehicleInstance
 		if(!ownerInstance.validate()){
-			render(view: "registerScout", model: [vehicleInstance: vehicleInstance, ownerInstance: ownerInstance, raceInstance: raceInstance, availableRaces:availableRaces])
+			render(view: "registerScout", model: [vehicleInstance: vehicleInstance, ownerInstance: ownerInstance, raceInstance: raceInstance, availableRaces:availableRaces, hashKey: params.hashKey])
 			return
 		}
 		
 		if (!vehicleInstance.save(flush: true)) {
-			render(view: "registerScout", model: [vehicleInstance: vehicleInstance, ownerInstance: ownerInstance, raceInstance: raceInstance, availableRaces:availableRaces])
+			render(view: "registerScout", model: [vehicleInstance: vehicleInstance, ownerInstance: ownerInstance, raceInstance: raceInstance, availableRaces:availableRaces, hashKey: params.hashKey])
 			return
 		}
 
 		if(!ownerInstance.save(flush: true)){
-			render(view: "registerScout", model: [vehicleInstance: vehicleInstance, ownerInstance: ownerInstance, raceInstance: raceInstance, availableRaces:availableRaces])
+			render(view: "registerScout", model: [vehicleInstance: vehicleInstance, ownerInstance: ownerInstance, raceInstance: raceInstance, availableRaces:availableRaces, hashKey: params.hashKey])
 			return
 		}
 		
 		if(!raceInstance.save(flush: true)){
-			render(view: "registerScout", model: [vehicleInstance: vehicleInstance, ownerInstance: ownerInstance, raceInstance: raceInstance, availableRaces:availableRaces])
+			render(view: "registerScout", model: [vehicleInstance: vehicleInstance, ownerInstance: ownerInstance, raceInstance: raceInstance, availableRaces:availableRaces, hashKey: params.hashKey])
 			return
 		}
 

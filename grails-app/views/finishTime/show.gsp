@@ -56,7 +56,7 @@
 			</dl>
 			<g:form>
 				<g:hiddenField name="id" value="${finishTimeInstance?.id}" />
-				<g:actionSubmit data-icon="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" />
+				<button type="submit" name="_action_delete" value="Delete" data-icon="delete">Delete</button>
 			</g:form>
 		</div>
 		<div data-role="footer">

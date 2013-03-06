@@ -2,11 +2,11 @@
 <html>
 <head>
 	<meta name="layout" content="derbyMobile">
-	<title>Scout Registraion Error</title>
+	<title>Scout Registration Error</title>
 </head>
 <body>
 	<div data-role="header" data-position="inline" data-theme="b">
-		<h1>Scout Registraion Error</h1>
+		<h1>Scout Registration Error</h1>
 		<div data-role="navbar">
 			<ul>
 				<li><a data-icon="home" href="${createLink(uri: '/')}" data-ajax="false"><g:message code="default.home.label" /></a></li>

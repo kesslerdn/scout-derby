@@ -75,7 +75,7 @@
 			</dl>
 			<g:form>
 				<g:hiddenField name="id" value="${raceInstance?.id}" />
-				<g:actionSubmit data-icon="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" />
+				<button type="submit" name="_action_delete" data-icon="delete">Delete</button>
 			</g:form>
 		</div>
 		<div data-role="footer">

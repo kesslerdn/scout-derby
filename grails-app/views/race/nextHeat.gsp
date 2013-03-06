@@ -44,7 +44,7 @@
 					</tbody>
 				</table>
 				<fieldset class="buttons">
-					<g:submitButton name="create" data-icon="check" value="Next" />
+					<button type="submit" name="create" id="create" >Next</button>
 				</fieldset>
 			</g:form>
 		</div>

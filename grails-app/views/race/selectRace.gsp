@@ -28,7 +28,7 @@
 					</div>					
 				</fieldset>
 				<fieldset class="buttons">
-					<g:submitButton name="create" class="save" value="Next" />
+					<button type="submit" name="create" id="create">Next</button>
 				</fieldset>
 			</g:form>
 		</div>

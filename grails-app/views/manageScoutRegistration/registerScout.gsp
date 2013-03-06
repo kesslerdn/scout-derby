@@ -24,6 +24,16 @@
 				<g:renderErrors bean="${vehicleInstance}" as="list" />
 			</div>
 			</g:hasErrors>
+			<g:hasErrors bean="${raceInstance}">
+			<div class="errors" role="alert">
+				<g:renderErrors bean="${raceInstance}" as="list" />
+			</div>
+			</g:hasErrors>
+			<g:hasErrors bean="${ownerInstance}">
+			<div class="errors" role="alert">
+				<g:renderErrors bean="${ownerInstance}" as="list" />
+			</div>
+			</g:hasErrors>
 			<g:form data-ajax="false" action="save" >
 				<g:hiddenField name="hashKey" value="${hashKey}" />
 				<div class="fieldcontain">
@@ -44,7 +54,7 @@
 					<label for="vehicleName"><g:message code="vehicle.vehicleName.label" default="Vehicle Name" /></label>
 					<g:textField name="vehicleName" value="${vehicleInstance?.vehicleName}" />
 				</div>			
-				<g:submitButton name="create" data-icon="check" value="Register Scout" />
+				<button type="submit" name="create" data-icon="check" id="create">Register Scout</button>
 			</g:form>
 		</div>
 		<div data-role="footer">
