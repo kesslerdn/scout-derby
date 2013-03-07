@@ -37,7 +37,7 @@
 				</div>
 			
 				<div data-role="fieldcontain">
-					<label for="name"><g:message code="race.name.label" default="Name" /></label>
+					<label for="name">Race Name</label>
 					<g:textField name="name" value="${raceInstance?.name}" />
 				</div>
 			
