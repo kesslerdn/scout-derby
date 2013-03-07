@@ -6,7 +6,7 @@
 	</head>
 	<body>
 		<div data-role="header" data-position="inline" data-theme="b">
-			<h1>Race Report - ${raceInstance}</h1>
+			<h1>${raceInstance}</h1>
 			<div data-role="navbar">
 				<ul>
 					<li><a data-icon="home" href="${createLink(uri: '/')}" data-ajax="false"><g:message code="default.home.label"/></a></li>
