@@ -6,3 +6,21 @@
 - Date Field
 
 - Add Hall of Fame under View Derby
+
+- The link did no work for registration if you had multiple races and they were not logged in
+- Need to stress test
+- Provide listing of registrations link to registration team
+- Provide Edit/Delete options to Registration team
+- List car, owner, and number on screen after register a car
+- Add verification step after enter new car registration before saving
+- Multiple registration team members can accidentally enter the same car name without the app telling them  this is a timing issue
+
+- Add verification step after entering racing times
+- Add notification that once you start a race you can not add new cars
+- Continue to add race times to races that have already started
+- Add a pick the racing strategy before they start the race (brackets, etc)
+-- some races don't have times, just places this matters in how you score races
+- Be able to go back/forward in race scores
+
+- Stress test
+- Add tests for racing strategies
