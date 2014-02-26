@@ -134,98 +134,98 @@ class RaceController {
             redirect(action: "list")
         }
     }
-	
+
 	@Secured(['ROLE_MANAGER'])
 	def nextHeat = {
 		flash.message = ""
-				if(params.id){
-					def raceInstance = Race.get(params.id)
-					def vehicles = raceInstance.vehicles.toList()
-					if(!vehicles){
-						flash.message = "Please add vehicles to the ${raceInstance} race."
-						render(view: "selectRace", model: [actionName: "nextHeat"])
-						return
-					}
-					if(vehicles.size < (raceInstance.numberOfLanes + 1)){
-						flash.message = "Please add at least ${raceInstance.numberOfLanes + 1} vehicles to the ${raceInstance} race."
-						render(view: "selectRace", model: [actionName: "nextHeat"])
-						return
-					}
-					if(!raceInstance.lanes || raceInstance.lanes.isEmpty()){
-						Collections.shuffle(vehicles)
-						(1..(raceInstance.numberOfLanes)).each{ laneNumber ->
-							def lane = new Lane(number: laneNumber)
-							lane.user = springSecurityService.getCurrentUser()
-							vehicles[laneNumber..-1].each{vehicle ->
-							lane.addToVehicles(vehicle)
-						}
-						vehicles[0..(laneNumber-1)].each{vehicle ->
-							lane.addToVehicles(vehicle)
-						}
-						raceInstance.addToLanes(lane)
-						}
-						raceInstance.currentHeat = 1
-								
-								for(int i = 0; i < vehicles.size; i++){
-									def vehicleIds = []
-											raceInstance.lanes.each{lane ->
-											def vehicle = lane.vehicles[i]
-													vehicleIds.add(vehicle.id)
-									}
-									vehicleIds.each{ id ->
-										def count = vehicleIds.count{it == id}
-										if(count != 1){
-											throw new IllegalStateException("Heat ${i + 1} contains vehicle id $id $count times.")
-										}
-									}
+		if(params.id){
+			def raceInstance = Race.get(params.id)
+			def vehicles = raceInstance.vehicles.toList()
+			if(!vehicles){
+				flash.message = "Please add vehicles to the ${raceInstance} race."
+				render(view: "selectRace", model: [actionName: "nextHeat"])
+				return
+			}
+			if(vehicles.size < (raceInstance.numberOfLanes + 1)){
+				flash.message = "Please add at least ${raceInstance.numberOfLanes + 1} vehicles to the ${raceInstance} race."
+				render(view: "selectRace", model: [actionName: "nextHeat"])
+				return
+			}
+			if(!raceInstance.lanes || raceInstance.lanes.isEmpty()){
+				Collections.shuffle(vehicles)
+				(1..(raceInstance.numberOfLanes)).each{ laneNumber ->
+					def lane = new Lane(number: laneNumber)
+					lane.user = springSecurityService.getCurrentUser()
+					vehicles[laneNumber..-1].each{vehicle ->
+					lane.addToVehicles(vehicle)
+				}
+				vehicles[0..(laneNumber-1)].each{vehicle ->
+					lane.addToVehicles(vehicle)
+				}
+				raceInstance.addToLanes(lane)
+				}
+				raceInstance.currentHeat = 1
+						
+						for(int i = 0; i < vehicles.size; i++){
+							def vehicleIds = []
+									raceInstance.lanes.each{lane ->
+									def vehicle = lane.vehicles[i]
+											vehicleIds.add(vehicle.id)
+							}
+							vehicleIds.each{ id ->
+								def count = vehicleIds.count{it == id}
+								if(count != 1){
+									throw new IllegalStateException("Heat ${i + 1} contains vehicle id $id $count times.")
 								}
-						
-						if(!raceInstance.save(flush: true)){
-							flash.message = "Failed to save ${raceInstance}."
-							render(view: "selectRace", model: [actionName: "nextHeat"])
-							return
+							}
 						}
-					}
-							
-					def finishTimes = params.finishTimes
-					int heatIndex = (raceInstance.currentHeat - 1)
-					
-					if(invalidDoubles(finishTimes)){
-						flash.message = "Please enter valid times."
-						render(view: "nextHeat", model: [id:params.id, heatIndex: heatIndex, lanes: raceInstance.lanes])
-						return
-					}
-					
-					if(finishTimes){
-						raceInstance.lanes.each{lane ->
-							double finishTime = (Double.parseDouble(finishTimes[lane.number - 1]))
-							def finishTimeInstance = new FinishTime(laneNumber:(lane.number), seconds: finishTime)
-							finishTimeInstance.user = springSecurityService.getCurrentUser()
-							def vehicle = lane.vehicles[heatIndex]
-							vehicle.addToFinishTimes(finishTimeInstance)
-						}
-						
-						heatIndex += 1
-						raceInstance.currentHeat += 1
-						if(!raceInstance.save(flush: true)){
-							flash.message = "Failed to save ${raceInstance}."
-							render(view: "selectRace", model: [actionName: "nextHeat"])
-							return
-						}
-					}
-					if(heatIndex >= vehicles.size){
-						redirect(action: "report", id: params.id)
-					}
-					
-					[id:params.id, heatIndex: heatIndex, lanes: raceInstance.lanes]
-				}else{
-				def availableRaces = availableRaces()
-				def raceId
-				if(availableRaces.size() == 1){
-					raceId = availableRaces[0].id
+				
+				if(!raceInstance.save(flush: true)){
+					flash.message = "Failed to save ${raceInstance}."
+					render(view: "selectRace", model: [actionName: "nextHeat"])
+					return
 				}
-					render(view: "selectRace", model: [actionName: "nextHeat", raceSelectOptions: availableRaces, id: raceId]) 
+			}
+					
+			def finishTimes = params.finishTimes
+			int heatIndex = (raceInstance.currentHeat - 1)
+			
+			if(invalidDoubles(finishTimes)){
+				flash.message = "Please enter valid times."
+				render(view: "nextHeat", model: [id:params.id, heatIndex: heatIndex, lanes: raceInstance.lanes])
+				return
+			}
+			
+			if(finishTimes){
+				raceInstance.lanes.each{lane ->
+					double finishTime = (Double.parseDouble(finishTimes[lane.number - 1]))
+					def finishTimeInstance = new FinishTime(laneNumber:(lane.number), seconds: finishTime)
+					finishTimeInstance.user = springSecurityService.getCurrentUser()
+					def vehicle = lane.vehicles[heatIndex]
+					vehicle.addToFinishTimes(finishTimeInstance)
 				}
+				
+				heatIndex += 1
+				raceInstance.currentHeat += 1
+				if(!raceInstance.save(flush: true)){
+					flash.message = "Failed to save ${raceInstance}."
+					render(view: "selectRace", model: [actionName: "nextHeat"])
+					return
+				}
+			}
+			if(heatIndex >= vehicles.size){
+				redirect(action: "report", id: params.id)
+			}
+			
+			[id:params.id, heatIndex: heatIndex, lanes: raceInstance.lanes]
+		}else{
+		def availableRaces = availableRaces()
+		def raceId
+		if(availableRaces.size() == 1){
+			raceId = availableRaces[0].id
+		}
+			render(view: "selectRace", model: [actionName: "nextHeat", raceSelectOptions: availableRaces, id: raceId]) 
+		}
 	}
 	
 	private boolean invalidDoubles(def values){
@@ -283,6 +283,6 @@ class RaceController {
 	
 	private def availableRaces(){
 		def races = Race.findAll{user == springSecurityService.getCurrentUser()}
-		races.findAll{it.lanes.empty}
+		races.findAll{it.lanes.empty || (it.currentHeat < it.vehicles.toList().size) }
 	}
 }

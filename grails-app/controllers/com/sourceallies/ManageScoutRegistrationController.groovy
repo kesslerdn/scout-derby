@@ -8,7 +8,6 @@ class ManageScoutRegistrationController {
 	def springSecurityService
 	
 	def index = {
-		println "index"
 		def today = new Date()
 		def yesterday = today - 1
 		def derbies = Derby.findAllByUserAndDateGreaterThan(springSecurityService.getCurrentUser(), yesterday)
@@ -23,14 +22,13 @@ class ManageScoutRegistrationController {
 	}
 	
     def menu = {
-		println "menu"
 		def derbyInstance = Derby.get(params.id)
 		def registrationUrl = "${ConfigurationHolder.config.grails.serverURL}/manageScoutRegistration/registerScout?hashKey=${derbyInstance.hashKey}"
        render(view: "menu", model: [registrationUrl: registrationUrl, hashKey: derbyInstance.hashKey, derbyType: derbyInstance.type])
     }
 	
+	@Secured(['ROLE_MANAGER'])
 	def registerScout = {
-		println "registerScout"
 		def derbyInstance = Derby.findByHashKey(params.hashKey)
 		if(derbyInstance){
 			def races = Race.findAll{user == springSecurityService.getCurrentUser()}
@@ -51,8 +49,24 @@ class ManageScoutRegistrationController {
 		}
 	}
 	
+	def roster = {
+		def derbyInstance = Derby.findByHashKey(params.hashKey)
+		if(derbyInstance){
+			def max = Vehicle.count()
+			
+			def showMoreSize = 0
+			
+			params.max = max
+			params.sort = 'id'
+			params.order = 'asc'
+			[vehicleInstanceList: Vehicle.findAllByUser(springSecurityService.getCurrentUser(), params), max: max, showMoreSize: showMoreSize]
+		}else{
+			flash.message ="No derbies for this key."
+			render(view: "error")
+		}
+	}
+
 	def save = {
-		println "save"
 		if(params.raceId == "null") params.raceId = null
 		
 		 def vehicleInstance = new Vehicle(params)

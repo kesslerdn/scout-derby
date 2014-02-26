@@ -24,6 +24,9 @@
 					<g:link action="registerScout" data-ajax="false" params="[hashKey:hashKey]">Register Scout</g:link>
 				</li>
 				<li>
+					<g:link action="roster" data-ajax="false" params="[hashKey:hashKey]">Roster</g:link>
+				</li>
+				<li>
 					<g:link controller="donate">Donate</g:link>
 				</li>
 				<li>
